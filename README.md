@@ -1,2 +1,2 @@
 # Master-Thesis
-University Of Nebraska Meidcal Center- Master of Biomedical Informatics
+University Of Nebraska Meidical Center- Master of Biomedical Informatics
