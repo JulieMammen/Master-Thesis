@@ -1,0 +1,1001 @@
+patient_id,age,sex,race,date_diagnosed,icd10_code,stage_group,grade,tumor_size_cm,er_status,pr_status,her2_status,oncotype_dx_score,multigene_signature_method,multigene_signature_risk,neoadjuvant_therapy,neoadjuvant_response,residual_cancer_burden_rcb,rx_summ_surg_prim_site,rx_summ_radiation,rx_summ_systemic_surg_seq,chemo,hormone_therapy,targeted_therapy,subtype_simulated
+0001,33,Female,Black or African American,2024-03-23,C50.9,III,3,1.0,Negative,Unknown,Unknown,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,No,No,TNBC
+0002,75,Female,American Indian or Alaska Native,2023-05-18,C50.5,II,2,1.6,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,Yes,Unknown
+0003,68,Female,Other/Unknown,2025-06-10,C50.9,I,3,2.5,Negative,Negative,Negative,,None,None,Yes,Unknown,1.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0004,55,Female,White,2025-09-07,C50.9,III,2,1.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0005,54,Female,White,2023-08-22,C50.1,I,2,1.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Unknown,None,No,No,No,TNBC
+0006,81,Female,Asian,2020-12-19,C50.9,III,1,2.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,TNBC
+0007,33,Female,White,2022-10-17,C50.6,II,2,1.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0008,71,Female,Asian,2021-05-27,C50.2,I,1,2.4,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0009,40,Female,White,2023-01-13,C50.2,I,1,4.0,Positive,Negative,Equivocal,26.0,Oncotype DX,Intermediate,Yes,Partial,1.5,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0010,33,Female,White,2024-07-01,C50.9,III,2,2.0,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,Yes,Adjuvant,Yes,No,No,TNBC
+0011,60,Female,White,2020-12-15,C50.1,I,2,3.5,Positive,Unknown,Negative,3.0,Oncotype DX,Low,Yes,Complete,0.0,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0012,88,Female,Asian,2022-01-17,C50.3,III,1,2.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0013,73,Female,White,2018-05-14,C50.2,III,3,0.6,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0014,75,Female,White,2023-11-23,C50.5,II,1,1.0,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0015,72,Female,White,2021-12-02,C50.5,I,2,1.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0016,76,Female,White,2021-09-05,C50.8,II,2,1.3,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,Unknown
+0017,59,Female,White,2022-04-05,C50.3,IV,2,2.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0018,35,Female,Black or African American,2019-09-22,C50.1,I,2,2.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,No,No,TNBC
+0019,80,Female,White,2022-10-14,C50.9,I,1,3.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0020,55,Female,Asian,2023-12-18,C50.4,I,3,2.5,Positive,Unknown,Negative,22.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0021,59,Female,Asian,2020-10-18,C50.9,I,2,1.7,Negative,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0022,50,Female,White,2019-01-19,C50.1,III,1,0.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0023,39,Female,White,2021-02-04,C50.0,II,2,2.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0024,85,Female,White,2019-08-04,C50.3,II,3,2.2,Positive,Positive,Positive,,None,None,Yes,Complete,0.0,Mastectomy,Yes,Adjuvant,Yes,No,Yes,HER2+
+0025,76,Female,White,2020-12-28,C50.6,I,3,2.4,Negative,Negative,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,Unknown
+0026,67,Female,White,2023-01-06,C50.5,I,3,4.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0027,52,Female,Other/Unknown,2018-11-28,C50.9,I,2,3.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0028,79,Female,Other/Unknown,2023-12-24,C50.4,III,2,3.1,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0029,61,Female,Black or African American,2019-10-19,C50.8,II,2,1.1,Positive,Positive,Negative,3.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0030,55,Female,White,2025-02-27,C50.9,I,3,1.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0031,55,Female,Black or African American,2023-11-11,C50.0,III,2,2.1,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0032,42,Female,Black or African American,2020-03-07,C50.8,0,2,1.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0033,33,Female,White,2022-07-04,C50.4,I,2,2.8,Positive,Positive,Negative,,None,None,Yes,Partial,2.5,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0034,62,Female,Black or African American,2018-11-20,C50.5,I,2,2.6,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,TNBC
+0035,83,Female,White,2018-10-19,C50.1,Unknown,1,1.0,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0036,31,Female,White,2025-08-25,C50.9,II,2,3.5,Positive,Unknown,Negative,30.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0037,81,Female,White,2024-06-02,C50.9,II,2,2.3,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0038,79,Female,White,2019-03-28,C50.0,0,3,0.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Unknown,Adjuvant,No,Yes,No,HR+/HER2-
+0039,45,Female,White,2020-04-06,C50.9,I,2,2.1,Positive,Positive,Negative,5.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0040,67,Female,Asian,2019-08-01,C50.9,II,3,2.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,No,No,TNBC
+0041,38,Female,Other/Unknown,2021-02-28,C50.3,I,2,3.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0042,75,Female,White,2020-05-01,C50.9,IV,3,1.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Unknown,Neoadjuvant,No,Yes,No,HR+/HER2-
+0043,71,Female,Asian,2020-08-16,C50.9,III,1,3.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0044,49,Female,Other/Unknown,2022-03-27,C50.9,II,3,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0045,32,Female,White,2019-07-07,C50.9,III,2,0.8,Positive,Unknown,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,Unknown,Adjuvant,Yes,Yes,No,HR+/HER2-
+0046,88,Female,White,2025-01-23,C50.1,Unknown,2,0.6,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0047,55,Female,White,2023-10-28,C50.5,II,2,3.4,Negative,Negative,Negative,,None,None,Yes,Partial,1.0,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0048,83,Female,White,2024-02-01,C50.8,II,2,3.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0049,70,Female,Black or African American,2019-05-11,C50.2,IV,2,2.6,Positive,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Both,Yes,Yes,No,HR+/HER2-
+0050,76,Female,White,2023-09-01,C50.4,I,3,3.8,Positive,Positive,Negative,5.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0051,75,Female,White,2024-09-09,C50.9,III,3,3.4,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0052,40,Female,White,2019-05-27,C50.0,I,2,3.0,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,No,No,TNBC
+0053,50,Female,White,2024-01-05,C50.6,II,2,1.2,Positive,Positive,Equivocal,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0054,56,Female,Other/Unknown,2020-11-11,C50.9,III,2,4.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0055,58,Female,White,2024-04-20,C50.4,II,3,2.8,Positive,Positive,Negative,26.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0056,30,Female,White,2021-10-29,C50.6,II,3,1.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0057,61,Female,White,2024-06-02,C50.9,II,2,1.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0058,37,Female,White,2019-03-07,C50.6,I,9,2.5,Positive,Positive,Negative,19.0,Oncotype DX,Intermediate,Yes,Partial,2.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0059,74,Female,White,2021-02-10,C50.2,I,2,0.4,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0060,70,Female,White,2020-03-09,C50.1,I,3,3.0,Positive,Negative,Negative,8.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0061,85,Female,White,2019-12-27,C50.9,II,9,1.2,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0062,74,Female,White,2020-06-19,C50.3,II,3,2.6,Positive,Unknown,Negative,22.0,Oncotype DX,Intermediate,Yes,No response,1.5,Mastectomy,No,Adjuvant,Yes,No,No,HR+/HER2-
+0063,50,Female,Asian,2021-01-22,C50.8,I,1,1.6,Positive,Positive,Negative,52.0,Oncotype DX,High,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0064,87,Female,Black or African American,2019-01-07,C50.1,III,2,1.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,No,Yes,No,HR+/HER2-
+0065,53,Female,Black or African American,2023-08-29,C50.5,I,1,1.4,Positive,Positive,Negative,,None,None,Yes,Partial,3.0,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0066,48,Female,Black or African American,2022-05-27,C50.9,II,3,2.0,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0067,84,Female,Black or African American,2024-08-20,C50.8,II,2,4.3,Negative,Negative,Negative,,None,None,Yes,Partial,2.0,Mastectomy,No,Both,Yes,No,Yes,TNBC
+0068,50,Female,White,2023-08-23,C50.9,I,3,3.7,Positive,Positive,Negative,18.0,Oncotype DX,Intermediate,Yes,Partial,1.0,Mastectomy,No,None,No,No,No,HR+/HER2-
+0069,32,Female,White,2019-03-12,C50.3,III,3,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0070,57,Female,White,2018-07-24,C50.8,II,1,2.2,Positive,Positive,Negative,30.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0071,77,Female,White,2021-05-20,C50.9,0,2,3.1,Unknown,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0072,39,Female,Asian,2021-11-06,C50.5,Unknown,2,3.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0073,56,Female,White,2019-12-04,C50.3,III,2,1.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0074,36,Female,Black or African American,2024-04-04,C50.9,II,1,2.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0075,70,Female,Asian,2022-08-27,C50.4,III,1,0.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,No,Yes,No,HR+/HER2-
+0076,57,Female,White,2023-12-26,C50.8,IV,2,3.4,Negative,Unknown,Equivocal,,None,None,Yes,Partial,2.0,No surgery/Unknown,Yes,Adjuvant,Yes,No,Unknown,Unknown
+0077,48,Female,Other/Unknown,2018-11-15,C50.9,I,2,4.5,Positive,Positive,Negative,17.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0078,42,Female,White,2024-07-09,C50.2,II,2,2.3,Positive,Positive,Negative,15.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0079,62,Female,Asian,2019-08-26,C50.4,II,1,0.1,Positive,Positive,Negative,22.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0080,69,Female,White,2021-08-02,C50.1,I,2,2.9,Positive,Negative,Negative,19.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0081,86,Female,White,2021-07-07,C50.5,I,2,1.2,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0082,55,Female,White,2024-07-25,C50.3,I,2,1.5,Positive,Positive,Negative,4.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0083,37,Female,White,2020-03-19,C50.9,II,3,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0084,79,Female,White,2019-12-05,C50.2,III,2,2.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0085,67,Female,Other/Unknown,2020-09-19,C50.9,III,2,1.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Both,Yes,No,No,TNBC
+0086,71,Female,Black or African American,2020-11-20,C50.3,I,3,1.5,Positive,Positive,Negative,29.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0087,34,Female,White,2019-06-15,C50.4,I,2,2.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,Unknown
+0088,47,Female,White,2019-05-31,C50.4,II,2,1.7,Negative,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,Unknown
+0089,75,Female,White,2019-11-07,C50.9,II,1,1.0,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0090,79,Female,White,2021-09-27,C50.6,IV,1,1.8,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0091,54,Female,Other/Unknown,2020-09-30,C50.4,III,1,2.6,Positive,Positive,Negative,,None,None,Yes,No response,3.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0092,77,Female,White,2021-02-19,C50.9,IV,3,2.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0093,80,Female,White,2023-10-03,C50.9,III,3,0.6,Negative,Positive,Negative,,None,None,Yes,Partial,0.5,No surgery/Unknown,No,Both,No,Yes,No,HR+/HER2-
+0094,52,Female,White,2019-12-05,C50.3,Unknown,1,3.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0095,83,Female,White,2025-04-12,C50.9,II,1,0.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Unknown,No,No,Unknown
+0096,45,Female,White,2024-01-06,C50.4,0,2,1.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0097,42,Female,Black or African American,2019-05-26,C50.1,I,2,1.5,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0098,70,Female,Black or African American,2020-07-06,C50.6,I,2,2.4,Positive,Positive,Negative,11.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0099,67,Female,Other/Unknown,2019-06-21,C50.2,I,3,2.8,Positive,Positive,Negative,25.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0100,36,Female,Black or African American,2020-03-08,C50.3,I,3,3.4,Negative,Unknown,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0101,79,Female,White,2020-12-03,C50.9,IV,2,1.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0102,40,Female,Black or African American,2019-01-18,C50.2,I,2,2.8,Positive,Negative,Negative,,None,None,Yes,Partial,1.0,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0103,77,Female,Other/Unknown,2018-02-12,C50.9,IV,2,2.4,Positive,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,Yes,Both,Yes,Yes,No,HR+/HER2-
+0104,28,Female,Black or African American,2021-07-06,C50.9,III,2,0.3,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0105,77,Female,Other/Unknown,2023-08-11,C50.9,II,3,4.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Unknown,None,No,No,No,HR+/HER2-
+0106,76,Female,Asian,2020-06-04,C50.9,II,1,0.6,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0107,76,Female,Asian,2024-11-19,C50.9,I,3,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0108,69,Female,White,2020-12-15,C50.9,II,3,2.6,Positive,Positive,Negative,5.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0109,57,Female,Black or African American,2025-03-17,C50.4,I,3,2.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0110,71,Female,White,2019-11-21,C50.2,IV,2,1.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0111,45,Female,White,2022-04-25,C50.8,I,2,3.1,Positive,Positive,Negative,24.0,Oncotype DX,Intermediate,Yes,Partial,1.5,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0112,76,Female,Black or African American,2024-02-08,C50.8,I,3,0.5,Negative,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,No,Yes,No,HR+/HER2-
+0113,62,Female,Other/Unknown,2018-06-22,C50.2,II,3,2.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0114,56,Female,Other/Unknown,2025-06-10,C50.9,II,2,1.6,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0115,59,Female,White,2020-12-02,C50.0,II,3,1.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0116,63,Female,Black or African American,2021-12-25,C50.9,II,2,2.7,Positive,Positive,Negative,28.0,Oncotype DX,Intermediate,Yes,Partial,2.5,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0117,30,Female,Black or African American,2023-01-11,C50.3,I,2,3.4,Positive,Negative,Negative,2.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0118,36,Female,White,2023-02-22,C50.1,II,3,1.8,Positive,Negative,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,Unknown
+0119,43,Female,White,2018-03-11,C50.1,I,2,3.1,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0120,35,Female,White,2024-12-08,C50.3,I,2,2.3,Positive,Negative,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0121,55,Female,Black or African American,2022-12-28,C50.3,I,9,1.2,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0122,69,Female,White,2025-12-28,C50.1,I,3,1.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0123,68,Female,Other/Unknown,2021-10-09,C50.3,I,3,1.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0124,57,Female,White,2022-11-28,C50.2,II,2,1.4,Positive,Positive,Negative,17.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0125,81,Female,Other/Unknown,2021-07-12,C50.4,I,9,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0126,63,Female,White,2025-02-12,C50.4,I,1,2.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,No,Yes,No,HR+/HER2-
+0127,32,Female,Asian,2024-08-29,C50.4,II,2,0.5,Positive,Unknown,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,Yes,No,Yes,HER2+
+0128,75,Female,White,2025-04-08,C50.4,I,2,0.4,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0129,63,Female,White,2022-01-13,C50.1,II,3,2.7,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0130,67,Female,Asian,2024-05-01,C50.0,IV,3,1.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0131,63,Female,Other/Unknown,2020-11-14,C50.3,II,3,2.5,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0132,62,Female,Asian,2021-09-08,C50.9,IV,2,3.1,Negative,Negative,Negative,,None,None,Yes,Unknown,2.5,No surgery/Unknown,No,Adjuvant,Yes,No,No,TNBC
+0133,33,Female,White,2024-01-31,C50.9,I,2,0.8,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0134,62,Female,White,2018-08-26,C50.9,0,2,0.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0135,77,Female,White,2023-09-08,C50.8,II,2,4.0,Positive,Positive,Negative,1.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0136,46,Female,White,2018-02-16,C50.8,III,1,2.6,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0137,65,Female,Black or African American,2022-08-24,C50.4,III,2,1.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0138,29,Female,Black or African American,2021-10-26,C50.9,0,3,1.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0139,49,Female,Black or African American,2021-10-01,C50.9,III,3,1.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0140,55,Female,Asian,2021-12-15,C50.9,I,3,0.9,Positive,Positive,Negative,37.0,Oncotype DX,High,Yes,Partial,1.5,Mastectomy,Yes,Unknown,Yes,Yes,No,HR+/HER2-
+0141,88,Female,Black or African American,2021-12-08,C50.9,I,2,3.2,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,No,TNBC
+0142,41,Female,Asian,2021-04-05,C50.5,I,2,1.3,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,Yes,HER2+
+0143,45,Female,White,2021-08-11,C50.9,Unknown,1,3.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0144,53,Female,White,2022-07-19,C50.9,0,2,1.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0145,89,Female,Black or African American,2024-02-09,C50.4,III,2,1.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0146,80,Female,Asian,2022-06-02,C50.9,II,2,1.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0147,30,Female,White,2023-02-21,C50.1,III,1,0.1,Negative,Positive,Positive,,None,None,Yes,Partial,2.5,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0148,42,Female,White,2024-09-10,C50.9,II,3,2.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0149,78,Female,Black or African American,2025-12-01,C50.9,III,2,2.0,Positive,Negative,Negative,,None,None,Yes,Partial,2.0,No surgery/Unknown,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0150,31,Female,White,2018-11-14,C50.1,I,2,3.1,Positive,Positive,Negative,15.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0151,81,Female,White,2023-09-15,C50.9,0,2,0.1,Negative,Positive,Positive,,None,None,Yes,No response,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0152,45,Female,Native Hawaiian or Other Pacific Islander,2019-10-20,C50.1,II,2,3.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,Unknown
+0153,84,Female,Black or African American,2019-07-29,C50.9,I,2,3.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Unknown,No,Yes,No,HR+/HER2-
+0154,46,Female,White,2024-05-06,C50.9,I,2,3.6,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Unknown,Yes,Yes,No,HR+/HER2-
+0155,54,Female,Asian,2018-07-20,C50.9,I,2,2.1,Positive,Positive,Negative,6.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0156,69,Female,White,2024-10-13,C50.9,I,1,3.3,Positive,Positive,Negative,36.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0157,35,Female,Asian,2024-03-01,C50.1,I,3,0.6,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Unknown,Unknown,Yes,Yes,Unknown,Unknown
+0158,62,Female,White,2025-12-16,C50.3,0,1,3.0,Negative,Unknown,Positive,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0159,59,Female,White,2023-05-06,C50.5,IV,2,1.4,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0160,76,Female,White,2024-12-25,C50.1,I,1,0.4,Positive,Positive,Negative,14.0,Oncotype DX,Low,Yes,Partial,1.5,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0161,89,Female,White,2018-12-13,C50.5,Unknown,2,1.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0162,69,Female,American Indian or Alaska Native,2025-02-13,C50.3,Unknown,2,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Unknown,Adjuvant,No,Yes,No,HR+/HER2-
+0163,53,Female,White,2019-04-14,C50.5,I,3,1.3,Positive,Negative,Negative,24.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0164,53,Female,White,2020-07-07,C50.5,II,2,2.6,Negative,Negative,Negative,,None,None,Yes,Partial,0.5,Breast-conserving surgery,Yes,None,No,No,No,TNBC
+0165,53,Female,White,2019-01-10,C50.9,II,2,0.2,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0166,78,Female,Black or African American,2021-03-19,C50.3,II,2,0.1,Positive,Positive,Negative,22.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0167,47,Female,Asian,2023-12-29,C50.9,I,1,3.7,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0168,38,Female,Other/Unknown,2020-02-23,C50.5,I,2,3.2,Positive,Negative,Positive,,None,None,Yes,Partial,1.5,Mastectomy,Yes,Adjuvant,Yes,No,Yes,HER2+
+0169,48,Female,White,2024-07-30,C50.4,I,2,1.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Both,Yes,Yes,No,HR+/HER2-
+0170,29,Female,White,2022-11-07,C50.8,II,2,2.2,Positive,Positive,Negative,20.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0171,34,Female,White,2023-01-12,C50.5,Unknown,9,3.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0172,33,Female,White,2025-07-06,C50.3,II,3,2.7,Negative,Negative,Negative,,None,None,Yes,No response,2.0,Mastectomy,No,None,No,No,No,TNBC
+0173,75,Female,Other/Unknown,2021-06-15,C50.8,II,9,2.4,Negative,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Unknown,Both,Yes,No,No,HR+/HER2-
+0174,72,Female,Black or African American,2020-10-04,C50.2,Unknown,2,3.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0175,71,Female,White,2025-12-16,C50.4,II,3,1.4,Positive,Positive,Equivocal,16.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0176,56,Female,White,2022-06-16,C50.9,0,2,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0177,72,Female,Other/Unknown,2022-12-01,C50.5,III,2,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0178,37,Female,White,2020-05-15,C50.9,I,9,1.9,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,Yes,No,Yes,HER2+
+0179,83,Female,White,2019-09-22,C50.3,0,2,1.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0180,59,Female,White,2019-05-12,C50.9,II,3,2.3,Positive,Positive,Negative,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0181,86,Female,White,2019-10-16,C50.9,IV,3,2.2,Negative,Unknown,Negative,,None,None,Yes,Partial,2.5,Mastectomy,No,Adjuvant,Unknown,No,Unknown,Unknown
+0182,37,Female,White,2019-07-25,C50.9,I,1,1.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0183,58,Female,White,2023-12-22,C50.9,II,3,3.1,Positive,Positive,Negative,25.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0184,71,Female,White,2018-06-19,C50.2,I,2,1.1,Positive,Unknown,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0185,58,Female,Black or African American,2023-01-14,C50.8,0,3,2.0,Positive,Positive,Negative,,None,None,Yes,Unknown,2.5,Breast-conserving surgery,Yes,Unknown,No,Yes,No,HR+/HER2-
+0186,55,Female,White,2025-08-05,C50.2,I,3,1.9,Positive,Unknown,Negative,7.0,Oncotype DX,Low,Yes,No response,1.0,Mastectomy,Yes,Unknown,No,Yes,No,HR+/HER2-
+0187,38,Female,White,2024-02-15,C50.9,II,1,2.6,Positive,Positive,Positive,,None,None,Yes,Partial,2.0,Mastectomy,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0188,51,Female,Other/Unknown,2021-03-23,C50.9,III,1,0.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,Unknown,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0189,42,Female,Black or African American,2018-06-23,C50.3,I,1,3.2,Positive,Positive,Negative,34.0,Oncotype DX,High,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0190,46,Female,White,2024-09-03,C50.9,I,2,1.5,Positive,Unknown,Negative,19.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0191,70,Female,White,2018-01-10,C50.1,I,1,3.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,No,No,TNBC
+0192,67,Female,Native Hawaiian or Other Pacific Islander,2023-06-14,C50.9,0,3,1.7,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0193,65,Female,White,2023-05-15,C50.9,II,2,2.1,Negative,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,Unknown,None,No,No,No,HER2+
+0194,50,Female,White,2019-07-15,C50.1,II,3,4.3,Positive,Positive,Equivocal,15.0,Oncotype DX,Low,Yes,Partial,1.0,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0195,87,Female,Other/Unknown,2023-12-02,C50.9,II,2,1.9,Negative,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0196,33,Female,White,2019-05-28,C50.9,I,2,3.6,Positive,Unknown,Negative,26.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0197,49,Female,Black or African American,2019-10-22,C50.1,II,1,2.2,Positive,Positive,Negative,12.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0198,35,Female,White,2024-06-30,C50.8,I,3,2.7,Positive,Positive,Negative,24.0,Oncotype DX,Intermediate,Yes,Partial,1.5,Mastectomy,No,Adjuvant,Yes,No,No,HR+/HER2-
+0199,49,Female,Black or African American,2025-11-01,C50.3,I,1,2.3,Positive,Negative,Positive,,None,None,Yes,No response,2.5,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0200,87,Female,White,2020-02-13,C50.9,IV,1,3.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0201,50,Female,White,2025-05-16,C50.1,III,1,1.4,Positive,Positive,Negative,,None,None,Yes,Partial,2.5,No surgery/Unknown,Unknown,Neoadjuvant,No,Yes,No,HR+/HER2-
+0202,84,Female,White,2025-04-22,C50.9,IV,3,1.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0203,58,Female,White,2024-02-27,C50.9,IV,1,1.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0204,71,Female,Asian,2019-02-14,C50.2,II,2,2.3,Positive,Positive,Negative,40.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0205,56,Female,White,2020-05-24,C50.4,IV,3,2.0,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0206,44,Female,White,2023-06-04,C50.9,II,3,3.0,Positive,Positive,Negative,41.0,Oncotype DX,High,Yes,No response,1.5,Mastectomy,Yes,Both,Yes,Yes,No,HR+/HER2-
+0207,75,Female,Asian,2025-12-29,C50.9,0,1,3.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,No,Yes,No,HR+/HER2-
+0208,88,Female,Asian,2024-07-07,C50.5,0,1,1.1,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0209,44,Female,White,2021-05-13,C50.2,I,2,1.4,Positive,Positive,Negative,27.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0210,76,Female,White,2019-11-19,C50.1,I,1,0.6,Positive,Positive,Negative,29.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,HR+/HER2-
+0211,44,Female,Other/Unknown,2025-09-07,C50.9,I,3,4.4,Positive,Positive,Negative,34.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0212,72,Female,Black or African American,2020-03-18,C50.6,II,2,2.5,Negative,Negative,Negative,,None,None,Yes,Partial,1.0,Mastectomy,Yes,Neoadjuvant,Yes,No,Yes,TNBC
+0213,76,Female,Asian,2020-09-26,C50.9,III,2,2.7,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,No surgery/Unknown,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0214,55,Female,Other/Unknown,2025-09-19,C50.6,II,1,0.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0215,73,Female,Asian,2022-06-30,C50.9,I,2,2.2,Negative,Positive,Negative,23.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0216,44,Female,White,2020-02-13,C50.1,III,1,2.8,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0217,32,Female,White,2018-01-16,C50.1,I,3,1.9,Positive,Positive,Negative,28.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0218,33,Female,White,2021-06-10,C50.9,0,1,3.4,Negative,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0219,55,Female,Black or African American,2025-11-21,C50.9,I,9,4.7,Positive,Negative,Positive,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Both,Yes,No,Yes,HER2+
+0220,83,Female,Other/Unknown,2021-06-17,C50.4,I,3,1.2,Negative,Negative,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Both,Yes,No,No,TNBC
+0221,35,Female,White,2023-08-07,C50.4,I,1,1.1,Negative,Unknown,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0222,56,Female,White,2020-01-10,C50.6,III,1,1.2,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0223,71,Female,White,2024-03-16,C50.5,III,2,4.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,Yes,No,No,HR+/HER2-
+0224,40,Female,Other/Unknown,2024-03-16,C50.2,II,1,3.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0225,72,Female,White,2022-11-13,C50.9,I,1,2.1,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,Yes,No,Yes,HER2+
+0226,46,Female,White,2024-03-05,C50.3,III,3,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,None,No,No,No,HR+/HER2-
+0227,78,Female,White,2022-08-19,C50.9,II,2,1.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0228,63,Female,White,2021-01-10,C50.1,I,1,3.2,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0229,61,Female,White,2023-11-27,C50.1,II,2,1.8,Negative,Negative,Negative,,None,None,Yes,Partial,0.5,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,Unknown
+0230,38,Female,White,2024-09-06,C50.9,II,2,1.9,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0231,56,Female,White,2024-09-23,C50.4,II,9,2.9,Positive,Positive,Negative,20.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0232,81,Female,White,2019-09-15,C50.9,I,1,2.0,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0233,29,Female,White,2023-06-01,C50.1,II,3,1.9,Positive,Positive,Negative,27.0,Oncotype DX,Intermediate,Yes,Complete,0.0,Breast-conserving surgery,Unknown,Adjuvant,No,Yes,No,HR+/HER2-
+0234,75,Female,White,2018-01-13,C50.9,I,3,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0235,58,Female,White,2022-07-30,C50.9,I,1,3.1,Positive,Positive,Negative,11.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0236,72,Female,Black or African American,2022-07-27,C50.9,I,1,4.0,Negative,Negative,Negative,,None,None,Yes,Partial,2.5,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,TNBC
+0237,69,Female,White,2020-11-28,C50.2,IV,2,2.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0238,54,Female,White,2025-12-14,C50.4,I,3,3.1,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Unknown,Yes,No,Yes,HER2+
+0239,47,Female,White,2025-01-24,C50.4,I,2,2.0,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Unknown,Adjuvant,Yes,Yes,No,HR+/HER2-
+0240,66,Female,White,2018-04-23,C50.8,I,2,1.4,Positive,Positive,Negative,,None,None,Yes,No response,1.5,Mastectomy,Yes,Unknown,Yes,Yes,No,HR+/HER2-
+0241,36,Female,White,2019-09-03,C50.4,IV,3,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,HR+/HER2-
+0242,64,Female,White,2019-08-31,C50.1,II,3,2.4,Negative,Negative,Negative,,None,None,Yes,Partial,2.0,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0243,33,Female,Asian,2025-03-07,C50.4,IV,2,0.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0244,68,Female,White,2022-02-25,C50.3,I,2,1.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,No,No,HR+/HER2-
+0245,66,Female,White,2023-10-31,C50.4,I,3,2.1,Positive,Negative,Positive,,None,None,Yes,Unknown,0.5,Mastectomy,No,Adjuvant,Yes,No,Yes,HER2+
+0246,33,Female,White,2024-06-24,C50.2,II,2,1.6,Positive,Negative,Negative,17.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,HR+/HER2-
+0247,74,Female,White,2024-02-21,C50.3,I,3,3.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,TNBC
+0248,53,Female,White,2018-09-18,C50.9,III,1,2.7,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0249,76,Female,Asian,2019-02-15,C50.4,III,1,3.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,Yes,Both,No,No,No,TNBC
+0250,30,Female,Asian,2021-02-28,C50.4,II,3,2.5,Positive,Positive,Equivocal,32.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0251,39,Female,White,2020-09-15,C50.8,Unknown,2,2.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0252,58,Female,White,2023-12-23,C50.9,II,1,1.2,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0253,39,Female,White,2019-04-02,C50.4,I,1,2.2,Positive,Positive,Negative,0.0,Oncotype DX,Low,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0254,48,Female,White,2020-12-21,C50.9,II,2,2.2,Positive,Positive,Negative,28.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0255,68,Female,Black or African American,2019-11-23,C50.9,0,3,0.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0256,36,Female,White,2019-07-06,C50.8,III,1,1.6,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,No,No,HR+/HER2-
+0257,70,Female,White,2019-05-20,C50.9,I,1,1.8,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0258,34,Female,Other/Unknown,2019-07-26,C50.9,I,2,2.7,Positive,Positive,Negative,14.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0259,38,Female,White,2022-07-08,C50.1,II,9,2.7,Positive,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,Yes,HER2+
+0260,64,Female,White,2021-04-13,C50.5,0,2,1.6,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,Yes,HER2+
+0261,77,Female,Black or African American,2021-06-25,C50.9,I,9,2.7,Positive,Positive,Negative,22.0,Oncotype DX,Intermediate,Yes,Partial,0.5,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0262,38,Female,White,2021-11-01,C50.9,II,3,2.0,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,Yes,HER2+
+0263,46,Female,White,2023-12-06,C50.6,I,2,0.1,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0264,85,Female,White,2024-11-23,C50.1,II,3,1.7,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0265,89,Female,Other/Unknown,2022-03-19,C50.9,I,3,3.4,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0266,64,Female,White,2023-02-20,C50.2,I,2,0.4,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0267,55,Female,White,2023-11-29,C50.9,I,2,2.3,Positive,Unknown,Negative,32.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0268,49,Female,White,2023-07-11,C50.8,III,3,3.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,No,Yes,No,HR+/HER2-
+0269,65,Female,White,2019-01-28,C50.9,IV,3,1.4,Positive,Unknown,Negative,,None,None,Yes,No response,1.5,No surgery/Unknown,No,Adjuvant,Yes,Yes,No,Unknown
+0270,64,Female,Black or African American,2025-11-12,C50.9,I,3,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0271,46,Female,White,2019-04-27,C50.9,IV,9,0.8,Negative,Negative,Negative,,None,None,Yes,Unknown,1.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0272,29,Female,White,2021-04-18,C50.9,II,2,4.0,Positive,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Unknown,Unknown,Yes,Yes,No,HER2+
+0273,37,Female,White,2023-03-22,C50.9,II,3,2.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,No,No,TNBC
+0274,87,Female,Asian,2021-03-24,C50.9,II,3,2.3,Negative,Negative,Negative,,None,None,Yes,No response,3.0,Mastectomy,No,Neoadjuvant,Yes,No,No,TNBC
+0275,53,Female,White,2019-12-12,C50.9,II,1,3.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,Unknown
+0276,57,Female,Asian,2025-05-22,C50.1,III,1,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0277,56,Female,White,2018-07-29,C50.9,II,2,1.2,Positive,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,Yes,HER2+
+0278,76,Female,White,2019-12-20,C50.3,II,3,1.5,Negative,Negative,Negative,,None,None,Yes,No response,2.5,Breast-conserving surgery,No,Adjuvant,Yes,No,No,TNBC
+0279,32,Female,Black or African American,2025-12-11,C50.9,I,2,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0280,33,Female,Asian,2023-11-03,C50.9,I,3,1.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0281,45,Female,White,2018-09-12,C50.5,II,1,0.1,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,Unknown,Unknown
+0282,58,Female,Other/Unknown,2024-01-14,C50.2,0,2,2.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0283,69,Female,White,2025-10-03,C50.4,I,2,0.6,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0284,58,Female,White,2018-10-13,C50.9,I,1,4.0,Positive,Positive,Negative,32.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0285,55,Female,Other/Unknown,2021-04-24,C50.3,I,3,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0286,86,Female,White,2021-09-30,C50.1,II,1,1.2,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0287,37,Female,Asian,2019-01-18,C50.9,II,3,1.4,Positive,Unknown,Negative,,None,None,Yes,Partial,1.5,Breast-conserving surgery,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0288,63,Female,White,2019-08-10,C50.9,II,1,0.1,Positive,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0289,61,Female,Asian,2019-05-23,C50.2,I,9,1.0,Negative,Negative,Negative,,None,None,Yes,Unknown,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0290,57,Female,White,2019-06-26,C50.4,II,2,3.3,Positive,Positive,Negative,0.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Unknown,Yes,Yes,No,HR+/HER2-
+0291,78,Female,White,2021-03-25,C50.9,I,1,4.7,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Unknown,None,No,No,No,HER2+
+0292,44,Female,White,2021-09-17,C50.9,II,1,3.0,Positive,Positive,Negative,14.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0293,87,Female,White,2019-11-27,C50.9,II,1,2.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,Yes,TNBC
+0294,48,Female,White,2020-04-25,C50.4,II,2,1.7,Unknown,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,Unknown
+0295,61,Female,White,2019-07-16,C50.4,II,3,1.1,Positive,Negative,Negative,15.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0296,60,Female,White,2024-05-15,C50.1,Unknown,2,4.5,Unknown,Positive,Positive,,None,None,Yes,Partial,3.0,Mastectomy,Yes,Both,Yes,No,No,HER2+
+0297,80,Female,White,2019-09-11,C50.9,III,2,2.0,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0298,55,Female,White,2025-04-06,C50.1,II,2,4.5,Negative,Positive,Negative,11.0,Oncotype DX,Low,Yes,Partial,2.5,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0299,45,Female,Black or African American,2022-04-24,C50.0,II,2,3.7,Negative,Negative,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0300,29,Female,Black or African American,2024-06-03,C50.9,0,3,0.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0301,50,Female,Black or African American,2023-02-03,C50.9,IV,2,1.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Both,No,Yes,No,HR+/HER2-
+0302,79,Female,White,2020-02-17,C50.9,I,3,1.5,Positive,Positive,Negative,,None,None,Yes,No response,1.0,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0303,28,Female,Native Hawaiian or Other Pacific Islander,2022-10-24,C50.6,I,9,2.1,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0304,83,Female,White,2020-03-12,C50.6,Unknown,2,2.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,No,No,TNBC
+0305,61,Female,White,2018-12-13,C50.5,II,1,5.5,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0306,36,Female,White,2020-01-15,C50.4,0,1,1.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0307,46,Female,Black or African American,2020-03-16,C50.8,0,2,2.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0308,62,Female,White,2019-01-30,C50.5,0,2,2.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,No,TNBC
+0309,47,Female,White,2018-03-10,C50.9,II,3,2.2,Positive,Positive,Negative,31.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0310,34,Female,Other/Unknown,2025-07-20,C50.9,I,2,2.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0311,69,Female,White,2022-02-09,C50.9,IV,2,1.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0312,69,Female,White,2021-03-20,C50.1,IV,3,2.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0313,35,Female,Other/Unknown,2025-06-10,C50.4,II,2,2.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Unknown,No,No,Unknown
+0314,45,Female,White,2019-10-19,C50.2,II,3,2.6,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0315,43,Female,White,2021-03-23,C50.4,I,1,2.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0316,68,Female,Native Hawaiian or Other Pacific Islander,2024-10-09,C50.3,0,2,3.8,Positive,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Unknown,Yes,Yes,Yes,HER2+
+0317,73,Female,American Indian or Alaska Native,2023-01-21,C50.2,III,3,3.2,Positive,Positive,Negative,,None,None,Yes,Unknown,1.5,No surgery/Unknown,No,Adjuvant,No,No,No,HR+/HER2-
+0318,73,Female,White,2021-03-12,C50.9,I,3,2.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0319,86,Female,Black or African American,2020-01-18,C50.6,I,3,0.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0320,75,Female,White,2018-04-13,C50.9,I,2,1.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0321,47,Female,White,2018-09-06,C50.1,0,3,2.0,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0322,34,Female,White,2019-04-19,C50.1,II,2,2.5,Negative,Unknown,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0323,66,Female,White,2024-04-17,C50.5,II,2,1.7,Negative,Negative,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0324,84,Female,Black or African American,2023-02-11,C50.1,III,1,1.2,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,Yes,No,No,TNBC
+0325,88,Female,Asian,2021-06-20,C50.3,II,1,0.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0326,42,Female,White,2024-04-06,C50.9,III,2,0.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,HR+/HER2-
+0327,42,Female,White,2019-04-15,C50.3,II,1,1.9,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0328,30,Female,White,2019-09-09,C50.2,III,3,0.6,Negative,Negative,Negative,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Unknown,Both,Unknown,No,Unknown,Unknown
+0329,36,Female,Asian,2021-02-21,C50.9,II,3,1.1,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,Yes,HER2+
+0330,62,Female,White,2025-05-04,C50.6,I,3,1.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0331,61,Female,White,2022-11-30,C50.9,IV,1,0.7,Negative,Unknown,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0332,50,Female,White,2024-10-22,C50.4,I,3,2.6,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,Yes,HER2+
+0333,47,Female,White,2019-12-27,C50.9,0,1,3.0,Negative,Negative,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,TNBC
+0334,79,Female,Black or African American,2024-10-14,C50.2,I,2,1.6,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0335,56,Female,Black or African American,2018-07-31,C50.5,I,3,1.7,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0336,78,Female,White,2019-10-28,C50.9,I,1,2.8,Positive,Positive,Negative,15.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0337,87,Female,Black or African American,2022-03-09,C50.9,II,1,1.4,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,HR+/HER2-
+0338,47,Female,Other/Unknown,2018-05-28,C50.4,III,1,1.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0339,40,Female,White,2024-11-12,C50.9,I,2,3.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0340,87,Female,White,2024-12-09,C50.1,II,3,3.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0341,67,Female,White,2022-05-02,C50.2,I,1,2.9,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Unknown,Adjuvant,No,Yes,No,HR+/HER2-
+0342,46,Female,Asian,2020-06-12,C50.1,III,1,3.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0343,66,Female,White,2018-10-17,C50.9,I,2,0.1,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,HR+/HER2-
+0344,59,Female,White,2022-12-14,C50.3,I,2,3.7,Positive,Positive,Negative,20.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0345,84,Female,White,2022-04-21,C50.9,II,3,2.6,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0346,43,Female,American Indian or Alaska Native,2024-01-30,C50.1,II,3,3.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0347,89,Female,White,2022-10-27,C50.9,III,3,2.6,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0348,86,Female,Black or African American,2019-01-10,C50.9,II,3,2.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0349,39,Female,White,2018-12-22,C50.1,III,2,1.9,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0350,38,Female,Other/Unknown,2024-03-31,C50.0,I,3,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0351,61,Female,White,2019-04-10,C50.1,0,1,1.9,Unknown,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,Yes,HER2+
+0352,30,Female,White,2025-07-05,C50.9,I,1,3.2,Negative,Negative,Unknown,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0353,46,Female,Asian,2018-11-06,C50.3,0,2,0.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0354,54,Female,Other/Unknown,2023-10-30,C50.8,I,1,1.6,Unknown,Unknown,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Neoadjuvant,Yes,No,No,Unknown
+0355,88,Female,White,2025-10-20,C50.5,II,3,4.4,Negative,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,Yes,HER2+
+0356,89,Female,White,2021-07-13,C50.9,I,3,1.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0357,37,Female,Black or African American,2018-06-15,C50.6,II,9,1.9,Positive,Positive,Negative,11.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0358,83,Female,Asian,2025-01-05,C50.8,II,2,1.2,Positive,Positive,Negative,,None,None,Yes,No response,0.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0359,33,Female,White,2019-07-02,C50.9,II,2,2.6,Unknown,Negative,Negative,,None,None,Yes,Partial,2.5,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0360,74,Female,White,2022-03-22,C50.2,II,3,1.4,Positive,Positive,Negative,7.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0361,80,Female,Black or African American,2025-11-16,C50.9,I,2,2.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,No,No,HR+/HER2-
+0362,83,Female,Black or African American,2023-12-17,C50.1,I,2,3.1,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,Yes,HER2+
+0363,41,Female,Asian,2018-05-16,C50.6,II,2,1.4,Negative,Negative,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0364,83,Female,White,2024-07-25,C50.9,II,9,3.1,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,No,No,Yes,HER2+
+0365,35,Female,White,2019-04-17,C50.9,I,3,3.1,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,No,Yes,HER2+
+0366,60,Female,Other/Unknown,2023-12-30,C50.9,I,1,3.4,Positive,Negative,Negative,30.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0367,57,Female,Asian,2022-12-20,C50.3,II,2,2.4,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0368,47,Female,Asian,2020-04-21,C50.5,II,2,5.8,Positive,Positive,Negative,36.0,Oncotype DX,High,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0369,29,Female,White,2021-05-22,C50.4,I,1,3.4,Positive,Negative,Negative,5.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0370,75,Female,White,2018-12-11,C50.8,II,2,2.6,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Both,Unknown,No,Yes,Unknown
+0371,48,Female,Black or African American,2025-11-23,C50.6,IV,2,1.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0372,69,Female,White,2019-11-28,C50.4,0,1,2.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Neoadjuvant,No,No,No,HR+/HER2-
+0373,53,Female,Other/Unknown,2020-06-20,C50.4,III,2,3.8,Positive,Positive,Negative,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0374,51,Female,White,2022-01-09,C50.3,I,1,4.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0375,82,Female,Black or African American,2023-05-19,C50.4,II,2,3.8,Positive,Positive,Negative,,None,None,Yes,Partial,1.5,Mastectomy,No,Adjuvant,Yes,No,No,HR+/HER2-
+0376,33,Female,American Indian or Alaska Native,2022-01-16,C50.2,II,1,3.1,Positive,Positive,Negative,20.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0377,73,Female,White,2022-01-16,C50.9,0,3,0.8,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0378,74,Female,White,2022-08-30,C50.9,IV,1,2.7,Positive,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0379,51,Female,White,2024-11-11,C50.2,II,3,0.8,Positive,Positive,Equivocal,29.0,Oncotype DX,Intermediate,Yes,Partial,1.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0380,44,Female,White,2021-02-28,C50.9,IV,1,0.6,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,No surgery/Unknown,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0381,28,Female,White,2024-08-28,C50.9,I,2,2.5,Negative,Negative,Negative,,None,None,Yes,Complete,0.0,Mastectomy,No,Both,Yes,No,Yes,TNBC
+0382,86,Female,White,2024-04-18,C50.3,III,2,2.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0383,86,Female,Other/Unknown,2025-09-09,C50.2,IV,2,3.2,Positive,Positive,Equivocal,,None,None,Yes,Partial,1.5,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0384,42,Female,White,2025-04-22,C50.0,II,2,2.7,Positive,Positive,Equivocal,,None,None,Yes,No response,0.5,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0385,29,Female,White,2024-05-21,C50.1,I,3,2.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0386,35,Female,White,2019-12-22,C50.9,II,3,1.1,Positive,Negative,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,No,Neoadjuvant,No,No,No,HR+/HER2-
+0387,32,Female,White,2024-03-12,C50.9,II,2,2.1,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0388,79,Female,White,2023-11-23,C50.1,IV,1,0.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,Unknown
+0389,83,Female,White,2020-04-25,C50.9,II,3,0.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0390,37,Female,Black or African American,2023-06-05,C50.1,I,2,3.0,Positive,Positive,Negative,10.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0391,74,Female,White,2020-01-10,C50.9,I,1,1.4,Positive,Positive,Negative,19.0,Oncotype DX,Intermediate,Yes,Partial,2.0,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0392,39,Female,Other/Unknown,2022-03-09,C50.9,II,3,3.2,Positive,Negative,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0393,50,Female,White,2024-05-17,C50.4,Unknown,2,3.4,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,HER2+
+0394,65,Female,White,2019-07-05,C50.0,0,2,1.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0395,72,Female,Black or African American,2020-09-11,C50.9,III,2,2.8,Unknown,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,TNBC
+0396,82,Female,American Indian or Alaska Native,2024-05-12,C50.9,IV,2,1.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0397,30,Female,White,2021-08-18,C50.3,I,1,0.2,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Mastectomy,Unknown,Adjuvant,Yes,Yes,No,HR+/HER2-
+0398,40,Female,White,2025-09-07,C50.2,I,3,2.3,Positive,Unknown,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0399,45,Female,White,2018-01-24,C50.2,II,1,1.7,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0400,47,Female,White,2023-10-11,C50.9,II,3,1.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0401,89,Female,White,2024-07-07,C50.9,0,3,4.4,Negative,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,Yes,HER2+
+0402,76,Female,White,2025-05-05,C50.9,III,3,0.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0403,47,Female,White,2019-04-04,C50.9,II,1,2.6,Positive,Positive,Negative,6.0,Oncotype DX,Low,Yes,Partial,1.5,Mastectomy,Yes,Both,Yes,Yes,No,HR+/HER2-
+0404,88,Female,White,2025-11-15,C50.9,IV,2,1.1,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,Yes,HER2+
+0405,58,Female,Other/Unknown,2021-02-20,C50.9,III,2,3.2,Positive,Negative,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,No,Yes,HER2+
+0406,59,Female,Black or African American,2020-10-25,C50.3,III,2,2.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,No,Yes,No,HR+/HER2-
+0407,54,Female,White,2020-11-04,C50.9,II,3,2.6,Positive,Positive,Negative,27.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0408,36,Female,White,2023-02-08,C50.4,I,2,1.2,Positive,Negative,Equivocal,27.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0409,85,Female,White,2023-04-11,C50.4,II,3,1.4,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0410,28,Female,White,2021-10-16,C50.9,I,1,3.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0411,38,Female,Black or African American,2018-07-27,C50.9,II,2,4.1,Positive,Positive,Negative,14.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0412,42,Female,Asian,2025-11-22,C50.9,I,1,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0413,45,Female,Other/Unknown,2019-10-11,C50.5,II,3,1.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0414,36,Female,Other/Unknown,2018-10-02,C50.8,0,1,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0415,29,Female,Other/Unknown,2022-10-12,C50.6,I,2,4.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0416,70,Female,Other/Unknown,2021-04-19,C50.1,I,3,2.3,Positive,Negative,Negative,12.0,Oncotype DX,Low,Yes,Partial,1.0,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0417,88,Female,White,2022-12-04,C50.3,II,2,3.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0418,35,Female,White,2025-01-02,C50.8,III,1,1.4,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,No surgery/Unknown,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0419,46,Female,White,2018-10-12,C50.1,0,1,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0420,59,Female,White,2020-04-09,C50.9,III,2,2.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0421,85,Female,White,2022-02-18,C50.2,III,2,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0422,71,Female,Asian,2024-04-20,C50.2,I,1,1.4,Positive,Positive,Negative,34.0,Oncotype DX,High,Yes,Partial,2.0,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0423,75,Female,White,2022-10-22,C50.9,II,2,1.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,None,No,No,No,TNBC
+0424,64,Female,White,2021-01-23,C50.1,II,2,3.3,Negative,Negative,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0425,53,Female,White,2022-11-18,C50.9,I,2,3.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Unknown,None,No,No,No,TNBC
+0426,40,Female,White,2025-11-03,C50.9,II,2,3.9,Positive,Positive,Negative,27.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0427,81,Female,White,2021-11-03,C50.1,I,1,4.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0428,77,Female,Asian,2025-01-25,C50.9,III,1,2.3,Negative,Negative,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,No,Both,Yes,No,Yes,HER2+
+0429,29,Female,White,2024-03-29,C50.9,IV,2,1.9,Positive,Positive,Negative,,None,None,Yes,Partial,2.5,No surgery/Unknown,No,None,No,No,No,HR+/HER2-
+0430,72,Female,Black or African American,2020-05-30,C50.9,III,1,3.7,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HER2+
+0431,33,Female,White,2019-12-31,C50.9,II,2,3.0,Unknown,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Unknown,Adjuvant,Yes,No,No,HER2+
+0432,73,Female,White,2024-02-29,C50.9,II,3,1.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0433,79,Female,White,2019-08-30,C50.9,Unknown,3,1.1,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0434,36,Female,Black or African American,2020-09-11,C50.4,I,2,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0435,54,Female,Black or African American,2019-11-19,C50.9,I,2,2.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0436,35,Female,White,2022-11-07,C50.9,II,2,2.2,Negative,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,Unknown,None,No,No,No,HER2+
+0437,63,Female,Other/Unknown,2020-05-09,C50.9,I,3,3.4,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,Yes,Yes,Yes,HER2+
+0438,85,Female,White,2023-04-09,C50.9,I,2,3.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0439,33,Female,Native Hawaiian or Other Pacific Islander,2025-06-24,C50.5,0,2,3.7,Negative,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,No,Yes,HER2+
+0440,52,Female,White,2024-08-21,C50.9,II,2,0.1,Positive,Positive,Negative,3.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0441,88,Female,White,2025-08-01,C50.9,I,1,2.5,Negative,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,Yes,HER2+
+0442,46,Female,Asian,2018-03-13,C50.2,I,2,3.0,Positive,Positive,Negative,27.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0443,36,Female,White,2021-08-23,C50.3,0,3,0.5,Positive,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HER2+
+0444,58,Female,White,2019-10-06,C50.8,I,3,1.5,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0445,59,Female,White,2025-05-06,C50.6,III,1,1.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0446,69,Female,White,2023-09-12,C50.9,I,2,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0447,47,Female,Black or African American,2020-07-24,C50.1,II,2,4.0,Negative,Negative,Negative,,None,None,Yes,Partial,1.5,Mastectomy,Yes,Adjuvant,Yes,No,No,TNBC
+0448,87,Female,Asian,2022-07-05,C50.5,III,2,4.4,Positive,Negative,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0449,60,Female,Asian,2022-11-05,C50.9,I,2,1.3,Positive,Negative,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,Yes,HER2+
+0450,45,Female,White,2021-12-19,C50.9,III,1,2.8,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Unknown,No,Unknown
+0451,87,Female,White,2021-10-18,C50.9,II,3,2.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0452,85,Female,White,2018-06-11,C50.9,II,9,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0453,58,Female,White,2021-08-15,C50.9,0,2,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,No,No,HR+/HER2-
+0454,29,Female,White,2020-10-14,C50.9,0,2,2.5,Positive,Negative,Negative,,None,None,Yes,Partial,2.5,Mastectomy,No,Adjuvant,Yes,No,Yes,Unknown
+0455,65,Female,Other/Unknown,2024-07-18,C50.9,Unknown,2,4.1,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0456,62,Female,American Indian or Alaska Native,2024-12-02,C50.8,III,2,3.4,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,No surgery/Unknown,Yes,None,No,No,No,HR+/HER2-
+0457,37,Female,Black or African American,2024-01-02,C50.9,IV,1,1.0,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0458,67,Female,White,2018-04-01,C50.1,IV,2,3.1,Negative,Negative,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,Yes,No,No,HER2+
+0459,80,Female,White,2024-09-24,C50.3,0,1,3.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0460,34,Female,White,2021-03-04,C50.8,III,3,2.5,Positive,Positive,Equivocal,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0461,72,Female,White,2021-05-01,C50.9,II,2,3.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0462,36,Female,White,2025-07-24,C50.9,III,2,2.4,Negative,Negative,Positive,,None,None,Yes,Partial,1.0,No surgery/Unknown,No,Neoadjuvant,Yes,No,Yes,HER2+
+0463,74,Female,White,2024-12-09,C50.1,0,2,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0464,53,Female,White,2018-05-29,C50.9,I,9,2.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,No,No,TNBC
+0465,28,Female,Other/Unknown,2020-11-17,C50.3,III,1,0.1,Positive,Negative,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,Yes,Yes,Yes,HER2+
+0466,87,Female,White,2023-12-31,C50.9,III,1,2.1,Positive,Negative,Equivocal,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,Unknown,Unknown
+0467,38,Female,Other/Unknown,2022-04-24,C50.9,II,1,1.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0468,64,Female,White,2020-01-23,C50.9,I,2,0.9,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0469,39,Female,White,2022-03-14,C50.9,I,9,3.8,Unknown,Positive,Positive,,None,None,Yes,No response,3.0,Mastectomy,No,Neoadjuvant,Yes,No,Yes,HER2+
+0470,85,Female,White,2024-12-07,C50.4,Unknown,2,2.8,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0471,73,Female,White,2019-10-15,C50.5,II,3,2.2,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Unknown,No,Unknown,Unknown
+0472,77,Female,White,2023-12-21,C50.9,II,2,1.6,Positive,Positive,Negative,22.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,No,Yes,No,HR+/HER2-
+0473,54,Female,White,2023-11-17,C50.9,II,2,2.5,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,No,No,Yes,HER2+
+0474,56,Female,Other/Unknown,2025-02-01,C50.8,II,1,3.3,Negative,Negative,Negative,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,TNBC
+0475,67,Female,White,2020-05-20,C50.4,II,2,1.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0476,76,Female,White,2019-09-23,C50.1,II,2,2.2,Negative,Negative,Negative,,None,None,Yes,Unknown,1.5,Mastectomy,No,Neoadjuvant,Yes,No,No,TNBC
+0477,80,Female,White,2022-05-20,C50.2,III,2,3.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0478,29,Female,White,2022-04-02,C50.2,IV,2,0.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0479,69,Female,White,2021-04-11,C50.4,IV,3,2.1,Negative,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0480,34,Female,White,2024-03-27,C50.9,II,9,1.7,Negative,Negative,Negative,13.0,Oncotype DX,Low,Yes,Partial,2.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0481,45,Female,Other/Unknown,2024-05-23,C50.8,II,2,2.1,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0482,79,Female,Asian,2019-12-19,C50.3,II,2,1.6,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,TNBC
+0483,43,Female,Black or African American,2024-05-13,C50.1,III,3,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0484,77,Female,White,2019-11-06,C50.4,II,2,4.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0485,56,Female,White,2021-04-06,C50.9,II,3,1.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Neoadjuvant,Yes,No,No,TNBC
+0486,42,Female,Other/Unknown,2018-03-21,C50.4,III,2,2.5,Positive,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,Yes,HER2+
+0487,48,Female,White,2020-09-21,C50.9,II,3,4.4,Positive,Positive,Negative,13.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0488,60,Female,White,2025-09-01,C50.9,III,1,1.6,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Both,Yes,No,No,TNBC
+0489,75,Female,White,2021-07-17,C50.1,I,2,4.2,Positive,Positive,Negative,,None,None,Yes,Partial,0.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0490,65,Female,Asian,2023-09-06,C50.9,II,2,2.2,Positive,Positive,Negative,8.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0491,85,Female,Black or African American,2018-11-12,C50.9,II,2,4.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0492,81,Female,Black or African American,2023-02-01,C50.5,0,3,3.0,Positive,Negative,Positive,,None,None,Yes,Partial,2.5,Mastectomy,Yes,Both,Yes,Yes,Yes,HER2+
+0493,74,Female,Asian,2020-12-21,C50.1,III,9,2.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0494,65,Female,White,2023-12-14,C50.9,II,1,2.1,Positive,Positive,Negative,,None,None,Yes,Partial,2.5,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0495,45,Female,Other/Unknown,2025-06-04,C50.9,I,2,1.5,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0496,53,Female,White,2022-04-03,C50.8,III,2,2.3,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0497,35,Female,Black or African American,2018-10-28,C50.9,II,2,3.2,Positive,Negative,Negative,14.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0498,51,Female,White,2021-10-23,C50.3,III,2,2.2,Positive,Negative,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,No,None,No,No,No,HER2+
+0499,85,Female,Other/Unknown,2018-12-26,C50.9,I,3,1.9,Unknown,Negative,Positive,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,Yes,HER2+
+0500,54,Female,White,2021-08-06,C50.6,III,3,1.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0501,35,Female,White,2018-06-28,C50.1,II,1,3.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0502,68,Female,White,2023-02-15,C50.9,II,2,3.5,Unknown,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Unknown,Adjuvant,Yes,No,No,Unknown
+0503,87,Female,White,2020-06-26,C50.9,0,2,1.5,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0504,81,Female,White,2019-08-12,C50.9,II,2,1.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0505,44,Female,Black or African American,2018-02-20,C50.3,II,1,2.6,Positive,Positive,Negative,45.0,Oncotype DX,High,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0506,56,Female,White,2025-02-07,C50.1,II,2,3.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Unknown,Yes,Yes,No,HR+/HER2-
+0507,60,Female,Other/Unknown,2024-09-12,C50.9,II,2,3.5,Unknown,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,Unknown,Unknown
+0508,43,Female,White,2024-06-29,C50.9,III,1,0.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0509,44,Female,Black or African American,2018-06-19,C50.8,II,3,1.9,Negative,Positive,Negative,25.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0510,42,Female,White,2020-10-18,C50.9,I,2,1.2,Positive,Positive,Negative,10.0,Oncotype DX,Low,Yes,Complete,0.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0511,89,Female,Black or African American,2025-10-09,C50.6,IV,2,1.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0512,74,Female,White,2022-08-18,C50.5,II,2,4.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0513,80,Female,White,2019-01-11,C50.1,Unknown,3,0.6,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,Unknown,Unknown
+0514,78,Female,Other/Unknown,2019-02-17,C50.1,Unknown,1,0.4,Positive,Negative,Positive,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0515,87,Female,White,2020-02-08,C50.3,IV,1,1.3,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0516,34,Female,White,2025-10-12,C50.9,III,2,2.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0517,82,Female,Black or African American,2019-05-11,C50.2,II,2,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0518,32,Female,Asian,2025-03-23,C50.3,I,2,2.7,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0519,57,Female,White,2023-06-05,C50.8,II,3,3.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0520,64,Female,White,2025-05-17,C50.3,III,2,0.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0521,50,Female,Native Hawaiian or Other Pacific Islander,2024-08-10,C50.2,II,1,3.5,Positive,Negative,Positive,,None,None,Yes,Partial,2.0,Mastectomy,No,Adjuvant,Yes,No,Yes,HER2+
+0522,37,Female,Black or African American,2020-08-28,C50.9,III,2,1.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,No,No,TNBC
+0523,39,Female,Other/Unknown,2024-08-16,C50.4,I,3,3.0,Positive,Positive,Negative,23.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0524,79,Female,White,2019-05-10,C50.9,I,3,0.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0525,47,Female,Black or African American,2020-04-30,C50.9,II,3,2.2,Positive,Negative,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0526,47,Female,White,2019-09-11,C50.2,II,2,2.5,Positive,Positive,Negative,39.0,Oncotype DX,High,Yes,No response,2.0,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0527,85,Female,Other/Unknown,2019-01-25,C50.9,I,3,3.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,No,TNBC
+0528,36,Female,White,2018-09-20,C50.9,I,3,0.5,Positive,Positive,Negative,16.0,Oncotype DX,Low,Yes,No response,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0529,84,Female,Black or African American,2019-07-02,C50.9,III,2,2.2,Negative,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0530,85,Female,White,2018-12-17,C50.9,II,2,1.0,Positive,Negative,Positive,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Unknown,None,No,No,No,HER2+
+0531,65,Female,White,2021-01-16,C50.9,0,3,2.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0532,38,Female,Black or African American,2018-07-28,C50.9,0,2,3.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0533,37,Female,White,2018-06-29,C50.9,II,2,3.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0534,45,Female,Other/Unknown,2025-12-02,C50.0,I,2,1.6,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,No,No,TNBC
+0535,63,Female,White,2018-09-14,C50.9,II,2,3.2,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,No,Yes,No,HR+/HER2-
+0536,37,Female,Black or African American,2018-08-05,C50.9,III,1,3.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,No,Yes,No,HR+/HER2-
+0537,56,Female,White,2018-03-29,C50.9,I,2,0.4,Positive,Positive,Negative,12.0,Oncotype DX,Low,Yes,No response,2.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0538,35,Female,White,2019-01-23,C50.4,II,3,2.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0539,61,Female,White,2022-03-23,C50.0,I,1,3.3,Positive,Positive,Negative,20.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Unknown,Neoadjuvant,No,Yes,No,HR+/HER2-
+0540,29,Female,White,2024-08-14,C50.8,I,2,1.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0541,71,Female,White,2023-11-18,C50.8,III,1,0.9,Positive,Positive,Equivocal,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0542,31,Female,Black or African American,2022-08-23,C50.5,II,1,3.2,Positive,Positive,Negative,16.0,Oncotype DX,Low,Yes,Partial,1.5,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0543,40,Female,Black or African American,2018-09-06,C50.4,III,9,0.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0544,38,Female,Black or African American,2024-03-12,C50.3,I,2,2.0,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0545,79,Female,White,2018-04-19,C50.8,I,2,2.2,Negative,Unknown,Negative,,None,None,Yes,Complete,0.0,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0546,31,Female,White,2023-01-18,C50.4,II,2,3.0,Positive,Positive,Negative,32.0,Oncotype DX,High,Yes,Complete,0.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0547,54,Female,White,2021-04-11,C50.9,II,9,1.5,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0548,64,Female,Black or African American,2025-01-21,C50.2,Unknown,2,1.4,Positive,Positive,Equivocal,,None,None,Yes,Complete,0.0,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0549,59,Female,Asian,2020-06-17,C50.4,I,3,2.3,Positive,Positive,Negative,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0550,70,Female,White,2023-02-09,C50.4,III,2,3.3,Positive,Positive,Negative,,None,None,Yes,No response,1.0,No surgery/Unknown,No,Both,Yes,Yes,No,HR+/HER2-
+0551,77,Female,Black or African American,2021-07-09,C50.8,III,1,4.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,TNBC
+0552,52,Female,White,2022-03-06,C50.6,II,3,0.5,Unknown,Positive,Positive,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0553,79,Female,White,2025-07-06,C50.9,I,1,2.5,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0554,47,Female,White,2023-09-14,C50.9,II,3,1.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0555,89,Female,White,2021-04-26,C50.3,I,2,3.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0556,59,Female,Black or African American,2021-07-31,C50.9,III,3,1.2,Positive,Positive,Negative,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0557,73,Female,Other/Unknown,2023-08-21,C50.0,II,3,1.5,Positive,Positive,Negative,11.0,Oncotype DX,Low,Yes,Unknown,2.5,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0558,82,Female,White,2020-10-08,C50.3,IV,3,1.6,Positive,Positive,Negative,,None,None,Yes,No response,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0559,77,Female,White,2019-05-06,C50.6,II,1,2.1,Positive,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0560,80,Female,Black or African American,2021-09-28,C50.1,II,3,2.6,Positive,Negative,Negative,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,Unknown
+0561,61,Female,Other/Unknown,2018-07-19,C50.9,II,9,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,No,No,Unknown
+0562,30,Female,White,2019-05-11,C50.9,II,2,2.2,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,TNBC
+0563,58,Female,White,2021-05-14,C50.9,IV,2,0.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0564,39,Female,Black or African American,2024-05-16,C50.8,I,3,3.0,Positive,Negative,Positive,,None,None,Yes,Partial,1.0,Breast-conserving surgery,No,Both,Yes,No,Yes,HER2+
+0565,83,Female,White,2024-04-02,C50.9,Unknown,1,2.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,No,No,HR+/HER2-
+0566,42,Female,Other/Unknown,2020-02-01,C50.5,III,2,3.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,No,Yes,No,HR+/HER2-
+0567,42,Female,White,2021-05-17,C50.1,III,3,1.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0568,43,Female,Black or African American,2019-03-25,C50.1,II,1,0.4,Positive,Positive,Negative,,None,None,Yes,Partial,0.5,Breast-conserving surgery,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0569,67,Female,White,2024-01-16,C50.9,III,2,2.2,Negative,Negative,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,Unknown
+0570,63,Female,White,2019-12-21,C50.9,I,2,3.6,Unknown,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Unknown,Adjuvant,No,No,No,TNBC
+0571,86,Female,Asian,2024-05-25,C50.0,III,2,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0572,53,Female,White,2024-09-26,C50.9,I,3,2.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0573,45,Female,White,2023-07-07,C50.9,I,1,1.2,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0574,31,Female,Other/Unknown,2020-08-22,C50.9,II,2,4.1,Positive,Positive,Negative,2.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0575,28,Female,Asian,2025-08-16,C50.8,I,3,1.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0576,51,Female,White,2023-06-28,C50.9,I,1,1.4,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Neoadjuvant,Yes,Yes,No,Unknown
+0577,85,Female,White,2023-03-03,C50.9,III,3,2.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0578,60,Female,White,2024-11-07,C50.9,I,1,0.2,Positive,Positive,Negative,8.0,Oncotype DX,Low,Yes,Partial,2.0,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0579,83,Female,Black or African American,2025-01-19,C50.2,III,2,3.6,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Mastectomy,No,Unknown,No,Yes,No,HR+/HER2-
+0580,34,Female,White,2018-08-16,C50.9,I,1,2.9,Positive,Positive,Negative,28.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0581,33,Female,White,2025-01-19,C50.0,III,3,3.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Unknown,Adjuvant,Yes,Yes,No,HR+/HER2-
+0582,79,Female,Other/Unknown,2024-02-14,C50.9,III,3,2.8,Positive,Positive,Negative,,None,None,Yes,Partial,1.5,No surgery/Unknown,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0583,34,Female,Other/Unknown,2019-08-27,C50.1,II,3,2.0,Positive,Positive,Equivocal,11.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0584,31,Female,Asian,2020-06-17,C50.2,II,9,1.0,Positive,Positive,Negative,14.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0585,53,Female,Other/Unknown,2024-01-09,C50.0,IV,3,2.0,Negative,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,Yes,Yes,No,HR+/HER2-
+0586,85,Female,Black or African American,2019-09-25,C50.5,III,3,1.1,Negative,Positive,Positive,,None,None,Yes,Partial,0.5,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0587,70,Female,Black or African American,2021-08-14,C50.4,I,2,2.7,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0588,34,Female,Black or African American,2023-07-06,C50.2,II,3,3.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0589,79,Female,White,2023-03-16,C50.6,III,2,3.8,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,No surgery/Unknown,No,Both,Yes,Yes,No,HR+/HER2-
+0590,80,Female,White,2025-04-12,C50.5,I,3,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0591,77,Female,White,2018-11-22,C50.9,III,2,3.2,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0592,83,Female,Black or African American,2020-05-12,C50.9,I,2,1.9,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0593,42,Female,White,2025-11-17,C50.9,III,3,1.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,No,Yes,No,HR+/HER2-
+0594,88,Female,White,2022-07-21,C50.2,I,1,2.7,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Unknown,Both,No,Yes,No,HR+/HER2-
+0595,47,Female,White,2019-12-28,C50.4,0,1,1.8,Positive,Positive,Negative,,None,None,Yes,No response,2.0,Breast-conserving surgery,No,Adjuvant,No,Yes,No,HR+/HER2-
+0596,77,Female,White,2020-04-26,C50.9,Unknown,9,2.5,Negative,Negative,Positive,,None,None,Yes,No response,1.5,Breast-conserving surgery,Yes,None,No,No,No,Unknown
+0597,63,Female,White,2020-09-18,C50.1,III,2,1.0,Positive,Negative,Negative,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0598,76,Female,Asian,2022-06-08,C50.5,III,1,1.2,Positive,Unknown,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Both,No,Yes,No,HR+/HER2-
+0599,66,Female,Asian,2020-04-11,C50.9,IV,2,2.9,Negative,Negative,Negative,,None,None,Yes,Complete,0.0,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0600,67,Female,White,2022-12-23,C50.9,II,2,3.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Unknown,Both,No,Yes,No,HR+/HER2-
+0601,66,Female,White,2021-07-25,C50.5,I,2,1.1,Positive,Positive,Negative,17.0,Oncotype DX,Low,Yes,Partial,0.5,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0602,76,Female,White,2022-11-19,C50.9,I,3,2.9,Negative,Negative,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Both,Yes,No,No,TNBC
+0603,73,Female,Asian,2019-03-30,C50.6,II,9,1.6,Positive,Positive,Equivocal,26.0,Oncotype DX,Intermediate,Yes,Partial,2.5,Breast-conserving surgery,Unknown,Neoadjuvant,No,Yes,No,HR+/HER2-
+0604,36,Female,Asian,2022-12-28,C50.9,I,2,2.2,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,No,No,HR+/HER2-
+0605,79,Female,White,2025-05-26,C50.1,IV,3,3.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0606,61,Female,Black or African American,2019-01-30,C50.2,0,2,3.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0607,48,Female,White,2020-08-14,C50.9,I,3,3.1,Negative,Negative,Negative,,None,None,Yes,Complete,0.0,Mastectomy,Yes,Neoadjuvant,Yes,No,No,TNBC
+0608,59,Female,White,2023-07-20,C50.3,I,1,4.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0609,87,Female,Other/Unknown,2022-12-10,C50.9,I,1,1.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0610,81,Female,White,2023-05-26,C50.4,I,9,1.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0611,79,Female,White,2022-06-24,C50.9,II,3,1.4,Unknown,Negative,Positive,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Both,Yes,No,Yes,HER2+
+0612,56,Female,White,2023-06-18,C50.9,I,2,1.9,Positive,Negative,Positive,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0613,76,Female,White,2022-11-16,C50.6,II,3,0.1,Positive,Negative,Equivocal,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,HR+/HER2-
+0614,51,Female,Other/Unknown,2018-08-05,C50.9,IV,2,2.0,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,Yes,No,Yes,TNBC
+0615,70,Female,Other/Unknown,2024-01-05,C50.3,II,2,1.6,Positive,Negative,Negative,13.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0616,67,Female,White,2021-07-29,C50.6,II,2,3.1,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0617,43,Female,White,2018-05-31,C50.2,I,1,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0618,44,Female,Asian,2021-04-10,C50.9,I,2,1.5,Positive,Negative,Negative,8.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0619,31,Female,White,2021-06-25,C50.9,I,2,2.8,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,Yes,HER2+
+0620,36,Female,American Indian or Alaska Native,2018-09-11,C50.9,Unknown,2,3.0,Negative,Negative,Positive,,None,None,Yes,Complete,0.0,Mastectomy,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0621,54,Female,Black or African American,2025-12-20,C50.9,II,1,1.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0622,57,Female,White,2019-10-12,C50.9,I,3,1.7,Positive,Positive,Negative,34.0,Oncotype DX,High,Yes,Partial,1.5,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0623,38,Female,Asian,2020-08-24,C50.3,II,2,0.1,Negative,Negative,Negative,,None,None,Yes,Partial,1.0,Mastectomy,Unknown,Unknown,Yes,No,No,TNBC
+0624,53,Female,White,2021-07-12,C50.9,III,3,1.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0625,65,Female,White,2024-08-29,C50.9,II,1,1.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0626,42,Female,White,2023-12-11,C50.5,II,2,2.3,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0627,48,Female,White,2024-03-02,C50.9,III,3,1.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0628,50,Female,Black or African American,2019-11-24,C50.4,II,2,1.6,Positive,Negative,Negative,10.0,Oncotype DX,Low,Yes,Partial,2.0,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0629,59,Female,Black or African American,2024-10-06,C50.3,II,1,0.9,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,No,Yes,No,HR+/HER2-
+0630,50,Female,Other/Unknown,2024-08-21,C50.3,I,2,2.4,Negative,Negative,Negative,,None,None,Yes,No response,1.5,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0631,73,Female,Other/Unknown,2021-09-17,C50.1,I,2,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0632,48,Female,White,2022-05-14,C50.6,Unknown,2,2.6,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,Yes,HER2+
+0633,54,Female,White,2018-04-19,C50.9,II,2,2.2,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,Yes,Unknown
+0634,51,Female,Black or African American,2024-01-31,C50.9,II,2,0.5,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0635,39,Female,Other/Unknown,2025-09-08,C50.8,II,2,1.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0636,70,Female,White,2021-10-12,C50.5,0,1,1.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0637,42,Female,White,2022-04-29,C50.6,III,2,1.8,Negative,Positive,Negative,,None,None,Yes,Partial,2.5,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0638,46,Female,White,2021-12-29,C50.3,I,3,2.3,Positive,Positive,Negative,23.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0639,77,Female,White,2018-08-30,C50.9,III,1,3.8,Unknown,Negative,Unknown,,None,None,Yes,No response,3.0,No surgery/Unknown,No,Adjuvant,Yes,No,No,Unknown
+0640,86,Female,Black or African American,2022-12-16,C50.2,II,2,3.1,Positive,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,No,Yes,HER2+
+0641,69,Female,White,2023-10-10,C50.9,I,1,1.1,Positive,Positive,Negative,31.0,Oncotype DX,High,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0642,84,Female,Asian,2025-06-04,C50.9,0,1,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0643,80,Female,Asian,2025-06-09,C50.9,III,2,2.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,No,No,TNBC
+0644,57,Female,Asian,2021-12-08,C50.9,I,1,1.3,Positive,Positive,Negative,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0645,75,Female,White,2025-09-03,C50.4,0,2,3.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0646,48,Female,White,2022-03-25,C50.9,III,9,2.0,Positive,Positive,Negative,,None,None,Yes,No response,2.5,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0647,56,Female,Black or African American,2023-02-20,C50.9,I,3,0.6,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0648,61,Female,Asian,2022-10-26,C50.9,I,1,2.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,No,Yes,TNBC
+0649,87,Female,White,2025-12-28,C50.9,I,2,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0650,80,Female,Native Hawaiian or Other Pacific Islander,2023-11-26,C50.9,III,2,1.9,Positive,Positive,Negative,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0651,58,Female,White,2018-12-17,C50.9,I,3,2.2,Negative,Negative,Negative,,None,None,Yes,Partial,2.5,Breast-conserving surgery,Yes,None,No,No,No,TNBC
+0652,68,Female,Asian,2018-07-29,C50.5,I,3,1.4,Positive,Positive,Negative,17.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,No,Both,No,Yes,No,HR+/HER2-
+0653,40,Female,White,2021-04-12,C50.9,I,1,2.9,Positive,Positive,Negative,,None,None,Yes,Partial,2.5,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0654,77,Female,White,2022-02-15,C50.9,I,1,2.2,Positive,Positive,Negative,20.0,Oncotype DX,Intermediate,Yes,Partial,1.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0655,62,Female,White,2023-05-08,C50.6,I,2,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Both,No,No,No,HR+/HER2-
+0656,61,Female,White,2021-11-08,C50.9,I,3,2.6,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,Yes,HER2+
+0657,75,Female,White,2022-02-12,C50.5,I,3,0.9,Negative,Positive,Negative,26.0,Oncotype DX,Intermediate,Yes,Partial,1.5,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0658,67,Female,White,2025-05-17,C50.9,II,1,1.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0659,32,Female,White,2020-09-05,C50.1,III,2,0.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,No,No,TNBC
+0660,45,Female,Black or African American,2021-12-13,C50.3,0,1,2.8,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0661,38,Female,White,2022-06-17,C50.9,I,3,0.9,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0662,73,Female,Black or African American,2021-09-30,C50.5,IV,3,2.3,Positive,Positive,Positive,,None,None,Yes,Partial,2.0,No surgery/Unknown,Unknown,None,No,No,No,HER2+
+0663,30,Female,Asian,2025-09-29,C50.5,IV,2,2.6,Negative,Negative,Negative,,None,None,Yes,No response,2.5,No surgery/Unknown,No,Neoadjuvant,Yes,No,Yes,TNBC
+0664,40,Female,White,2025-09-12,C50.3,II,1,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0665,65,Female,White,2022-02-08,C50.6,I,2,0.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,Yes,No,No,TNBC
+0666,71,Female,Asian,2021-08-09,C50.9,II,2,2.1,Negative,Positive,Negative,,None,None,Yes,Partial,1.0,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0667,59,Female,Asian,2022-09-17,C50.9,I,3,4.0,Positive,Positive,Negative,,None,None,Yes,Partial,2.5,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0668,81,Female,White,2019-06-13,C50.1,I,2,4.1,Negative,Unknown,Negative,,None,None,No,NotApplicable,,Mastectomy,Unknown,Adjuvant,Yes,No,No,TNBC
+0669,84,Female,Asian,2021-05-29,C50.9,I,3,3.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0670,36,Female,White,2019-09-26,C50.6,II,2,2.6,Positive,Positive,Negative,34.0,Oncotype DX,High,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0671,87,Female,White,2019-02-25,C50.9,I,1,1.1,Positive,Positive,Negative,,None,None,Yes,Partial,2.5,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0672,66,Female,Black or African American,2018-10-06,C50.5,II,2,3.0,Positive,Negative,Negative,20.0,Oncotype DX,Intermediate,Yes,Unknown,1.5,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0673,67,Female,White,2022-09-12,C50.5,I,1,2.0,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0674,33,Female,Black or African American,2018-01-02,C50.6,I,2,2.8,Negative,Negative,Negative,,None,None,Yes,Partial,2.0,Mastectomy,Yes,Both,Yes,No,No,TNBC
+0675,66,Female,White,2023-03-04,C50.9,III,2,1.5,Negative,Negative,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0676,72,Female,Black or African American,2021-06-16,C50.8,III,1,2.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0677,64,Female,White,2020-12-06,C50.6,I,1,2.4,Positive,Unknown,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Unknown,Yes,Yes,No,HR+/HER2-
+0678,33,Female,White,2024-02-26,C50.9,II,1,2.5,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,Yes,Partial,1.0,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0679,60,Female,White,2022-04-24,C50.9,I,1,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0680,86,Female,White,2023-11-14,C50.4,0,3,1.6,Negative,Unknown,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0681,72,Female,Black or African American,2023-09-05,C50.9,III,3,0.7,Positive,Negative,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0682,36,Female,White,2018-04-04,C50.9,I,1,4.0,Positive,Positive,Negative,12.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,No,Both,Yes,Yes,No,HR+/HER2-
+0683,87,Female,White,2019-09-22,C50.2,II,3,4.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0684,87,Female,White,2022-07-24,C50.9,II,3,2.7,Negative,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,Unknown
+0685,38,Female,White,2025-10-21,C50.3,I,9,0.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0686,77,Female,Asian,2019-03-27,C50.9,I,2,1.3,Positive,Positive,Negative,22.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0687,53,Female,White,2018-11-05,C50.3,I,2,2.8,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,Yes,Partial,2.0,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0688,64,Female,Other/Unknown,2025-07-12,C50.9,IV,2,3.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0689,55,Female,White,2025-09-25,C50.3,II,3,0.9,Positive,Positive,Negative,17.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0690,76,Female,Black or African American,2019-05-05,C50.8,I,3,2.1,Positive,Positive,Negative,,None,None,Yes,Partial,2.5,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0691,89,Female,White,2021-03-19,C50.9,0,2,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0692,77,Female,White,2023-01-06,C50.4,II,2,3.2,Positive,Positive,Negative,0.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0693,85,Female,Asian,2019-07-25,C50.9,I,3,1.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0694,86,Female,Other/Unknown,2020-08-11,C50.9,II,3,0.5,Positive,Unknown,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0695,33,Female,Asian,2021-03-01,C50.9,III,2,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,None,No,No,No,HR+/HER2-
+0696,43,Female,White,2023-02-18,C50.2,II,2,3.4,Positive,Positive,Negative,17.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0697,72,Female,White,2020-06-19,C50.9,I,2,2.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0698,64,Female,Black or African American,2021-04-19,C50.1,0,2,2.6,Unknown,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,Yes,Yes,HER2+
+0699,31,Female,White,2020-04-26,C50.5,0,2,1.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0700,33,Female,Black or African American,2024-01-29,C50.9,II,3,1.3,Positive,Positive,Negative,7.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0701,60,Female,White,2019-03-24,C50.9,III,9,3.3,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0702,66,Female,White,2019-11-06,C50.8,I,2,2.6,Positive,Positive,Negative,20.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0703,38,Female,Asian,2020-01-01,C50.4,II,2,2.7,Negative,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0704,38,Female,Black or African American,2025-03-31,C50.9,II,2,3.9,Positive,Positive,Negative,10.0,Oncotype DX,Low,Yes,Partial,0.5,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0705,36,Female,White,2025-07-22,C50.9,0,1,1.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,HR+/HER2-
+0706,63,Female,White,2022-01-01,C50.6,I,2,1.6,Positive,Positive,Negative,,None,None,Yes,Unknown,2.5,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0707,28,Female,White,2019-04-03,C50.9,I,1,2.4,Positive,Positive,Negative,9.0,Oncotype DX,Low,Yes,Partial,2.5,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0708,63,Female,White,2024-01-19,C50.3,II,2,1.6,Positive,Negative,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0709,57,Female,White,2021-12-08,C50.2,II,1,3.1,Positive,Positive,Negative,48.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0710,56,Female,White,2024-10-18,C50.9,III,2,2.0,Positive,Negative,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,Yes,Adjuvant,Yes,No,Yes,HER2+
+0711,70,Female,Black or African American,2020-11-17,C50.9,III,3,1.1,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Unknown,Yes,Yes,No,HR+/HER2-
+0712,60,Female,Asian,2025-12-28,C50.3,III,2,2.3,Negative,Unknown,Negative,,None,None,Yes,Partial,1.0,No surgery/Unknown,No,Adjuvant,Yes,No,Yes,TNBC
+0713,73,Female,White,2024-06-16,C50.3,Unknown,2,2.4,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0714,75,Female,White,2019-10-17,C50.2,III,3,3.2,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Both,Yes,No,No,TNBC
+0715,85,Female,White,2023-10-22,C50.9,III,2,2.6,Negative,Negative,Positive,,None,None,Yes,Partial,1.0,Mastectomy,No,Neoadjuvant,Yes,Yes,Yes,HER2+
+0716,77,Female,White,2020-04-18,C50.3,III,1,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0717,60,Female,White,2020-10-19,C50.8,III,2,2.6,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Mastectomy,Yes,Adjuvant,Yes,No,No,Unknown
+0718,58,Female,White,2020-01-02,C50.9,III,2,2.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,No,Yes,No,HR+/HER2-
+0719,42,Female,Black or African American,2023-06-17,C50.0,IV,2,1.4,Positive,Negative,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Unknown,None,No,No,No,HR+/HER2-
+0720,65,Female,White,2020-02-08,C50.9,II,1,2.5,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0721,36,Female,White,2023-02-10,C50.8,II,2,1.8,Positive,Positive,Negative,26.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0722,85,Female,White,2022-08-29,C50.9,II,2,4.1,Positive,Unknown,Negative,,None,None,Yes,Partial,1.5,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0723,80,Female,Native Hawaiian or Other Pacific Islander,2024-01-03,C50.4,III,2,3.7,Negative,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0724,35,Female,Black or African American,2025-12-13,C50.5,II,2,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0725,76,Female,White,2018-01-26,C50.2,III,1,2.6,Positive,Positive,Negative,,None,None,Yes,Partial,1.5,No surgery/Unknown,No,Both,No,Yes,No,HR+/HER2-
+0726,35,Female,Native Hawaiian or Other Pacific Islander,2025-12-03,C50.9,III,2,2.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,Unknown,Neoadjuvant,No,Yes,No,HR+/HER2-
+0727,72,Female,White,2018-11-16,C50.9,Unknown,3,0.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0728,33,Female,White,2022-03-20,C50.2,I,2,2.0,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,No,Yes,No,HR+/HER2-
+0729,58,Female,Other/Unknown,2020-09-23,C50.5,II,2,2.3,Positive,Positive,Negative,16.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0730,68,Female,White,2023-02-11,C50.9,III,2,2.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0731,73,Female,White,2023-10-10,C50.0,IV,2,2.7,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0732,53,Female,White,2024-11-17,C50.4,IV,3,3.2,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Mastectomy,No,None,No,No,No,HR+/HER2-
+0733,85,Female,White,2021-03-20,C50.9,II,2,1.4,Positive,Unknown,Equivocal,,None,None,Yes,No response,1.5,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0734,76,Female,Black or African American,2025-06-19,C50.4,II,2,1.4,Negative,Positive,Equivocal,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0735,40,Female,White,2020-07-31,C50.3,I,3,3.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,No,TNBC
+0736,69,Female,White,2019-08-19,C50.6,Unknown,3,3.0,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0737,73,Female,White,2021-01-12,C50.2,I,3,1.8,Positive,Positive,Negative,13.0,Oncotype DX,Low,Yes,Partial,0.5,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0738,48,Female,White,2022-03-25,C50.8,II,1,2.1,Positive,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,No,Yes,HER2+
+0739,73,Female,White,2023-05-07,C50.9,III,1,2.1,Negative,Negative,Negative,,None,None,Yes,Partial,1.0,No surgery/Unknown,No,Adjuvant,Yes,No,No,TNBC
+0740,83,Female,White,2024-08-30,C50.9,II,2,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0741,78,Female,Asian,2019-10-20,C50.1,I,1,2.7,Negative,Positive,Negative,,None,None,Yes,No response,2.0,Breast-conserving surgery,No,Adjuvant,No,Yes,No,HR+/HER2-
+0742,75,Female,White,2020-06-04,C50.9,I,2,5.0,Positive,Positive,Negative,16.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,Yes,Both,Yes,Yes,No,HR+/HER2-
+0743,67,Female,White,2025-07-05,C50.2,III,3,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0744,44,Female,White,2021-07-09,C50.9,II,2,2.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Neoadjuvant,Yes,No,No,TNBC
+0745,77,Female,White,2019-12-07,C50.4,I,1,0.3,Positive,Negative,Positive,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0746,50,Female,White,2025-11-19,C50.9,II,1,1.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0747,60,Female,White,2021-08-04,C50.3,I,2,3.6,Positive,Positive,Negative,13.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,Unknown,None,No,No,No,HR+/HER2-
+0748,47,Female,White,2025-11-18,C50.2,III,2,2.6,Unknown,Negative,Negative,,None,None,Yes,Partial,1.0,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0749,47,Female,American Indian or Alaska Native,2025-05-10,C50.6,I,3,0.1,Positive,Positive,Negative,38.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0750,37,Female,Other/Unknown,2025-04-01,C50.1,I,1,2.9,Negative,Negative,Negative,,None,None,Yes,Partial,1.0,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0751,87,Female,White,2022-08-28,C50.3,I,1,4.3,Positive,Positive,Negative,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0752,37,Female,White,2024-05-22,C50.9,II,2,0.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0753,33,Female,White,2025-09-07,C50.9,II,2,3.9,Positive,Negative,Negative,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Unknown,Neoadjuvant,No,Yes,No,HR+/HER2-
+0754,86,Female,White,2020-02-26,C50.1,III,2,0.1,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0755,62,Female,White,2018-04-21,C50.9,II,3,3.2,Unknown,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,Unknown
+0756,55,Female,Asian,2020-07-26,C50.9,I,2,2.2,Positive,Positive,Negative,5.0,Oncotype DX,Low,Yes,Partial,2.5,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0757,73,Female,Black or African American,2023-02-05,C50.9,I,2,0.1,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0758,51,Female,Asian,2022-05-19,C50.9,I,9,2.7,Positive,Negative,Negative,25.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0759,35,Female,White,2018-08-24,C50.9,IV,1,3.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0760,73,Female,Other/Unknown,2022-06-27,C50.8,I,3,2.6,Positive,Negative,Negative,22.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0761,38,Female,White,2019-05-25,C50.9,Unknown,2,2.8,Positive,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,No,Yes,HER2+
+0762,62,Female,White,2022-01-17,C50.9,I,2,1.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Unknown,Yes,Yes,No,HR+/HER2-
+0763,86,Female,White,2022-08-10,C50.1,I,3,0.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Unknown,Yes,Yes,No,HR+/HER2-
+0764,86,Female,Other/Unknown,2023-02-04,C50.4,I,2,3.0,Positive,Positive,Negative,,None,None,Yes,No response,0.5,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0765,50,Female,White,2021-04-20,C50.1,0,2,4.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0766,76,Female,Asian,2021-04-08,C50.9,III,2,3.4,Positive,Negative,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,No,None,No,No,No,HER2+
+0767,65,Female,White,2023-06-06,C50.5,II,2,0.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,No,Yes,No,HR+/HER2-
+0768,57,Female,Other/Unknown,2023-12-30,C50.9,I,2,0.5,Positive,Positive,Negative,41.0,Oncotype DX,High,Yes,Partial,2.5,Breast-conserving surgery,No,Both,Yes,Yes,No,HR+/HER2-
+0769,36,Female,White,2024-06-18,C50.9,II,1,1.3,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0770,51,Female,White,2020-09-01,C50.9,II,3,0.4,Positive,Positive,Positive,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0771,68,Female,Other/Unknown,2021-05-24,C50.2,IV,2,2.2,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,No,No,TNBC
+0772,89,Female,White,2020-08-24,C50.9,Unknown,2,2.6,Positive,Positive,Negative,,None,None,Yes,Partial,0.5,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,HR+/HER2-
+0773,28,Female,White,2022-03-22,C50.9,II,1,0.6,Positive,Positive,Negative,12.0,Oncotype DX,Low,Yes,Unknown,1.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0774,72,Female,White,2019-01-07,C50.1,III,2,3.1,Negative,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,Yes,HER2+
+0775,80,Female,White,2021-06-10,C50.9,III,1,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0776,86,Female,White,2019-07-06,C50.4,II,1,1.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0777,54,Female,White,2022-04-05,C50.9,II,2,2.0,Positive,Positive,Negative,18.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0778,35,Female,White,2024-10-21,C50.8,I,1,0.1,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0779,44,Female,Asian,2025-11-19,C50.3,III,2,1.8,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,No surgery/Unknown,No,Adjuvant,No,Yes,No,HR+/HER2-
+0780,80,Female,White,2021-07-28,C50.2,Unknown,2,2.2,Negative,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0781,82,Female,White,2018-06-14,C50.1,I,2,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0782,67,Female,White,2019-10-28,C50.1,III,9,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0783,35,Female,White,2018-11-03,C50.9,IV,3,2.5,Positive,Negative,Positive,,None,None,Yes,No response,2.5,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0784,35,Female,Black or African American,2024-01-28,C50.4,I,2,1.9,Positive,Positive,Negative,22.0,Oncotype DX,Intermediate,Yes,Partial,3.0,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0785,57,Female,Other/Unknown,2025-11-17,C50.3,II,9,2.5,Positive,Positive,Equivocal,5.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,HR+/HER2-
+0786,64,Female,Other/Unknown,2022-06-07,C50.9,IV,3,3.3,Negative,Negative,Unknown,,None,None,Yes,Complete,0.0,No surgery/Unknown,No,Adjuvant,Yes,No,No,TNBC
+0787,30,Female,White,2019-06-01,C50.9,Unknown,2,2.1,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0788,70,Female,White,2018-03-03,C50.8,I,3,2.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0789,61,Female,White,2025-10-23,C50.9,I,1,2.0,Unknown,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,No,No,Unknown
+0790,28,Female,White,2020-07-13,C50.4,II,3,1.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0791,33,Female,White,2018-11-24,C50.9,I,2,2.8,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,No,Yes,HER2+
+0792,56,Female,Black or African American,2019-06-02,C50.1,I,1,1.6,Positive,Positive,Negative,30.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0793,72,Female,White,2020-01-16,C50.9,0,2,2.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HR+/HER2-
+0794,79,Female,White,2023-04-01,C50.9,I,9,2.2,Positive,Positive,Negative,24.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,No,No,HR+/HER2-
+0795,54,Female,White,2025-02-18,C50.9,II,2,1.9,Positive,Positive,Negative,23.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0796,46,Female,White,2020-03-14,C50.9,II,1,1.8,Positive,Positive,Negative,,None,None,Yes,No response,0.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0797,88,Female,White,2023-07-02,C50.9,II,1,1.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0798,56,Female,White,2018-07-09,C50.4,III,2,0.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0799,47,Female,Black or African American,2018-01-30,C50.9,II,3,2.6,Negative,Negative,Negative,29.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0800,55,Female,White,2018-06-10,C50.9,I,3,2.5,Positive,Positive,Negative,,None,None,Yes,Partial,0.5,Breast-conserving surgery,No,Unknown,Yes,Yes,No,HR+/HER2-
+0801,28,Female,White,2025-05-21,C50.9,0,2,3.1,Unknown,Positive,Positive,,None,None,Yes,Unknown,3.0,Mastectomy,Yes,Adjuvant,No,No,No,Unknown
+0802,46,Female,White,2022-08-27,C50.6,I,1,1.6,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0803,59,Female,Black or African American,2024-06-10,C50.1,I,1,4.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,No,No,TNBC
+0804,84,Female,White,2018-03-05,C50.9,I,2,1.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0805,73,Female,Asian,2018-03-06,C50.1,0,3,1.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0806,76,Female,Other/Unknown,2024-10-16,C50.3,I,3,1.1,Positive,Positive,Negative,20.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0807,61,Female,White,2018-10-27,C50.4,II,2,0.3,Positive,Positive,Negative,33.0,Oncotype DX,High,Yes,Partial,1.0,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0808,34,Female,Black or African American,2019-03-31,C50.9,II,2,3.9,Positive,Negative,Negative,,None,None,Yes,Partial,1.5,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0809,52,Female,White,2022-02-25,C50.2,IV,2,3.7,Negative,Negative,Negative,,None,None,Yes,Partial,0.5,Mastectomy,No,Neoadjuvant,Yes,No,Yes,TNBC
+0810,89,Female,Other/Unknown,2022-11-08,C50.2,III,2,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0811,30,Female,White,2019-10-31,C50.1,II,2,1.2,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0812,82,Female,Other/Unknown,2021-07-23,C50.9,I,3,4.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0813,70,Female,White,2023-05-26,C50.9,II,2,1.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0814,45,Female,White,2021-07-18,C50.1,0,3,1.9,Positive,Unknown,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0815,76,Female,White,2021-01-23,C50.0,II,2,3.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,Yes,Unknown
+0816,79,Female,Black or African American,2018-07-29,C50.9,I,1,2.9,Negative,Positive,Negative,8.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0817,30,Female,White,2021-08-13,C50.3,II,2,4.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0818,34,Female,White,2024-06-03,C50.9,I,2,2.5,Positive,Positive,Negative,18.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0819,69,Female,Black or African American,2023-01-06,C50.5,II,2,1.8,Positive,Positive,Equivocal,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0820,89,Female,Asian,2025-02-22,C50.9,III,2,1.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,Yes,No,No,Unknown
+0821,29,Female,White,2019-01-04,C50.3,III,3,0.2,Negative,Negative,Negative,,None,None,Yes,No response,1.5,No surgery/Unknown,Yes,Adjuvant,Yes,No,No,TNBC
+0822,69,Female,White,2018-02-02,C50.9,II,2,1.9,Unknown,Negative,Positive,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,HER2+
+0823,36,Female,White,2022-05-21,C50.1,II,2,3.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Unknown,Both,No,Yes,No,Unknown
+0824,68,Female,Asian,2019-06-06,C50.9,0,3,2.9,Unknown,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,Yes,No,HER2+
+0825,66,Female,White,2022-10-02,C50.9,II,2,2.2,Positive,Negative,Negative,27.0,Oncotype DX,Intermediate,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0826,33,Female,Asian,2025-03-26,C50.9,II,2,1.1,Positive,Positive,Negative,,None,None,Yes,Partial,1.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0827,70,Female,White,2020-09-12,C50.6,I,1,2.4,Positive,Unknown,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0828,83,Female,White,2022-05-25,C50.3,I,2,3.3,Positive,Positive,Negative,,None,None,Yes,Partial,2.5,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0829,81,Female,White,2023-06-15,C50.9,IV,3,2.7,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,No surgery/Unknown,No,Adjuvant,No,No,No,HR+/HER2-
+0830,29,Female,White,2019-03-15,C50.9,II,3,2.4,Positive,Positive,Negative,30.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0831,43,Female,Black or African American,2025-03-07,C50.3,II,2,1.3,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,Unknown
+0832,42,Female,White,2019-08-16,C50.6,II,2,3.2,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,No,No,Yes,Unknown
+0833,56,Female,White,2024-06-19,C50.6,II,3,0.1,Positive,Negative,Negative,7.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0834,36,Female,Other/Unknown,2023-04-13,C50.9,II,3,2.6,Positive,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,None,No,No,No,HER2+
+0835,80,Female,Other/Unknown,2019-02-16,C50.9,I,2,5.0,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0836,76,Female,Asian,2023-10-19,C50.9,II,3,0.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0837,78,Female,White,2019-07-29,C50.9,II,1,1.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0838,40,Female,White,2022-10-18,C50.3,0,1,2.2,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0839,28,Female,Asian,2025-09-05,C50.4,III,1,1.7,Positive,Negative,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,No,Adjuvant,No,Yes,No,HR+/HER2-
+0840,84,Female,White,2025-08-17,C50.1,I,1,3.3,Positive,Positive,Negative,,None,None,Yes,No response,3.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0841,45,Female,White,2024-12-20,C50.9,II,3,2.7,Positive,Unknown,Equivocal,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Unknown,Neoadjuvant,Yes,No,No,HR+/HER2-
+0842,68,Female,Asian,2021-12-14,C50.5,II,2,2.4,Positive,Positive,Negative,19.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0843,84,Female,White,2022-06-23,C50.5,II,2,3.1,Negative,Negative,Negative,,None,None,Yes,Complete,0.0,Mastectomy,Yes,Adjuvant,Yes,No,No,TNBC
+0844,30,Female,White,2020-05-27,C50.3,II,2,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0845,28,Female,Other/Unknown,2025-05-15,C50.3,IV,2,5.7,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,No surgery/Unknown,No,Adjuvant,No,Yes,No,HR+/HER2-
+0846,28,Female,White,2021-10-26,C50.9,II,2,2.4,Positive,Positive,Negative,15.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0847,37,Female,White,2024-03-04,C50.3,III,1,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Both,Yes,Yes,No,HR+/HER2-
+0848,31,Female,White,2020-11-16,C50.1,II,2,0.3,Positive,Positive,Negative,17.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0849,78,Female,White,2023-12-04,C50.9,I,1,1.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0850,65,Female,White,2019-10-18,C50.4,I,3,3.5,Positive,Positive,Negative,33.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0851,88,Female,Asian,2023-11-15,C50.4,II,1,0.7,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0852,77,Female,Asian,2018-05-15,C50.5,I,3,0.1,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,Yes,No,Yes,HER2+
+0853,87,Female,White,2018-11-03,C50.9,I,3,2.2,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0854,42,Female,White,2020-10-26,C50.4,I,1,3.7,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0855,45,Female,Asian,2021-11-09,C50.9,II,1,2.2,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0856,80,Female,White,2023-09-10,C50.9,I,3,1.8,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0857,43,Female,White,2020-11-15,C50.9,III,2,0.2,Positive,Positive,Negative,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0858,31,Female,White,2018-02-23,C50.5,II,2,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0859,69,Female,Black or African American,2020-08-08,C50.9,II,1,2.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Unknown,No,Yes,No,HR+/HER2-
+0860,77,Female,White,2021-07-07,C50.6,I,2,0.2,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,Yes,HER2+
+0861,88,Female,Black or African American,2022-05-08,C50.5,II,2,3.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,No,Yes,No,HR+/HER2-
+0862,85,Female,White,2023-02-25,C50.8,0,3,3.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0863,35,Female,White,2019-12-25,C50.4,II,2,3.4,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,No,Yes,HER2+
+0864,75,Female,White,2022-11-19,C50.1,I,3,2.8,Negative,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0865,80,Female,White,2023-01-20,C50.5,IV,2,2.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,TNBC
+0866,71,Female,White,2024-03-19,C50.2,I,1,2.8,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0867,78,Female,White,2022-03-06,C50.5,II,2,3.2,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,Yes,No,Unknown
+0868,79,Female,White,2024-06-26,C50.9,I,2,0.2,Positive,Positive,Negative,32.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0869,55,Female,White,2019-10-10,C50.9,II,2,0.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0870,30,Female,White,2023-09-11,C50.1,II,2,1.4,Positive,Positive,Negative,16.0,Oncotype DX,Low,Yes,Partial,1.5,Breast-conserving surgery,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0871,56,Female,White,2018-05-14,C50.9,I,2,2.1,Positive,Positive,Equivocal,,None,None,Yes,No response,1.5,Breast-conserving surgery,No,None,No,No,No,HR+/HER2-
+0872,40,Female,Other/Unknown,2018-10-28,C50.6,I,2,2.6,Positive,Positive,Negative,23.0,Oncotype DX,Intermediate,Yes,Partial,1.0,Mastectomy,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0873,35,Female,White,2024-12-01,C50.0,I,3,2.6,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0874,35,Female,Asian,2021-10-20,C50.3,I,2,3.4,Positive,Positive,Negative,18.0,Oncotype DX,Intermediate,Yes,Partial,1.5,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0875,71,Female,Other/Unknown,2022-12-20,C50.1,Unknown,2,3.5,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0876,59,Female,White,2022-10-30,C50.3,II,2,1.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0877,61,Female,Black or African American,2023-07-24,C50.3,0,2,2.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0878,74,Female,Asian,2019-12-19,C50.5,IV,3,1.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,No,No,TNBC
+0879,61,Female,Black or African American,2019-06-05,C50.8,0,2,2.0,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0880,67,Female,White,2018-05-05,C50.0,II,2,2.6,Positive,Positive,Negative,30.0,Oncotype DX,Intermediate,Yes,Partial,1.0,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0881,33,Female,White,2024-12-01,C50.2,II,1,0.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,TNBC
+0882,80,Female,White,2019-10-16,C50.1,IV,2,4.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,No,Yes,No,HR+/HER2-
+0883,55,Female,White,2022-08-08,C50.8,II,2,2.8,Positive,Negative,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0884,37,Female,Other/Unknown,2021-08-22,C50.4,II,2,1.5,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HER2+
+0885,78,Female,Other/Unknown,2019-04-20,C50.8,Unknown,3,4.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,HR+/HER2-
+0886,73,Female,White,2021-04-24,C50.3,0,3,1.8,Positive,Positive,Negative,,None,None,Yes,Unknown,0.5,Breast-conserving surgery,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0887,31,Female,Black or African American,2018-09-01,C50.0,Unknown,1,2.3,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,Yes,TNBC
+0888,39,Female,White,2019-06-01,C50.9,III,3,1.7,Negative,Positive,Equivocal,,None,None,Yes,Partial,2.0,No surgery/Unknown,No,None,No,No,No,HER2+
+0889,28,Female,Other/Unknown,2019-02-13,C50.1,IV,2,4.0,Negative,Negative,Negative,,None,None,Yes,Complete,0.0,Mastectomy,Unknown,Adjuvant,Yes,No,Yes,TNBC
+0890,44,Female,White,2024-08-05,C50.2,I,9,2.1,Negative,Negative,Positive,,None,None,Yes,Partial,0.5,Mastectomy,No,Adjuvant,No,Yes,No,Unknown
+0891,34,Female,Other/Unknown,2022-07-16,C50.2,I,2,2.4,Positive,Positive,Negative,,None,None,Yes,Partial,3.0,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0892,72,Female,Asian,2025-05-28,C50.9,II,2,3.5,Negative,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,Yes,Yes,Yes,HER2+
+0893,60,Female,White,2021-06-27,C50.9,II,2,2.8,Positive,Positive,Negative,27.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0894,88,Female,White,2019-08-12,C50.9,II,2,2.1,Positive,Positive,Positive,,None,None,Yes,Partial,3.0,Mastectomy,No,Both,Yes,No,Yes,HER2+
+0895,74,Female,Asian,2022-11-14,C50.9,IV,3,3.4,Positive,Unknown,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,No,Unknown,Yes,Yes,Yes,HER2+
+0896,65,Female,White,2025-06-09,C50.1,II,2,5.0,Positive,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,No,Yes,HER2+
+0897,59,Female,White,2022-04-06,C50.9,I,2,2.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Neoadjuvant,Yes,No,No,TNBC
+0898,31,Female,Other/Unknown,2018-02-22,C50.3,II,2,2.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0899,32,Female,White,2020-06-06,C50.9,I,3,2.4,Negative,Positive,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,Yes,HER2+
+0900,66,Female,White,2025-05-26,C50.5,I,3,3.6,Positive,Positive,Negative,13.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0901,28,Female,White,2022-02-23,C50.4,I,2,1.5,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,HR+/HER2-
+0902,30,Female,White,2025-08-13,C50.9,III,2,1.9,Positive,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,No,No,HER2+
+0903,41,Female,Other/Unknown,2022-01-28,C50.2,II,1,0.5,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0904,82,Female,White,2018-02-05,C50.9,II,3,0.9,Positive,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0905,56,Female,White,2024-12-26,C50.4,I,3,1.6,Positive,Unknown,Negative,34.0,Oncotype DX,High,Yes,Complete,0.0,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0906,71,Female,White,2024-02-08,C50.9,II,2,2.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0907,53,Female,Other/Unknown,2023-09-21,C50.9,III,3,4.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0908,38,Female,White,2025-10-05,C50.1,III,1,2.8,Positive,Positive,Negative,,None,None,Yes,Partial,3.0,No surgery/Unknown,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0909,51,Female,Asian,2019-07-28,C50.9,II,3,1.2,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0910,33,Female,Black or African American,2025-04-01,C50.9,III,1,1.4,Positive,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Both,Yes,Yes,No,HR+/HER2-
+0911,75,Female,Asian,2019-11-11,C50.9,II,1,3.7,Positive,Unknown,Equivocal,,None,None,Yes,No response,1.5,Mastectomy,No,Neoadjuvant,Yes,No,No,Unknown
+0912,39,Female,Other/Unknown,2025-10-07,C50.2,II,2,3.4,Positive,Positive,Negative,18.0,Oncotype DX,Intermediate,Yes,Partial,2.5,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0913,51,Female,Asian,2019-07-14,C50.8,III,2,2.2,Positive,Negative,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,Yes,Yes,Yes,HER2+
+0914,88,Female,Other/Unknown,2022-05-28,C50.9,I,3,1.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0915,64,Female,White,2024-04-25,C50.6,I,2,3.4,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,Yes,No,Yes,HER2+
+0916,56,Female,Asian,2018-08-17,C50.2,I,3,1.1,Positive,Positive,Negative,16.0,Oncotype DX,Low,Yes,Partial,2.0,Mastectomy,Unknown,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0917,61,Female,White,2018-07-14,C50.3,II,3,2.6,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0918,76,Female,White,2024-10-19,C50.9,II,2,4.7,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,No,No,TNBC
+0919,43,Female,Native Hawaiian or Other Pacific Islander,2018-06-26,C50.1,II,3,2.4,Positive,Positive,Negative,7.0,Oncotype DX,Low,Yes,Complete,0.0,Mastectomy,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0920,67,Female,Other/Unknown,2022-11-29,C50.9,II,2,1.3,Positive,Positive,Negative,20.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0921,82,Female,Black or African American,2025-07-04,C50.9,I,2,2.7,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Mastectomy,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0922,63,Female,White,2022-12-02,C50.0,III,1,1.7,Negative,Positive,Positive,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,Yes,Yes,HER2+
+0923,55,Female,White,2021-11-06,C50.2,I,2,0.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Unknown,Both,No,Yes,No,HR+/HER2-
+0924,36,Female,White,2021-05-04,C50.9,IV,3,3.0,Positive,Negative,Negative,,None,None,Yes,Partial,2.0,No surgery/Unknown,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0925,43,Female,White,2023-02-08,C50.1,I,2,3.4,Positive,Positive,Negative,33.0,Oncotype DX,High,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0926,86,Female,White,2022-07-29,C50.9,II,2,1.9,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0927,61,Female,White,2022-01-06,C50.9,II,1,1.8,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,No,Yes,HER2+
+0928,46,Female,White,2019-03-25,C50.9,III,2,1.1,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0929,53,Female,Black or African American,2023-04-21,C50.4,I,3,2.0,Negative,Positive,Positive,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0930,63,Female,White,2023-12-02,C50.9,IV,2,1.6,Negative,Positive,Positive,,None,None,Yes,Partial,1.5,Breast-conserving surgery,No,Adjuvant,Yes,Yes,Yes,HER2+
+0931,61,Female,Other/Unknown,2023-09-03,C50.9,II,3,1.1,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,No,TNBC
+0932,71,Female,White,2018-08-08,C50.3,II,2,4.3,Positive,Positive,Equivocal,,None,None,Yes,Partial,1.5,Mastectomy,No,Adjuvant,No,Yes,No,HR+/HER2-
+0933,43,Female,White,2023-08-16,C50.9,II,3,2.7,Positive,Positive,Positive,,None,None,Yes,Complete,0.0,Mastectomy,No,None,No,No,No,Unknown
+0934,68,Female,White,2023-11-03,C50.9,0,2,2.8,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0935,55,Female,White,2019-06-20,C50.9,II,2,3.2,Positive,Positive,Negative,,None,None,Yes,No response,2.0,Mastectomy,No,None,No,No,No,HR+/HER2-
+0936,86,Female,Other/Unknown,2024-10-16,C50.6,I,1,3.0,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0937,37,Female,White,2022-03-11,C50.4,I,2,1.7,Positive,Positive,Negative,22.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0938,37,Female,White,2021-10-12,C50.1,II,3,2.5,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0939,56,Female,Other/Unknown,2023-10-13,C50.3,II,2,1.9,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,Yes,Complete,0.0,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0940,59,Female,Other/Unknown,2022-01-29,C50.0,I,1,2.7,Positive,Positive,Negative,30.0,Oncotype DX,Intermediate,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,No,HR+/HER2-
+0941,70,Female,White,2022-05-11,C50.9,I,3,2.6,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,TNBC
+0942,53,Female,White,2020-07-01,C50.3,I,1,1.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0943,84,Female,White,2025-06-04,C50.9,I,2,0.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0944,57,Female,White,2025-10-03,C50.2,II,9,2.4,Positive,Positive,Negative,10.0,Oncotype DX,Low,No,NotApplicable,,Mastectomy,Unknown,Adjuvant,No,Yes,No,HR+/HER2-
+0945,36,Female,White,2019-01-17,C50.3,I,2,2.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0946,35,Female,White,2023-11-13,C50.5,III,3,0.1,Positive,Positive,Negative,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0947,88,Female,Other/Unknown,2018-03-10,C50.4,I,2,2.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0948,36,Female,White,2020-12-14,C50.9,I,3,3.3,Positive,Positive,Negative,14.0,Oncotype DX,Low,Yes,Partial,2.0,Mastectomy,Yes,None,No,No,No,HR+/HER2-
+0949,86,Female,Black or African American,2025-10-05,C50.9,III,2,5.0,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0950,45,Female,White,2019-05-26,C50.9,I,3,1.8,Positive,Positive,Negative,30.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,No,HR+/HER2-
+0951,33,Female,Asian,2021-01-06,C50.2,II,2,1.6,Positive,Positive,Negative,,None,None,Yes,Partial,2.0,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0952,46,Female,White,2019-10-04,C50.9,IV,3,1.0,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,HER2+
+0953,66,Female,Asian,2023-10-29,C50.2,IV,2,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0954,54,Female,Other/Unknown,2021-09-17,C50.9,II,9,2.4,Positive,Positive,Negative,,None,None,Yes,Complete,0.0,Mastectomy,Yes,Both,No,Yes,No,HR+/HER2-
+0955,76,Female,White,2022-09-30,C50.8,0,2,1.3,Positive,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,Unknown
+0956,65,Female,White,2025-07-17,C50.4,II,2,2.0,Positive,Negative,Negative,23.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0957,52,Female,White,2022-03-03,C50.2,Unknown,3,0.1,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,Yes,Yes,No,HR+/HER2-
+0958,67,Female,White,2023-11-16,C50.0,IV,2,3.2,Negative,Negative,Negative,,None,None,No,NotApplicable,,No surgery/Unknown,No,Adjuvant,Yes,No,No,TNBC
+0959,88,Female,Other/Unknown,2018-10-14,C50.3,I,2,1.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0960,53,Female,White,2019-09-21,C50.9,I,3,2.2,Negative,Negative,Positive,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,Yes,HER2+
+0961,37,Female,Black or African American,2025-07-29,C50.9,I,1,0.6,Negative,Positive,Positive,,None,None,Yes,Partial,0.5,Breast-conserving surgery,Yes,Unknown,Yes,No,Yes,HER2+
+0962,53,Female,White,2024-11-16,C50.9,I,1,1.6,Negative,Negative,Negative,,None,None,Yes,Partial,1.5,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,Yes,Unknown
+0963,80,Female,White,2023-04-03,C50.1,II,2,1.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Unknown,Unknown,Yes,Unknown
+0964,41,Female,White,2021-01-10,C50.9,I,2,2.2,Positive,Negative,Negative,14.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,Unknown,Adjuvant,Yes,Yes,No,HR+/HER2-
+0965,86,Female,Black or African American,2019-08-07,C50.3,I,2,2.7,Negative,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,Yes,No,Yes,HER2+
+0966,64,Female,Black or African American,2024-10-24,C50.8,I,1,3.8,Positive,Positive,Negative,21.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0967,65,Female,White,2024-04-13,C50.4,II,2,3.0,Positive,Positive,Negative,30.0,Oncotype DX,Intermediate,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0968,47,Female,White,2019-12-08,C50.3,I,2,3.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HR+/HER2-
+0969,85,Female,Black or African American,2022-09-20,C50.9,II,1,3.8,Positive,Positive,Equivocal,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0970,30,Female,White,2022-12-13,C50.2,I,2,2.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,None,No,No,No,HR+/HER2-
+0971,46,Female,Other/Unknown,2021-10-27,C50.6,IV,2,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,Yes,No,HR+/HER2-
+0972,53,Female,White,2025-05-31,C50.9,I,1,3.3,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0973,57,Female,White,2018-12-29,C50.2,II,2,3.4,Positive,Positive,Negative,15.0,Oncotype DX,Low,Yes,Partial,1.0,Mastectomy,Unknown,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0974,57,Female,White,2020-01-24,C50.9,I,3,2.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,No,TNBC
+0975,37,Female,White,2018-10-05,C50.8,I,2,0.6,Positive,Positive,Negative,17.0,Oncotype DX,Low,Yes,Partial,1.5,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0976,41,Female,White,2023-07-18,C50.9,I,2,1.3,Positive,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,No,No,HER2+
+0977,33,Female,White,2023-02-25,C50.9,0,2,1.9,Negative,Negative,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,Yes,No,Yes,TNBC
+0978,63,Female,Other/Unknown,2025-11-24,C50.9,I,1,3.1,Positive,Unknown,Positive,,None,None,No,NotApplicable,,Mastectomy,Unknown,Adjuvant,Yes,No,Yes,HER2+
+0979,49,Female,White,2022-05-04,C50.9,II,3,2.2,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Both,No,Yes,No,HR+/HER2-
+0980,63,Female,White,2019-03-17,C50.9,II,3,3.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,Yes,Adjuvant,Yes,No,No,TNBC
+0981,64,Female,White,2021-08-10,C50.9,I,3,3.6,Positive,Negative,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,Yes,No,HER2+
+0982,71,Female,White,2018-09-16,C50.3,II,2,3.5,Positive,Unknown,Positive,,None,None,No,NotApplicable,,Mastectomy,No,Both,Yes,Yes,No,HER2+
+0983,61,Female,White,2023-05-15,C50.1,II,2,3.5,Negative,Negative,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Adjuvant,Yes,No,No,TNBC
+0984,68,Female,White,2023-05-24,C50.9,I,1,1.1,Positive,Positive,Negative,14.0,Oncotype DX,Low,No,NotApplicable,,Breast-conserving surgery,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0985,64,Female,Black or African American,2024-11-11,C50.1,I,2,2.7,Positive,Unknown,Negative,4.0,Oncotype DX,Low,Yes,Partial,2.0,Mastectomy,No,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0986,68,Female,White,2020-09-19,C50.3,I,2,1.5,Negative,Negative,Negative,,None,None,Yes,Complete,0.0,Breast-conserving surgery,Yes,Both,Yes,No,No,TNBC
+0987,66,Female,Other/Unknown,2020-06-25,C50.1,I,2,0.4,Positive,Positive,Negative,15.0,Oncotype DX,Low,Yes,Partial,1.5,Breast-conserving surgery,Yes,None,No,No,No,HR+/HER2-
+0988,47,Female,White,2018-07-28,C50.8,II,1,1.9,Negative,Negative,Unknown,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Both,Yes,No,No,TNBC
+0989,43,Female,Native Hawaiian or Other Pacific Islander,2021-04-28,C50.2,Unknown,3,3.7,Positive,Positive,Equivocal,,None,None,Yes,Partial,1.0,Mastectomy,Yes,Neoadjuvant,Yes,Yes,No,HR+/HER2-
+0990,76,Female,White,2021-10-20,C50.9,Unknown,1,2.7,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Adjuvant,No,Yes,No,HR+/HER2-
+0991,49,Female,White,2024-01-14,C50.9,Unknown,1,4.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Neoadjuvant,No,Yes,No,HR+/HER2-
+0992,62,Female,Asian,2024-01-12,C50.9,II,3,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Unknown,No,Yes,No,HR+/HER2-
+0993,40,Female,Black or African American,2019-02-14,C50.4,I,3,4.9,Positive,Positive,Negative,,None,None,Yes,No response,3.0,Mastectomy,No,None,No,No,No,Unknown
+0994,54,Female,Asian,2020-04-13,C50.8,I,2,2.4,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,No,Adjuvant,Yes,Yes,No,HR+/HER2-
+0995,60,Female,White,2022-02-03,C50.9,I,2,2.2,Negative,Positive,Positive,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,Yes,No,Yes,HER2+
+0996,66,Female,Black or African American,2020-09-06,C50.6,0,2,0.8,Positive,Positive,Negative,,None,None,No,NotApplicable,,Mastectomy,No,Neoadjuvant,No,Yes,No,HR+/HER2-
+0997,60,Female,Asian,2018-03-16,C50.9,I,1,3.4,Unknown,Positive,Negative,,None,None,Yes,No response,1.5,Mastectomy,No,Neoadjuvant,Yes,Yes,No,Unknown
+0998,50,Female,Black or African American,2024-10-07,C50.3,II,2,1.6,Positive,Positive,Negative,,None,None,No,NotApplicable,,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+0999,87,Female,White,2023-11-07,C50.9,I,2,1.5,Positive,Negative,Negative,,None,None,Yes,Partial,0.5,Breast-conserving surgery,Yes,Both,No,Yes,No,HR+/HER2-
+1000,59,Female,Black or African American,2022-02-28,C50.1,I,2,3.6,Positive,Positive,Negative,,None,None,Yes,No response,2.0,Breast-conserving surgery,Yes,Neoadjuvant,No,No,No,HR+/HER2-
