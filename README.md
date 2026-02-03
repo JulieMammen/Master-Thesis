@@ -179,6 +179,61 @@ ORDER BY
 ### Observation
 
 Treatment data is summary-based and non-longitudinal. While treatment occurrence can be counted, clinical context such as intent (curative vs palliative) and temporal sequencing is difficult to reconstruct.
+
+
+### Analysis 4
+Question
+
+How well does registry-style data represent a patient’s disease status over time?
+Disease status by stage
+```
+SELECT
+  stage_group,
+  disease_status,
+  COUNT(*) AS patient_count
+FROM breast_registry
+GROUP BY stage_group, disease_status
+ORDER BY stage_group, patient_count DESC;
+```
+
+### Key observation 
+
+Disease status in registry-style data is static and inferred. It does not support longitudinal tracking of remission, recurrence, or progression without additional abstraction or complex workarounds. Captures status once, usually at last contact or abstraction.Most patients fall into “Unknown” or broad categories
+
+### What registries actually capture (precisely)
+
+Under NAACCR standards, registries commonly capture:
+
+Date of Diagnosis
+
+Date of First Course of Treatment
+
+Defined as the earliest treatment given
+
+Could be surgery or systemic therapy or radiation
+
+### Analysis 5 – Time-to-Treatment Limitations
+```
+SELECT
+  stage_group,
+  rx_summ_surg_prim_site,
+  rx_summ_systemic_surg_seq,
+  COUNT(*) AS patient_count
+FROM breast_registry
+GROUP BY stage_group, rx_summ_surg_prim_site, rx_summ_systemic_surg_seq
+ORDER BY stage_group, patient_count DESC;
+
+```
+
+This supports questions like:
+
+“Was treatment initiated within X days of diagnosis?”
+
+So yes — a single time-to-first-treatment metric is possible
+
+### Key Observation
+Registry data includes a date of first course of treatment, enabling calculation of time from diagnosis to treatment initiation. However, registry abstractions do not consistently capture individual treatment start dates or longitudinal sequencing, limiting more granular time-to-treatment and pathway analyses
+
 ### Phase 1 Conclusion
 
 Traditional registry data performs well for retrospective descriptive analysis, but struggles with:
@@ -192,3 +247,4 @@ Treatment intent and sequencing
 Reusability across analytic contexts
 
 These limitations motivate the transformation of the same clinical facts into FHIR mCODE, which is explored in subsequent phases
+
