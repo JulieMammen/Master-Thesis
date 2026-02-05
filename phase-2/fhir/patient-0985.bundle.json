@@ -1,0 +1,338 @@
+{
+  "resourceType": "Bundle",
+  "id": "patient-0985-bundle",
+  "type": "collection",
+  "timestamp": "2026-02-05T00:00:00Z",
+  "entry": [
+    {
+      "fullUrl": "Patient/0985",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2054-5",
+                  "display": "Black or African American"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Black or African American"
+              }
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1960-01-01"
+      }
+    },
+
+    {
+      "fullUrl": "Condition/primary-cancer-0985",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "primary-cancer-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-primary-cancer-condition"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "C50.1",
+              "display": "Malignant neoplasm of central portion of breast"
+            }
+          ],
+          "text": "Breast cancer (ICD-10-CM C50.1)"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "onsetDateTime": "2024-11-11"
+      }
+    },
+
+    {
+      "fullUrl": "Observation/stage-group-0985",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "stage-group-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-stage-group"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "text": "AJCC Stage Group"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "focus": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "effectiveDateTime": "2024-11-11",
+        "valueCodeableConcept": {
+          "text": "Stage I"
+        }
+      }
+    },
+
+    {
+      "fullUrl": "Observation/tumor-size-0985",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "tumor-size-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tumor-size"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "text": "Tumor size"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "focus": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "effectiveDateTime": "2024-11-11",
+        "valueQuantity": {
+          "value": 2.7,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        }
+      }
+    },
+
+    {
+      "fullUrl": "Observation/histologic-grade-0985",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "histologic-grade-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histologic-grade"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "text": "Histologic grade"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "focus": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "effectiveDateTime": "2024-11-11",
+        "valueCodeableConcept": {
+          "text": "Grade 2"
+        }
+      }
+    },
+
+    {
+      "fullUrl": "Observation/er-0985",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "er-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tumor-marker-test"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "text": "Estrogen receptor status"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "focus": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "effectiveDateTime": "2024-11-11",
+        "valueCodeableConcept": {
+          "text": "Positive"
+        }
+      }
+    },
+
+    {
+      "fullUrl": "Observation/pr-0985",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "pr-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tumor-marker-test"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "text": "Progesterone receptor status"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "focus": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "effectiveDateTime": "2024-11-11",
+        "valueCodeableConcept": {
+          "text": "Unknown"
+        }
+      }
+    },
+
+    {
+      "fullUrl": "Observation/her2-0985",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "her2-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tumor-marker-test"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "text": "HER2 status"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "focus": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "effectiveDateTime": "2024-11-11",
+        "valueCodeableConcept": {
+          "text": "Negative"
+        }
+      }
+    },
+
+    {
+      "fullUrl": "Procedure/surgery-0985",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "surgery-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-surgical-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "text": "Mastectomy"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "reasonReference": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "performedDateTime": "2024-12-11"
+      }
+    },
+
+    {
+      "fullUrl": "MedicationRequest/chemo-0985",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "chemo-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-request"
+          ]
+        },
+        "status": "completed",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Chemotherapy (regimen not specified in registry dataset)"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "reasonReference": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "authoredOn": "2024-11-11"
+      }
+    },
+
+    {
+      "fullUrl": "MedicationRequest/hormone-0985",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "hormone-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-request"
+          ]
+        },
+        "status": "completed",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Hormone therapy / endocrine therapy (agent not specified in registry dataset)"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "reasonReference": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "authoredOn": "2024-11-11"
+      }
+    },
+
+    {
+      "fullUrl": "Observation/disease-status-0985",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "disease-status-0985",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "text": "Cancer disease status"
+        },
+        "subject": { "reference": "Patient/0985" },
+        "focus": [
+          { "reference": "Condition/primary-cancer-0985" }
+        ],
+        "effectiveDateTime": "2025-02-11",
+        "valueCodeableConcept": {
+          "text": "Persistent disease"
+        }
+      }
+    }
+  ]
+}
