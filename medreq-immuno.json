@@ -1,0 +1,11 @@
+{
+  "resourceType": "MedicationRequest",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "text": "Immunotherapy"
+  },
+  "subject": { "reference": "Patient/1000" },
+  "reasonReference": [ { "reference": "Condition/1001" } ],
+  "authoredOn": "2021-01-15"
+}

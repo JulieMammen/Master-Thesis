@@ -1,0 +1,11 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    { "system": "urn:julie:mcode-registry", "value": "P001" }
+  ],
+  "name": [
+    { "family": "Test", "given": ["Julie"] }
+  ],
+  "gender": "female",
+  "birthDate": "1970-01-01"
+}

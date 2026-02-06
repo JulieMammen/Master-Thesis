@@ -1,0 +1,13 @@
+{
+  "resourceType": "Procedure",
+  "status": "completed",
+  "category": {
+    "coding": [
+      { "system": "http://snomed.info/sct", "code": "387713003", "display": "Surgical procedure" }
+    ]
+  },
+  "code": { "text": "Breast surgery (first course treatment)" },
+  "subject": { "reference": "Patient/1000" },
+  "reasonReference": [ { "reference": "Condition/1001" } ],
+  "performedDateTime": "2020-02-01"
+}

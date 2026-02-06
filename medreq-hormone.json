@@ -1,0 +1,11 @@
+{
+  "resourceType": "MedicationRequest",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "text": "Hormone therapy (endocrine therapy)"
+  },
+  "subject": { "reference": "Patient/1000" },
+  "reasonReference": [ { "reference": "Condition/1001" } ],
+  "authoredOn": "2020-06-01"
+}

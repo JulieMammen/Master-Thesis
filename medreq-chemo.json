@@ -1,0 +1,11 @@
+{
+  "resourceType": "MedicationRequest",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "text": "Chemotherapy (regimen not specified)"
+  },
+  "subject": { "reference": "Patient/1000" },
+  "reasonReference": [ { "reference": "Condition/1001" } ],
+  "authoredOn": "2020-02-10"
+}

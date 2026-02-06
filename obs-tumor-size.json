@@ -1,0 +1,22 @@
+{
+  "resourceType": "Observation",
+  "status": "final",
+  "category": [
+    { "coding": [ { "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "exam" } ] }
+  ],
+  "code": {
+    "coding": [
+      { "system": "http://loinc.org", "code": "21889-1", "display": "Tumor size" }
+    ],
+    "text": "Tumor size"
+  },
+  "subject": { "reference": "Patient/1000" },
+  "focus": [ { "reference": "Condition/1001" } ],
+  "effectiveDateTime": "2020-01-15",
+  "valueQuantity": {
+    "value": 2.4,
+    "unit": "cm",
+    "system": "http://unitsofmeasure.org",
+    "code": "cm"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "resourceType": "Observation",
+  "status": "final",
+  "category": [
+    { "coding": [ { "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "laboratory" } ] }
+  ],
+  "code": {
+    "coding": [ { "system": "http://loinc.org", "code": "48676-1", "display": "HER2 [Interpretation] in Tissue" } ],
+    "text": "HER2 status"
+  },
+  "subject": { "reference": "Patient/1000" },
+  "focus": [ { "reference": "Condition/1001" } ],
+  "effectiveDateTime": "2020-01-20",
+  "valueCodeableConcept": {
+    "coding": [ { "system": "http://snomed.info/sct", "code": "260385009", "display": "Negative" } ],
+    "text": "Negative"
+  }
+}
