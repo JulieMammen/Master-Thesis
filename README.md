@@ -248,3 +248,42 @@ Reusability across analytic contexts
 
 These limitations motivate the transformation of the same clinical facts into FHIR mCODE, which is explored in subsequent phases
 
+## Phase 2
+```
+phase-2/
+  fhir/
+    patient-0985.bundle.json
+  validation/
+    patient-0985.validator.r4.txt
+    README.md
+patient-0985.bundle.json = your working bundle
+```
+
+patient-0985.validator.r4.txt = the validator output (proof)
+
+validation/README.md = describes what the output means
+
+#### Validator Code
+```
+& "C:\Users\julie\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin\java.exe" -jar tools/validator_cli.jar phase-2\fhir\patient-0985.bundle.json -version 4.0.1 > phase-2\validation\patient-0985.validator.r4.txt
+```
+
+#### Result summary
+
+Errors: 0
+
+Warnings: 7
+
+Notes: 2
+
+#### Interpretation 
+
+0 errors indicates the bundle is syntactically valid FHIR R4 and meets required constraints for the profiles used.
+
+Warnings are expected in real-world FHIR pipelines and commonly reflect best-practice guidance (e.g., missing narrative, recommended value-set membership, optional terminology bindings).
+
+For this project, Phase 2 emphasizes structural mCODE alignment rather than complete terminology binding. Terminology completeness is addressed as a limitation and discussion point.
+
+    
+
+
