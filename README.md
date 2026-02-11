@@ -368,4 +368,18 @@ Interpretation
 ```
 This phase demonstrates that registry-style cancer abstract data can be transformed into syntactically valid, mCODE IG–validated FHIR Bundles at scale, supporting downstream interoperability and analytic use cases.
 ```
+#### Phase 2 IN A NUTSHELL
+✅ Generated 1000 bundles
 
+✅ Validated against base FHIR
+
+✅ Validated first 25 against mCODE IG
+
+✅ Got 0 errors (only best-practice warning
+
+### Phase 3- Analytics Comparison
+A) Registry-style SQL analytics
+
+vs
+
+B) FHIR-based resource analytics
