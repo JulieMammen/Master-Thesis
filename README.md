@@ -315,10 +315,11 @@ Naming convention: patient-0001.bundle.json, patient-0002.bundle.json, ...
 mCODE IG Validation
 Validator
 
+```
 Tool: HL7 FHIR Validator CLI (tools/validator_cli.jar)
 
 FHIR version: 4.0.1 (R4)
-```
+
 IG: hl7.fhir.us.mcode#4.0.0
 
 & "C:\Users\julie\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin\java.exe" `
