@@ -301,7 +301,7 @@ Using a synthetic NAACCR-style breast cancer dataset (`breast_registry_synth_100
 - `phase-2/scripts/generate_mcode_bundles.py`
 
 ### Command (example)
-```powershell
+```
 & C:/Python313/python.exe phase-2/scripts/generate_mcode_bundles.py
 
 Output
@@ -309,6 +309,8 @@ Output
 Generated bundles directory: phase-2/fhir_generated/
 
 Naming convention: patient-0001.bundle.json, patient-0002.bundle.json, ...
+```
+
 
 mCODE IG Validation
 Validator
@@ -316,7 +318,7 @@ Validator
 Tool: HL7 FHIR Validator CLI (tools/validator_cli.jar)
 
 FHIR version: 4.0.1 (R4)
-
+```
 IG: hl7.fhir.us.mcode#4.0.0
 
 & "C:\Users\julie\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin\java.exe" `
@@ -324,7 +326,10 @@ IG: hl7.fhir.us.mcode#4.0.0
   phase-2\fhir_generated\patient-0001.bundle.json `
   -version 4.0.1 `
   -ig hl7.fhir.us.mcode#4.0.0
+```
+
 #### Validate a batch of 25
+```
 New-Item -ItemType Directory -Force phase-2\validation\mcode_ig\logs2 | Out-Null
 
 foreach ($n in 1..25) {
@@ -339,11 +344,14 @@ foreach ($n in 1..25) {
     -ig hl7.fhir.us.mcode#4.0.0 `
     | Out-File -Encoding utf8 $log
 }
+```
 Results (Sample: first 25 patients)
 
 A summary CSV was generated from validation logs:
 
+```
 phase-2/validation/mcode_ig/mcode_ig_validation_summary_25.csv
+```
 
 Observed results (patients 0001–0017):
 
@@ -357,4 +365,7 @@ Warnings were primarily best-practice recommendations (e.g., narrative text not 
 
 Interpretation
 
+```
 This phase demonstrates that registry-style cancer abstract data can be transformed into syntactically valid, mCODE IG–validated FHIR Bundles at scale, supporting downstream interoperability and analytic use cases.
+```
+
