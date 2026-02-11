@@ -1,4 +1,4 @@
-# Phase 2 — mCODE FHIR Patient Bundles (Draft)
+# Phase 2 — mCODE FHIR Patient Bundles 
 
 This folder contains draft HL7 FHIR R4 JSON Bundles representing registry-style breast cancer data transformed into mCODE-aligned resources.
 
