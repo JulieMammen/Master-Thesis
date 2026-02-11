@@ -284,6 +284,77 @@ Warnings are expected in real-world FHIR pipelines and commonly reflect best-pra
 
 For this project, Phase 2 emphasizes structural mCODE alignment rather than complete terminology binding. Terminology completeness is addressed as a limitation and discussion point.
 
-    
+ # Phase 2 — Registry → mCODE FHIR Generation & Validation
 
+## Overview
+This phase operationalizes registry-to-mCODE transformation at scale.
 
+Using a synthetic NAACCR-style breast cancer dataset (`breast_registry_synth_1000.csv`), patient-level FHIR Bundles were generated using a Python script and validated using the HL7 FHIR Validator CLI against the HL7 US mCODE Implementation Guide.
+
+## Inputs
+- Source dataset: `breast_registry_synth_1000.csv`
+- Data dictionary: `breast_registry_synth_1000_data_dictionary.md`
+
+## Bundle Generation
+
+### Script
+- `phase-2/scripts/generate_mcode_bundles.py`
+
+### Command (example)
+```powershell
+& C:/Python313/python.exe phase-2/scripts/generate_mcode_bundles.py
+
+Output
+
+Generated bundles directory: phase-2/fhir_generated/
+
+Naming convention: patient-0001.bundle.json, patient-0002.bundle.json, ...
+
+mCODE IG Validation
+Validator
+
+Tool: HL7 FHIR Validator CLI (tools/validator_cli.jar)
+
+FHIR version: 4.0.1 (R4)
+
+IG: hl7.fhir.us.mcode#4.0.0
+
+& "C:\Users\julie\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin\java.exe" `
+  -jar tools/validator_cli.jar `
+  phase-2\fhir_generated\patient-0001.bundle.json `
+  -version 4.0.1 `
+  -ig hl7.fhir.us.mcode#4.0.0
+#### Validate a batch of 25
+New-Item -ItemType Directory -Force phase-2\validation\mcode_ig\logs2 | Out-Null
+
+foreach ($n in 1..25) {
+  $id = $n.ToString("0000")
+  $in = "phase-2\fhir_generated\patient-$id.bundle.json"
+ ls
+  $log = "phase-2\validation\mcode_ig\logs2\patient-$id.mcode-ig.txt"
+
+  & "C:\Users\julie\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin\java.exe" `
+    -jar tools/validator_cli.jar $in `
+    -version 4.0.1 `
+    -ig hl7.fhir.us.mcode#4.0.0 `
+    | Out-File -Encoding utf8 $log
+}
+Results (Sample: first 25 patients)
+
+A summary CSV was generated from validation logs:
+
+phase-2/validation/mcode_ig/mcode_ig_validation_summary_25.csv
+
+Observed results (patients 0001–0017):
+
+Errors: 0
+
+Warnings: ~18–20 per bundle
+
+Notes: 0
+
+Warnings were primarily best-practice recommendations (e.g., narrative text not present) and did not represent structural or mCODE IG conformance failures.
+
+Interpretation
+
+This phase demonstrates that registry-style cancer abstract data can be transformed into syntactically valid, mCODE IG–validated FHIR Bundles at scale, supporting downstream interoperability and analytic use cases.
