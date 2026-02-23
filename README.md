@@ -299,11 +299,16 @@ Using a synthetic NAACCR-style breast cancer dataset (`breast_registry_synth_100
 ## Bundle Generation
 
 ### Script
-- `phase-2/scripts/generate_mcode_bundles.py`
+```
+phase-2/scripts/generate_mcode_bundles.py
+
+```
 
 ### Command (example)
 ```
 & C:/Python313/python.exe phase-2/scripts/generate_mcode_bundles.py
+
+```
 
 Output
 
@@ -316,13 +321,13 @@ Naming convention: patient-0001.bundle.json, patient-0002.bundle.json, ...
 mCODE IG Validation
 Validator
 
-```
-Tool: HL7 FHIR Validator CLI (tools/validator_cli.jar)
+
+### : HL7 FHIR Validator CLI (tools/validator_cli.jar)
 
 FHIR version: 4.0.1 (R4)
 
 IG: hl7.fhir.us.mcode#4.0.0
-
+```
 & "C:\Users\julie\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin\java.exe" `
   -jar tools/validator_cli.jar `
   phase-2\fhir_generated\patient-0001.bundle.json `
@@ -333,7 +338,9 @@ IG: hl7.fhir.us.mcode#4.0.0
 #### Validate a batch of 25
 ```
 New-Item -ItemType Directory -Force phase-2\validation\mcode_ig\logs2 | Out-Null
+```
 
+```
 foreach ($n in 1..25) {
   $id = $n.ToString("0000")
   $in = "phase-2\fhir_generated\patient-$id.bundle.json"
@@ -346,13 +353,15 @@ foreach ($n in 1..25) {
     -ig hl7.fhir.us.mcode#4.0.0 `
     | Out-File -Encoding utf8 $log
 }
-```
-Results (Sample: first 25 patients)
 
-A summary CSV was generated from validation logs:
+```
+
+
+# A summary CSV was generated from validation logs:
 
 ```
 phase-2/validation/mcode_ig/mcode_ig_validation_summary_25.csv
+
 ```
 
 Observed results (patients 0001–0017):
@@ -365,9 +374,8 @@ Notes: 0
 
 Warnings were primarily best-practice recommendations (e.g., narrative text not present) and did not represent structural or mCODE IG conformance failures.
 
-Interpretation
+# Interpretation
 
-```
 This phase demonstrates that registry-style cancer abstract data can be transformed into syntactically valid, mCODE IG–validated FHIR Bundles at scale, supporting downstream interoperability and analytic use cases.
 
 #### Phase 2 IN A NUTSHELL
@@ -497,10 +505,12 @@ for name, labels in MARKERS.items():
 
 ```
  phase-3\scripts\analyze_biomarkers_from_fhir.py
+ 
 ```
 
 ```
 curl -s "http://localhost:8085/fhir/Observation?_id=obs-ds-2020,obs-ds-2021,obs-ds-2022"
+
 ```
 
 ```
@@ -508,7 +518,7 @@ curl -s "http://localhost:8085/fhir/Observation?subject=Patient/pat-0001&code=ht
 
 ```
 
-## 3) Commit + push to GitHub (PowerShell, from repo root)
+## Commit + push to GitHub (PowerShell, from repo root)
 
 
 
