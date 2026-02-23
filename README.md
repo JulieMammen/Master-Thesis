@@ -384,6 +384,43 @@ A) Registry-style SQL analytics
 vs
 
 B) FHIR-based resource analytics
+# Phase 3 — Longitudinal Disease Status (FHIR/mCODE Demonstration)
+
+## Goal
+Demonstrate how FHIR/mCODE supports longitudinal oncology analytics by representing **multiple time-stamped disease status observations** per patient (time-series data). This enables analyses such as status transitions and time-to-progression, which are difficult or infeasible using flat registry-style abstractions without redesign.
+
+## Environment
+- HAPI FHIR server running locally (Docker)
+- FHIR base URL used in this project: `http://localhost:8085/fhir/`
+
+## Patient / Condition
+- Patient: `Patient/pat-0001`
+- Primary cancer condition: `Condition/condition-0001`
+
+## What was added
+Three disease status Observations for the same patient, all using LOINC `69233-9` ("Disease status"):
+
+| Observation ID | Effective Date | Value |
+|---|---:|---|
+| `obs-ds-2020` | 2020-01-15 | Stable disease |
+| `obs-ds-2021` | 2021-07-30 | No evidence of disease |
+| `obs-ds-2022` | 2022-07-30 | Progressive disease |
+
+These Observations are linked to the primary cancer condition using `focus: Condition/condition-0001`.
+
+## Files
+- `phase-3/fhir/longitudinal/pat-0001-cancer-disease-status.bundle.json`
+- `phase-3/fhir/longitudinal/pat-0001-add-2-more-status.bundle.json`
+
+## Load into HAPI (transactions)
+```bash
+curl -X POST "http://localhost:8085/fhir/" \
+  -H "Content-Type: application/fhir+json" \
+  --data-binary "@./phase-3/fhir/longitudinal/pat-0001-cancer-disease-status.bundle.json"
+
+curl -X POST "http://localhost:8085/fhir/" \
+  -H "Content-Type: application/fhir+json" \
+  --data-binary "@./phase-3/fhir/longitudinal/pat-0001-add-2-more-status.bundle.json"
 
 ```
 code phase-3\scripts\analyze_biomarkers_from_fhir.py
@@ -455,6 +492,23 @@ for name, labels in MARKERS.items():
 ```
 python phase-3\scripts\analyze_biomarkers_from_fhir.py
 ```
+```
+curl -s "http://localhost:8085/fhir/Observation?_id=obs-ds-2020,obs-ds-2021,obs-ds-2022"
+```
+```
+curl -s "http://localhost:8085/fhir/Observation?subject=Patient/pat-0001&code=http://loinc.org|69233-9&_sort=date&_count=50"
+```
+```
+
+
+---
+
+## 3) Commit + push to GitHub (PowerShell, from repo root)
+
+
+```
+git status
+
 ```
 Phase 3 – FHIR-Based Biomarker Analytics
 -----------------------------------------
