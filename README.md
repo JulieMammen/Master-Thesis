@@ -106,13 +106,14 @@ What is the distribution of breast cancer stage at diagnosis?
 Cancer registries are optimized for **population-level surveillance** and descriptive epidemiology. Stage distribution is a core strength of registry data and serves as a baseline validation check.
 
 ### SQL
-```sql
+```
 SELECT
   stage_group,
   COUNT(*) AS patient_count
 FROM breast_registry
 GROUP BY stage_group
 ORDER BY patient_count DESC;
+
 ```
 
 ### Observation
@@ -409,21 +410,25 @@ Three disease status Observations for the same patient, all using LOINC `69233-9
 These Observations are linked to the primary cancer condition using `focus: Condition/condition-0001`.
 
 ## Files
+```
 - `phase-3/fhir/longitudinal/pat-0001-cancer-disease-status.bundle.json`
 - `phase-3/fhir/longitudinal/pat-0001-add-2-more-status.bundle.json`
+ ```
+ 
 
 ## Load into HAPI (transactions)
-```bash
+```
 curl -X POST "http://localhost:8085/fhir/" \
   -H "Content-Type: application/fhir+json" \
   --data-binary "@./phase-3/fhir/longitudinal/pat-0001-cancer-disease-status.bundle.json"
-
+```
+```
 curl -X POST "http://localhost:8085/fhir/" \
   -H "Content-Type: application/fhir+json" \
   --data-binary "@./phase-3/fhir/longitudinal/pat-0001-add-2-more-status.bundle.json"
-
 ```
-code phase-3\scripts\analyze_biomarkers_from_fhir.py
+```
+phase-3\scripts\analyze_biomarkers_from_fhir.py
 ```
 
 ```
@@ -489,33 +494,34 @@ for name, labels in MARKERS.items():
         print(f"{s:8}  {count:4}  ({pct}%)")
 ```
 
+
 ```
-python phase-3\scripts\analyze_biomarkers_from_fhir.py
+ phase-3\scripts\analyze_biomarkers_from_fhir.py
 ```
+
 ```
 curl -s "http://localhost:8085/fhir/Observation?_id=obs-ds-2020,obs-ds-2021,obs-ds-2022"
 ```
+
 ```
 curl -s "http://localhost:8085/fhir/Observation?subject=Patient/pat-0001&code=http://loinc.org|69233-9&_sort=date&_count=50"
-```
-```
 
-
----
+```
 
 ## 3) Commit + push to GitHub (PowerShell, from repo root)
 
 
-```
-git status
 
-```
+## git status
+
+
 Phase 3 – FHIR-Based Biomarker Analytics
 -----------------------------------------
 
 Dataset: 1000 synthetic breast cancer patients
 Source: phase-2/fhir_generated/
 
+```
 ER Status:
 Positive: 739 (73.9%)
 Negative: 237 (23.7%)
@@ -534,6 +540,7 @@ Unknown:    5 (0.5%)
 Result:
 FHIR-derived analytics match registry-level SQL distributions,
 demonstrating preservation of analytic integrity after mCODE transformation
+
 ```
 
         
