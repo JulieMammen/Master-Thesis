@@ -450,7 +450,8 @@ for name, labels in MARKERS.items():
         count = c.get(s, 0)
         pct = round((count / total) * 100, 2) if total else 0
         print(f"{s:8}  {count:4}  ({pct}%)")
-  ```
+```
+
 ```
 python phase-3\scripts\analyze_biomarkers_from_fhir.py
 ```
