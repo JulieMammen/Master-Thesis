@@ -393,7 +393,31 @@ A) Registry-style SQL analytics
 vs
 
 B) FHIR-based resource analytics
-# Phase 3 — Longitudinal Disease Status (FHIR/mCODE Demonstration)
+Phase 3 – FHIR-Based Biomarker Analytics [Checking FHIR mCode mapping works same as Registry based analytics]
+
+Dataset: 1000 synthetic breast cancer patients
+Source: phase-2/fhir_generated/
+
+```
+ER Status:
+Positive: 739 (73.9%)
+Negative: 237 (23.7%)
+Unknown:  24 (2.4%)
+
+PR Status:
+Positive: 615 (61.5%)
+Negative: 344 (34.4%)
+Unknown:  41 (4.1%)
+
+HER2 Status:
+Positive: 152 (15.2%)
+Negative: 797 (79.7%)
+Unknown:    5 (0.5%)
+```
+#### Result:
+FHIR-derived analytics match registry-level SQL distributions,
+demonstrating preservation of analytic integrity after mCODE transformation
+## Phase 3 — Longitudinal Disease Status (FHIR/mCODE Demonstration)
 
 ## Goal
 Demonstrate how FHIR/mCODE supports longitudinal oncology analytics by representing **multiple time-stamped disease status observations** per patient (time-series data). This enables analyses such as status transitions and time-to-progression, which are difficult or infeasible using flat registry-style abstractions without redesign.
@@ -505,55 +529,139 @@ for name, labels in MARKERS.items():
 
 ```
  phase-3\scripts\analyze_biomarkers_from_fhir.py
- 
-```
+ ```
 
 ```
 curl -s "http://localhost:8085/fhir/Observation?_id=obs-ds-2020,obs-ds-2021,obs-ds-2022"
-
 ```
 
 ```
 curl -s "http://localhost:8085/fhir/Observation?subject=Patient/pat-0001&code=http://loinc.org|69233-9&_sort=date&_count=50"
+```
+
+## Commit + push to GitH
+
+```
+curl.exe -s "http://localhost:8085/fhir/Observation?subject=Patient/pat-0001&code=97509-4&_count=50"
+```
+### Results
+Patient = pat-0001
+
+Disease status Observation
+
+Date = 2021-07-30
+
+Value = “No evidence of disease”
+
+Code includes LOINC 69233-9 (great for searching)
+
+
+### Step 1  Create a new transaction bundle file with 2 more status observations
+
+```
+phase-3\fhir\longitudinal\pat-0001-add-2-more-status.bundle.json  
 
 ```
 
-## Commit + push to GitHub (PowerShell, from repo root)
+```
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-ds-2020",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "69233-9",
+              "display": "Disease status"
+            }
+          ],
+          "text": "Cancer disease status"
+        },
+        "subject": {
+          "reference": "Patient/pat-0001"
+        },
+        "focus": [
+          {
+            "reference": "Condition/condition-0001"
+          }
+        ],
+        "effectiveDateTime": "2020-01-15T00:00:00+00:00",
+        "valueCodeableConcept": {
+          "text": "Stable disease"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/obs-ds-2020"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-ds-2022",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "69233-9",
+              "display": "Disease status"
+            }
+          ],
+          "text": "Cancer disease status"
+        },
+        "subject": {
+          "reference": "Patient/pat-0001"
+        },
+        "focus": [
+          {
+            "reference": "Condition/condition-0001"
+          }
+        ],
+        "effectiveDateTime": "2022-07-30T00:00:00+00:00",
+        "valueCodeableConcept": {
+          "text": "Progressive disease"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/obs-ds-2022"
+      }
+    }
+  ]
+}
+```
+### Step 2- Upload that new bundle to HAPI
+```
+curl.exe -X POST "http://localhost:8085/fhir/" -H "Content-Type: application/fhir+json" --data-binary "@.\phase-3\fhir\longitudinal\pat-0001-add-2-more-status.bundle.json"
+```
+### Three longitudinal disease-status events for the same patient:
+obs-ds-2020 (Stable disease)
 
+obs-ds-2021 (No evidence of disease)
 
+obs-ds-2022 (Progressive disease)
 
-## git status
-
-
-Phase 3 – FHIR-Based Biomarker Analytics
------------------------------------------
-
-Dataset: 1000 synthetic breast cancer patients
-Source: phase-2/fhir_generated/
+#### Step 3 : Run the thesis “longitudinal proof” search
 
 ```
-ER Status:
-Positive: 739 (73.9%)
-Negative: 237 (23.7%)
-Unknown:  24 (2.4%)
-
-PR Status:
-Positive: 615 (61.5%)
-Negative: 344 (34.4%)
-Unknown:  41 (4.1%)
-
-HER2 Status:
-Positive: 152 (15.2%)
-Negative: 797 (79.7%)
-Unknown:    5 (0.5%)
-
-Result:
-FHIR-derived analytics match registry-level SQL distributions,
-demonstrating preservation of analytic integrity after mCODE transformation
+curl.exe -s "http://localhost:8085/fhir/Observation?subject=Patient/pat-0001&code=http://loinc.org|69233-9&_sort=date&_count=50"
 
 ```
+##### True longitudinal disease-status timeline in HAPI for the same patient, with multiple dated Observations under the same LOINC code 69233-9. This is exactly the “mCODE/FHIR enables longitudinal analytics” proof that your Phase 1 thesis framing calls for
+What you have for Patient/pat-0001 (the clean 3-point storyline)
 
-        
+2020-01-15 → Stable disease (obs-ds-2020)
+
+2021-07-30 → No evidence of disease (obs-ds-2021)
+
+2022-07-30 → Progressive disease (obs-ds-2022)
 
 
 
