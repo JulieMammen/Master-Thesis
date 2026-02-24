@@ -664,6 +664,7 @@ What you have for Patient/pat-0001 (the clean 3-point storyline)
 2022-07-30 → Progressive disease (obs-ds-2022)
 
 ### Phase 3b
+
 ```
 phase-3/
 │
@@ -815,7 +816,7 @@ python .\phase-3\scripts\phase3_analysis.py
 
 ```
 ### Longitudinal Outcome Analysis Using mCODE
-Objective
+#### Objective
 
 Demonstrate computable longitudinal recurrence analysis using mCODE-aligned FHIR resources.
 
@@ -831,7 +832,7 @@ Computed Endpoint
 
 Recurrence defined as presence of "Recurrent disease" following prior "No evidence of disease" status.
 
-Results
+### Results
 
 Total Patients: 200
 
@@ -845,7 +846,7 @@ Chemo-only: n=100
 
 Chemo + Immunotherapy: n=100
 
-Group differences reflect deterministic simulation design and are not intended to model therapeutic efficacy. This experiment demonstrates that longitudinal, exposure-stratified outcome analysis is computable directly from mCODE FHIR resources without schema redesign
+#### Group differences reflect deterministic simulation design and are not intended to model therapeutic efficacy. This experiment demonstrates that longitudinal, exposure-stratified outcome analysis is computable directly from mCODE FHIR resources without schema redesign
 
 mCODE supports longitudinal modeling
 
@@ -855,7 +856,7 @@ Exposure-outcome stratification is possible
 
 No additional analytic schema required
 
-📘 Registry vs mCODE Longitudinal Comparison Argument
+#### Registry vs mCODE Longitudinal Comparison Argument
 
 Comparative Evaluation: Traditional Cancer Registry Data vs. mCODE FHIR for Longitudinal Outcome Analysis
 
@@ -919,7 +920,7 @@ This recurrence was not stored as a static variable; it was computed from struct
 
 ### 3. Treatment Exposure Stratification
 
-In registry-based data:
+#### In registry-based data:
 
 First course of treatment is typically captured in summary form.
 
@@ -927,7 +928,7 @@ Subsequent treatment exposures are inconsistently structured.
 
 Linking treatment timing to outcome transitions requires complex preprocessing.
 
-In mCODE:
+#### In mCODE:
 
 Treatment exposure is represented via MedicationRequest resources.
 
@@ -937,7 +938,7 @@ Exposure-outcome relationships are computable using resource references.
 
 In the simulated cohort, patients were stratified into:
 
-Chemotherapy only
+#### Chemotherapy only
 
 Chemotherapy plus immunotherapy
 
@@ -955,7 +956,7 @@ Adding new longitudinal variables requires schema modification
 
 Genomic data integration is limited or external
 
-mCODE FHIR model:
+#### mCODE FHIR model:
 
 Modular resource-based architecture
 
@@ -977,7 +978,7 @@ Optimized for standardized aggregation
 
 Limited native support for dynamic, time-dependent modeling
 
-mCODE FHIR:
+##### mCODE FHIR:
 
 Designed for interoperability and computability
 
@@ -992,4 +993,327 @@ The Phase 3 experiment demonstrates that recurrence detection and treatment stra
 ### While registry datasets remain essential for population-level surveillance, their structural design limits dynamic longitudinal modeling. The mCODE FHIR architecture enables event-based, time-indexed computability, which aligns more closely with modern real-world evidence and precision oncology research workflows. This architectural distinction suggests that mCODE enhances analytic capability beyond what is achievable with traditional registry data elements alone
 
 
+#### For the final paper  What would this analysis look like in a NAACCR-style flat registry?
 
+In a NAACCR-like table, your dataset is typically one row per tumor (or per patient-tumor) with columns for diagnosis, stage, biomarkers, first-course treatment, and limited follow-up. To replicate what you just did with mCODE longitudinal Observations, you’d need to manufacture longitudinal structure from fields that are usually not event-based.
+
+### Implementation pattern in registry SQL (conceptually):
+
+One row = baseline snapshot
+
+Recurrence is either:
+
+not present, or
+
+present as a single indicator/date (often incomplete), or
+
+embedded in “subsequent therapy”/follow-up notes that aren’t standardized
+
+#### So the registry version of your Phase 3 logic becomes:
+
+Define “NED” using proxy fields (often not explicitly available)
+
+Define recurrence using a single recurrence indicator/date (if present)
+
+Calculate time-to-recurrence using one date subtraction
+
+Stratify by treatment based on first-course treatment summary columns
+
+#### Key limitation: you cannot model trajectories (stable → NED → recur) because the registry row does not store repeated disease-status states with timestamps.
+
+#### Could recurrence after “NED” be derived in registry data?
+
+Usually not directly—and if it can be done, it’s typically inferred.
+
+To compute “recurrence after NED,” you need two things:
+
+1) evidence of a “disease-free” state at some timepoint
+
+2) a later recurrence event with a date
+
+Most NAACCR-style datasets do not store a dated “NED” state as a structured data element. Even when recurrence is captured, “NED date” is rarely present as a computable event.
+
+So you end up with proxy definitions like:
+
+- assume post-treatment implies NED (not always true)
+
+- use “no evidence of disease” from follow-up text (often not standardized)
+
+- use “disease status” fields if present (often not repeated over time)
+
+##### Bottom line: recurrence after NED is often under-reported, inconsistently recorded, or not computable without additional clinical data sources.(mCODE/FHIR wins: you can represent and query multiple dated disease-status Observations per patient)
+#### Would time-to-event require redesign in registry format?
+
+##### Yes, for anything beyond a single event date.
+
+If the registry has a single “recurrence date,” you can calculate:
+
+- time from diagnosis → recurrence
+
+But for what you’re aiming to show (and what mCODE supports):
+
+- time from NED → recurrence
+
+- time from treatment start → progression
+
+- multiple episodes (recur, respond, progress again)
+
+ Would need to redesign the registry structure into an event table, e.g.:
+
+patient_id
+
+event_type (NED, recurrence, progression, response)
+
+event_date
+
+source (abstracted, imaging, clinical note)
+
+related_treatment_episode_id
+#### That is essentially recreating what FHIR already provides natively: multiple time-stamped resources per patient.
+##### “Registry data can support some time-to-event endpoints only when event dates exist as single fields. For longitudinal endpoints requiring multiple intermediate states (e.g., NED → recurrence), the flat registry model must be restructured into an event-based design—whereas mCODE/FHIR supports this natively through repeated time-indexed Observations.”
+
+#### Phase 3c
+Phase 3 : time-to-recurrence in months (mCODE)
+
+````
+import json
+from collections import defaultdict
+from pathlib import Path
+
+# Resolve data files relative to this script so the script can be run from any cwd
+here = Path(__file__).resolve().parent
+root = here.parent
+ds_path = here / "data" / "phase3_disease_status.json"
+
+# ---------- Load Disease Status Observations ----------
+def load_json(path: Path):
+    """Read a JSON file and handle common BOM/UTF-16/UTF-8 variants robustly."""
+    b = path.read_bytes()
+    # BOM-aware decoding
+    if b.startswith(b"\xEF\xBB\xBF"):
+        text = b.decode("utf-8-sig")
+    elif b.startswith(b"\xFF\xFE") or b.startswith(b"\xFE\xFF"):
+        # likely UTF-16 LE/BE
+        text = b.decode("utf-16")
+    else:
+        # try utf-8, fall back to latin-1 to avoid crashes
+        try:
+            text = b.decode("utf-8")
+        except Exception:
+            text = b.decode("latin-1")
+    return json.loads(text)
+
+
+ds_bundle = load_json(ds_path)
+
+patient_status = defaultdict(list)
+
+for entry in ds_bundle.get("entry", []):
+    obs = entry.get("resource", {})
+    if obs.get("resourceType") != "Observation":
+        continue
+
+    subject = obs.get("subject", {}).get("reference", "")
+    if not subject.startswith("Patient/"):
+        continue
+
+    patient_id = subject.split("/")[-1]
+    date = obs.get("effectiveDateTime")
+    status = obs.get("valueCodeableConcept", {}).get("text")
+
+    if date and status:
+        patient_status[patient_id].append((date, status))
+
+# Sort each patient's timeline
+for pid in patient_status:
+    patient_status[pid].sort()
+
+from datetime import datetime
+
+def parse_dt(s):
+    # works for "2022-07-30T00:00:00+00:00"
+    return datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+ttr_months = []
+for pid, timeline in patient_status.items():
+    # find first NED and first recurrence after it
+    ned_dates = [parse_dt(d) for d, s in timeline if s == "No evidence of disease"]
+    rec_dates = [parse_dt(d) for d, s in timeline if s == "Recurrent disease"]
+    if not ned_dates or not rec_dates:
+        continue
+    ned = min(ned_dates)
+    rec_after = [r for r in rec_dates if r > ned]
+    if not rec_after:
+        continue
+    rec = min(rec_after)
+    months = (rec - ned).days / 30.44
+    ttr_months.append(months)
+
+if ttr_months:
+    avg_ttr = sum(ttr_months) / len(ttr_months)
+    results_append_marker = True
+    # We'll append into results later after results list exists; store values in variables
+    _ttr_summary = ["", "Time-to-Recurrence (from first NED):", f"Patients with computable TTR: {len(ttr_months)}", f"Mean TTR (months): {avg_ttr:.2f}", f"Median TTR (months): {sorted(ttr_months)[len(ttr_months)//2]:.2f}"]
+else:
+    _ttr_summary = []
+
+# ---------- Load MedicationRequests (Treatment Exposure) ----------
+mr_path = here / "data" / "phase3_medreq.json"
+mr_bundle = load_json(mr_path)
+
+has_immuno = defaultdict(bool)
+
+for entry in mr_bundle.get("entry", []):
+    mr = entry.get("resource", {})
+    if mr.get("resourceType") != "MedicationRequest":
+        continue
+
+    subject = mr.get("subject", {}).get("reference", "")
+    if not subject.startswith("Patient/"):
+        continue
+
+    patient_id = subject.split("/")[-1]
+    med_text = mr.get("medicationCodeableConcept", {}).get("text", "").lower()
+
+    if "immunotherapy" in med_text:
+        has_immuno[patient_id] = True
+
+# ---------- Compute recurrence + stratify ----------
+total_patients = len(patient_status)
+
+group_counts = {
+    "chemo_only": {"n": 0, "recur": 0},
+    "chemo_plus_immuno": {"n": 0, "recur": 0}
+}
+
+for pid, timeline in patient_status.items():
+    statuses = [s for d, s in timeline]
+    recurred = ("Recurrent disease" in statuses)
+
+    if has_immuno[pid]:
+        grp = "chemo_plus_immuno"
+    else:
+        grp = "chemo_only"
+
+    group_counts[grp]["n"] += 1
+    if recurred:
+        group_counts[grp]["recur"] += 1
+
+# ---------- Print results ----------
+overall_recur = sum(1 for pid, tl in patient_status.items() if "Recurrent disease" in [s for d, s in tl])
+overall_rate = (overall_recur / total_patients * 100) if total_patients else 0
+
+results = []
+
+results.append("=== Overall ===")
+results.append(f"Total Patients: {total_patients}")
+results.append(f"Patients with Recurrence: {overall_recur}")
+results.append(f"Recurrence Rate (%): {round(overall_rate, 2)}")
+results.append("")
+results.append("=== By Treatment Exposure (structural demo) ===")
+
+for grp in ["chemo_only", "chemo_plus_immuno"]:
+    n = group_counts[grp]["n"]
+    r = group_counts[grp]["recur"]
+    rate = (r / n * 100) if n else 0
+    results.append(f"{grp}: n={n}, recurrences={r}, recurrence_rate={rate:.2f}%")
+
+# If we computed TTR, append its summary now
+if '_ttr_summary' in globals() and _ttr_summary:
+    results.extend(_ttr_summary)
+
+# Write to file
+with open("phase3_results.txt", "w", encoding="utf-8") as f:
+    for line in results:
+        f.write(line + "\n")
+
+# Also print to console
+for line in results:
+    print(line)
+
+```
+##### Time-to-Recurrence (TTR)
+
+Time-to-recurrence was computed as the interval between first documented “No evidence of disease” and subsequent “Recurrent disease” Observation.
+
+
+Phase 3 – Longitudinal Outcome Analysis Using mCODE FHIR
+
+#### Cohort Description
+
+A simulated cohort of 200 breast cancer patients was generated using mCODE-aligned FHIR transaction bundles. Each patient included:
+
+One Patient resource
+
+Three time-indexed CancerDiseaseStatus Observations
+
+Treatment exposure captured via MedicationRequest resources
+
+Disease states were modeled longitudinally as:
+
+Stable disease (baseline)
+
+No evidence of disease (post-treatment)
+
+Follow-up disease status (recurrent or persistent NED)
+
+#### Recurrence Detection
+
+Recurrence was programmatically identified by detecting the presence of a "Recurrent disease" Observation occurring after a documented "No evidence of disease" state.
+
+Results:
+
+Total Patients: 200
+
+Patients with Recurrence: 60
+
+Recurrence Rate: 30.0%
+
+This endpoint was not stored as a static registry field but derived from sequential, time-indexed Observations.
+
+#### Treatment Exposure Stratification
+
+Patients were stratified based on MedicationRequest resources into:
+
+Chemotherapy only (n = 100)
+
+Chemotherapy plus immunotherapy (n = 100)
+
+Recurrence stratification demonstrated that exposure-based outcome analysis can be computed directly from linked FHIR resources without schema redesign.
+
+Observed group recurrence rates:
+
+Chemo-only: 60.0%
+
+Chemo + immunotherapy: 0.0%
+
+Group differences reflect deterministic simulation logic and are not intended to model therapeutic efficacy. This experiment demonstrates analytic capability rather than treatment effect estimation.
+
+#### Time-to-recurrence
+
+##### Results:
+
+Patients with computable TTR: 60
+
+Mean TTR: 11.99 months
+
+Median TTR: 11.99 months
+
+This computation required:
+
+Multiple time-stamped disease state Observations
+
+Ordered event sequencing
+
+Exposure-outcome linkage
+
+Such event-based modeling is natively supported by mCODE’s FHIR resource architecture
+
+#### Phase 3 Summary
+##### Three levels of computability:
+
+- Recurrence detection (derived endpoint)
+
+- Exposure stratification (linked resources)
+
+- Time-to-recurrence (true longitudinal event modeling)
