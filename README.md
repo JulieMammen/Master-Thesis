@@ -1083,17 +1083,16 @@ related_treatment_episode_id
 #### Phase 3c
 Phase 3 : time-to-recurrence in months (mCODE)
 
-````
+```
 import json
 from collections import defaultdict
 from pathlib import Path
-```
-# Resolve data files relative to this script so the script can be run from any cwd
+Resolve data files relative to this script so the script can be run from any cwd
 here = Path(__file__).resolve().parent
 root = here.parent
 ds_path = here / "data" / "phase3_disease_status.json"
 
-#### Load Disease Status Observations ----------
+#### Load Disease Status Observations 
 def load_json(path: Path):
     """Read a JSON file and handle common BOM/UTF-16/UTF-8 variants robustly."""
     b = path.read_bytes()
@@ -1186,7 +1185,7 @@ for entry in mr_bundle.get("entry", []):
     if "immunotherapy" in med_text:
         has_immuno[patient_id] = True
 
-# ---------- Compute recurrence + stratify ----------
+# Compute recurrence + stratify 
 total_patients = len(patient_status)
 
 group_counts = {
@@ -1207,7 +1206,7 @@ for pid, timeline in patient_status.items():
     if recurred:
         group_counts[grp]["recur"] += 1
 
-# ---------- Print results ----------
+#  Print rsults
 overall_recur = sum(1 for pid, tl in patient_status.items() if "Recurrent disease" in [s for d, s in tl])
 overall_rate = (overall_recur / total_patients * 100) if total_patients else 0
 
@@ -1240,12 +1239,7 @@ for line in results:
     print(line)
 
 ```
-##### Time-to-Recurrence (TTR)
-
-Time-to-recurrence was computed as the interval between first documented “No evidence of disease” and subsequent “Recurrent disease” Observation.
-
-
-Phase 3 – Longitudinal Outcome Analysis Using mCODE FHIR
+### Phase 3 – Longitudinal Outcome Analysis Using mCODE FHIR
 
 #### Cohort Description
 
@@ -1297,7 +1291,11 @@ Chemo + immunotherapy: 0.0%
 
 Group differences reflect deterministic simulation logic and are not intended to model therapeutic efficacy. This experiment demonstrates analytic capability rather than treatment effect estimation.
 
-#### Time-to-recurrence
+
+### Time-to-Recurrence (TTR)
+
+Time-to-recurrence was computed as the interval between first documented “No evidence of disease” and subsequent “Recurrent disease” Observation.
+
 
 ##### Results:
 
