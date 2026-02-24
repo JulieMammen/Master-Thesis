@@ -260,13 +260,12 @@ phase-2/
 patient-0985.bundle.json = your working bundle
 ```
 
-patient-0985.validator.r4.txt = the validator output (proof)
 
-validation/README.md = describes what the output means
 
 #### Validator Code
 ```
 & "C:\Users\julie\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin\java.exe" -jar tools/validator_cli.jar phase-2\fhir\patient-0985.bundle.json -version 4.0.1 > phase-2\validation\patient-0985.validator.r4.txt
+
 ```
 
 #### Result summary
@@ -299,7 +298,9 @@ Using a synthetic NAACCR-style breast cancer dataset (`breast_registry_synth_100
 ## Bundle Generation
 
 ### Script
+
 ```
+
 phase-2/scripts/generate_mcode_bundles.py
 
 ```
@@ -315,9 +316,10 @@ Output
 Generated bundles directory: phase-2/fhir_generated/
 
 Naming convention: patient-0001.bundle.json, patient-0002.bundle.json, ...
+
 ```
 
-
+```
 mCODE IG Validation
 Validator
 
@@ -333,11 +335,13 @@ IG: hl7.fhir.us.mcode#4.0.0
   phase-2\fhir_generated\patient-0001.bundle.json `
   -version 4.0.1 `
   -ig hl7.fhir.us.mcode#4.0.0
+
 ```
 
 #### Validate a batch of 25
 ```
 New-Item -ItemType Directory -Force phase-2\validation\mcode_ig\logs2 | Out-Null
+
 ```
 
 ```
@@ -364,39 +368,42 @@ phase-2/validation/mcode_ig/mcode_ig_validation_summary_25.csv
 
 ```
 
-Observed results (patients 0001–0017):
+- Observed results (patients 0001–0017):
 
-Errors: 0
+- Errors: 0
 
-Warnings: ~18–20 per bundle
+- Warnings: ~18–20 per bundle
 
-Notes: 0
+- Notes: 0
 
-Warnings were primarily best-practice recommendations (e.g., narrative text not present) and did not represent structural or mCODE IG conformance failures.
+#### Warnings were primarily best-practice recommendations (e.g., narrative text not present) and did not represent structural or mCODE IG conformance failures.
 
 # Interpretation
 
 This phase demonstrates that registry-style cancer abstract data can be transformed into syntactically valid, mCODE IG–validated FHIR Bundles at scale, supporting downstream interoperability and analytic use cases.
 
 #### Phase 2 IN A NUTSHELL
-Generated 1000 bundles
 
-Validated against base FHIR
+- Generated 1000 bundles
 
-Validated first 25 against mCODE IG
+- Validated against base FHIR
 
-Got 0 errors (only best-practice warning)
+- Validated first 25 against mCODE IG
+
+- Got 0 errors (only best-practice warning)
 
 ### Phase 3- Analytics Comparison
+
 A) Registry-style SQL analytics
 
 vs
 
 B) FHIR-based resource analytics
-Phase 3 – FHIR-Based Biomarker Analytics [Checking FHIR mCode mapping works same as Registry based analytics]
 
-Dataset: 1000 synthetic breast cancer patients
-Source: phase-2/fhir_generated/
+##### Phase 3 – FHIR-Based Biomarker Analytics [Checking FHIR mCode mapping works same as Registry based analytics]
+
+- Dataset: 1000 synthetic breast cancer patients
+- Source: phase-2/fhir_generated/
 
 ```
 ER Status:
@@ -415,9 +422,9 @@ Negative: 797 (79.7%)
 Unknown:    5 (0.5%)
 ```
 #### Result:
-FHIR-derived analytics match registry-level SQL distributions,
-demonstrating preservation of analytic integrity after mCODE transformation
-## Phase 3 — Longitudinal Disease Status (FHIR/mCODE Demonstration)
+FHIR-derived analytics match registry-level SQL distributions, demonstrating preservation of analytic integrity after mCODE transformation
+
+#### Phase 3 — Longitudinal Disease Status (FHIR/mCODE Demonstration)
 
 ## Goal
 Demonstrate how FHIR/mCODE supports longitudinal oncology analytics by representing **multiple time-stamped disease status observations** per patient (time-series data). This enables analyses such as status transitions and time-to-progression, which are difficult or infeasible using flat registry-style abstractions without redesign.
@@ -816,11 +823,12 @@ python .\phase-3\scripts\phase3_analysis.py
 
 ```
 ### Longitudinal Outcome Analysis Using mCODE
+
 #### Objective
 
-Demonstrate computable longitudinal recurrence analysis using mCODE-aligned FHIR resources.
+- Demonstrate computable longitudinal recurrence analysis using mCODE-aligned FHIR resources.
 
-Cohort
+- Cohort
 
 200 simulated breast cancer patients
 
@@ -830,7 +838,7 @@ Treatment exposure captured via MedicationRequest resources
 
 Computed Endpoint
 
-Recurrence defined as presence of "Recurrent disease" following prior "No evidence of disease" status.
+#### Recurrence defined as presence of "Recurrent disease" following prior "No evidence of disease" status
 
 ### Results
 
@@ -848,13 +856,13 @@ Chemo + Immunotherapy: n=100
 
 #### Group differences reflect deterministic simulation design and are not intended to model therapeutic efficacy. This experiment demonstrates that longitudinal, exposure-stratified outcome analysis is computable directly from mCODE FHIR resources without schema redesign
 
-mCODE supports longitudinal modeling
+- mCODE supports longitudinal modeling
 
-Recurrence is computable from time-based Observations
+- Recurrence is computable from time-based Observations
 
-Exposure-outcome stratification is possible
+- Exposure-outcome stratification is possible
 
-No additional analytic schema required
+- No additional analytic schema required
 
 #### Registry vs mCODE Longitudinal Comparison Argument
 
@@ -864,27 +872,27 @@ Comparative Evaluation: Traditional Cancer Registry Data vs. mCODE FHIR for Long
 
 Traditional cancer registry datasets (e.g., NAACCR-based flat files) are primarily designed for standardized reporting, surveillance, and population-level epidemiologic monitoring. Data elements are stored as discrete coded variables in a tabular structure, typically representing:
 
-Primary diagnosis
+- Primary diagnosis
 
-Tumor characteristics at diagnosis
+- Tumor characteristics at diagnosis
 
-First course of treatment
+- First course of treatment
 
-Vital status
+- Vital status
 
-Limited follow-up indicators
+- Limited follow-up indicators
 
 These datasets are fundamentally cross-sectional with limited longitudinal granularity. While follow-up fields exist (e.g., recurrence indicators, last contact date), they are not inherently structured as time-indexed clinical events.
 
 In contrast, mCODE implemented via HL7 FHIR represents cancer-related information as modular, time-stamped resources:
 
-Condition (primary cancer)
+-Condition (primary cancer)
 
-Observation (CancerDiseaseStatus, tumor markers, staging)
+- Observation (CancerDiseaseStatus, tumor markers, staging)
 
-MedicationRequest (systemic therapy)
+- MedicationRequest (systemic therapy)
 
-Procedure (surgical interventions)
+- Procedure (surgical interventions)
 
 Each resource is independently timestamped and linked via references, enabling true longitudinal modeling of disease trajectories.
 
