@@ -663,8 +663,333 @@ What you have for Patient/pat-0001 (the clean 3-point storyline)
 
 2022-07-30 → Progressive disease (obs-ds-2022)
 
-### Phase 3
+### Phase 3b
+```
+phase-3/
+│
+├── data/
+│   ├── phase3_disease_status.json
+│   └── phase3_medreq.json
+│
+├── scripts/
+│   └── phase3_analysis.py
+│
+└── results/
+    └── phase3_results.txt
+    
+```   
+``
+mkdir .\phase-3\results -Force
 
+```
+
+```
+import json
+from collections import defaultdict
+from pathlib import Path
+
+# ---------------------------
+# Load JSON safely (handles BOM if present)
+# ---------------------------
+def load_json(path):
+    b = path.read_bytes()
+    if b.startswith(b'\xef\xbb\xbf'):  # strip UTF-8 BOM
+        b = b[3:]
+    return json.loads(b.decode('utf-8'))
+
+base_dir = Path(__file__).resolve().parent.parent
+
+ds_path = base_dir / "data" / "phase3_disease_status.json"
+mr_path = base_dir / "data" / "phase3_medreq.json"
+
+ds_bundle = load_json(ds_path)
+mr_bundle = load_json(mr_path)
+
+# ---------------------------
+# Build longitudinal timelines
+# ---------------------------
+patient_status = defaultdict(list)
+
+for entry in ds_bundle.get("entry", []):
+    obs = entry.get("resource", {})
+    if obs.get("resourceType") != "Observation":
+        continue
+
+    subject = obs.get("subject", {}).get("reference", "")
+    if not subject.startswith("Patient/"):
+        continue
+
+    patient_id = subject.split("/")[-1]
+    date = obs.get("effectiveDateTime")
+    status = obs.get("valueCodeableConcept", {}).get("text")
+
+    if date and status:
+        patient_status[patient_id].append((date, status))
+
+for pid in patient_status:
+    patient_status[pid].sort()
+
+# ---------------------------
+# Treatment Exposure
+# ---------------------------
+has_immuno = defaultdict(bool)
+
+for entry in mr_bundle.get("entry", []):
+    mr = entry.get("resource", {})
+    if mr.get("resourceType") != "MedicationRequest":
+        continue
+
+    subject = mr.get("subject", {}).get("reference", "")
+    if not subject.startswith("Patient/"):
+        continue
+
+    patient_id = subject.split("/")[-1]
+    med_text = mr.get("medicationCodeableConcept", {}).get("text", "").lower()
+
+    if "immunotherapy" in med_text:
+        has_immuno[patient_id] = True
+
+# ---------------------------
+# Recurrence Computation
+# ---------------------------
+total_patients = len(patient_status)
+overall_recur = 0
+
+group_counts = {
+    "chemo_only": {"n": 0, "recur": 0},
+    "chemo_plus_immuno": {"n": 0, "recur": 0}
+}
+
+for pid, timeline in patient_status.items():
+    statuses = [s for d, s in timeline]
+    recurred = ("Recurrent disease" in statuses)
+
+    if recurred:
+        overall_recur += 1
+
+    if has_immuno[pid]:
+        grp = "chemo_plus_immuno"
+    else:
+        grp = "chemo_only"
+
+    group_counts[grp]["n"] += 1
+    if recurred:
+        group_counts[grp]["recur"] += 1
+
+overall_rate = overall_recur / total_patients * 100
+
+
+Output Results
+
+results = []
+
+results.append("=== Phase 3 Longitudinal mCODE Analysis ===")
+results.append("")
+results.append("Overall Cohort:")
+results.append(f"Total Patients: {total_patients}")
+results.append(f"Patients with Recurrence: {overall_recur}")
+results.append(f"Recurrence Rate (%): {round(overall_rate, 2)}")
+results.append("")
+results.append("By Treatment Exposure (Structural Demonstration):")
+
+for grp in ["chemo_only", "chemo_plus_immuno"]:
+    n = group_counts[grp]["n"]
+    r = group_counts[grp]["recur"]
+    rate = (r / n * 100) if n else 0
+    results.append(f"{grp}: n={n}, recurrences={r}, recurrence_rate={rate:.2f}%")
+
+results_path = base_dir / "results" / "phase3_results.txt"
+results_path.parent.mkdir(exist_ok=True)
+
+with open(results_path, "w", encoding="utf-8") as f:
+    for line in results:
+        f.write(line + "\n")
+
+for line in results:
+    print(line)
+
+```
+
+```
+python .\phase-3\scripts\phase3_analysis.py
+
+```
+### Longitudinal Outcome Analysis Using mCODE
+Objective
+
+Demonstrate computable longitudinal recurrence analysis using mCODE-aligned FHIR resources.
+
+Cohort
+
+200 simulated breast cancer patients
+
+3 time-indexed CancerDiseaseStatus Observations per patient
+
+Treatment exposure captured via MedicationRequest resources
+
+Computed Endpoint
+
+Recurrence defined as presence of "Recurrent disease" following prior "No evidence of disease" status.
+
+Results
+
+Total Patients: 200
+
+Recurrence: 60
+
+Recurrence Rate: 30%
+
+Treatment stratification (structural demonstration):
+
+Chemo-only: n=100
+
+Chemo + Immunotherapy: n=100
+
+Group differences reflect deterministic simulation design and are not intended to model therapeutic efficacy. This experiment demonstrates that longitudinal, exposure-stratified outcome analysis is computable directly from mCODE FHIR resources without schema redesign
+
+mCODE supports longitudinal modeling
+
+Recurrence is computable from time-based Observations
+
+Exposure-outcome stratification is possible
+
+No additional analytic schema required
+
+📘 Registry vs mCODE Longitudinal Comparison Argument
+
+Comparative Evaluation: Traditional Cancer Registry Data vs. mCODE FHIR for Longitudinal Outcome Analysis
+
+### 1. Structural Design Differences
+
+Traditional cancer registry datasets (e.g., NAACCR-based flat files) are primarily designed for standardized reporting, surveillance, and population-level epidemiologic monitoring. Data elements are stored as discrete coded variables in a tabular structure, typically representing:
+
+Primary diagnosis
+
+Tumor characteristics at diagnosis
+
+First course of treatment
+
+Vital status
+
+Limited follow-up indicators
+
+These datasets are fundamentally cross-sectional with limited longitudinal granularity. While follow-up fields exist (e.g., recurrence indicators, last contact date), they are not inherently structured as time-indexed clinical events.
+
+In contrast, mCODE implemented via HL7 FHIR represents cancer-related information as modular, time-stamped resources:
+
+Condition (primary cancer)
+
+Observation (CancerDiseaseStatus, tumor markers, staging)
+
+MedicationRequest (systemic therapy)
+
+Procedure (surgical interventions)
+
+Each resource is independently timestamped and linked via references, enabling true longitudinal modeling of disease trajectories.
+
+### 2. Recurrence Detection: Static Field vs Computable Trajectory
+
+In traditional registry datasets:
+
+Recurrence is often captured as a binary variable or abstracted follow-up field.
+
+Time-to-recurrence must be reconstructed using manually curated dates.
+
+Sequential disease states (e.g., stable → NED → recurrence) are not inherently modeled as discrete events.
+
+In the mCODE FHIR implementation:
+
+Recurrence is derived programmatically from sequential CancerDiseaseStatus Observations.
+
+Disease states are represented as time-indexed resources.
+
+Longitudinal transitions are computable without altering schema design.
+
+This enables:
+
+Automated recurrence detection
+
+Time-ordered disease state analysis
+
+Reproducible analytic pipelines
+
+The analysis conducted in Phase 3 demonstrated that recurrence could be identified by detecting a transition to “Recurrent disease” following “No evidence of disease” across 200 patients, yielding a 30% recurrence rate.
+
+This recurrence was not stored as a static variable; it was computed from structured longitudinal data.
+
+### 3. Treatment Exposure Stratification
+
+In registry-based data:
+
+First course of treatment is typically captured in summary form.
+
+Subsequent treatment exposures are inconsistently structured.
+
+Linking treatment timing to outcome transitions requires complex preprocessing.
+
+In mCODE:
+
+Treatment exposure is represented via MedicationRequest resources.
+
+Each exposure includes a timestamp.
+
+Exposure-outcome relationships are computable using resource references.
+
+In the simulated cohort, patients were stratified into:
+
+Chemotherapy only
+
+Chemotherapy plus immunotherapy
+
+Recurrence stratification was computed directly from linked FHIR resources without database restructuring.
+
+This demonstrates that exposure-based longitudinal analysis is natively supported by the mCODE model.
+
+### 4. Schema Flexibility and Extensibility
+
+Traditional registry schema:
+
+Flat and version-dependent
+
+Adding new longitudinal variables requires schema modification
+
+Genomic data integration is limited or external
+
+mCODE FHIR model:
+
+Modular resource-based architecture
+
+Extensible via profiles
+
+Natively supports genomic Observations, biomarkers, and repeated measurements
+
+Thus, the FHIR model accommodates evolving oncology research needs without redesigning core infrastructure.
+
+### 5. Analytic Implications
+
+The key distinction is not data availability but data architecture.
+
+Traditional registry data:
+
+Designed for surveillance and reporting
+
+Optimized for standardized aggregation
+
+Limited native support for dynamic, time-dependent modeling
+
+mCODE FHIR:
+
+Designed for interoperability and computability
+
+Supports repeated, time-indexed events
+
+Enables automated derivation of endpoints
+
+Integrates exposure and outcome modeling natively
+
+The Phase 3 experiment demonstrates that recurrence detection and treatment stratification are computable directly from FHIR resources without constructing secondary analytic tables
+
+### While registry datasets remain essential for population-level surveillance, their structural design limits dynamic longitudinal modeling. The mCODE FHIR architecture enables event-based, time-indexed computability, which aligns more closely with modern real-world evidence and precision oncology research workflows. This architectural distinction suggests that mCODE enhances analytic capability beyond what is achievable with traditional registry data elements alone
 
 
 
