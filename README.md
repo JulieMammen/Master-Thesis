@@ -1087,13 +1087,13 @@ Phase 3 : time-to-recurrence in months (mCODE)
 import json
 from collections import defaultdict
 from pathlib import Path
-
+```
 # Resolve data files relative to this script so the script can be run from any cwd
 here = Path(__file__).resolve().parent
 root = here.parent
 ds_path = here / "data" / "phase3_disease_status.json"
 
-# ---------- Load Disease Status Observations ----------
+#### Load Disease Status Observations ----------
 def load_json(path: Path):
     """Read a JSON file and handle common BOM/UTF-16/UTF-8 variants robustly."""
     b = path.read_bytes()
@@ -1165,7 +1165,7 @@ if ttr_months:
 else:
     _ttr_summary = []
 
-# ---------- Load MedicationRequests (Treatment Exposure) ----------
+# Load MedicationRequests (Treatment Exposure) 
 mr_path = here / "data" / "phase3_medreq.json"
 mr_bundle = load_json(mr_path)
 
