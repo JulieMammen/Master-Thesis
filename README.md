@@ -5,16 +5,16 @@ University Of Nebraska Meidical Center- Master of Biomedical Informatics
 
 ## Project Overview
 This project evaluates the transformation of NAACCR-based cancer registry data
-(Breast and Prostate cancer) into HL7 FHIR mCODE representations to support
+Breast Cancer into HL7 FHIR mCODE representations to support
 longitudinal analytics, semantic interoperability, and extensibility.
 
 ## Clinical  Source
 NAACCR abstracted cancer registry data.
 
 ## Scope
-- Breast and Prostate cancer
-- Diagnosis + longitudinal treatment and outcomes
-- Comparative analysis: Registry vs mCODE
+- Breast cancer (ICD-10 C50.*)
+- Diagnosis, staging, biomarkers, treatment, and longitudinal outcomes
+- Comparative analysis: Traditional registry structure vs. mCODE FHIR
 
 ## Status
 Crosswalk development (NAACCR → mCODE)
@@ -66,7 +66,16 @@ This phase establishes a **baseline analytic assessment** of traditional cancer 
 
 This phase intentionally mirrors how cancer registry data is typically queried today.
 
----
+--Cancer Type: Breast Cancer
+Why?
+
+Broadest mCODE STU4 profile coverage
+Most mature NAACCR schema (C50.*)
+Rich biomarker data (ER, PR, HER2, Oncotype DX)
+Widely studied — enables comparison with existing literature
+Serves as a complete proof-of-concept for the registry-to-mCODE transformation approach
+
+Future Work: Prostate cancer (C61.9) is identified as a natural extension of this framework. The crosswalk table developed in this thesis (Table 2) provides a preliminary mapping that future work could operationalize.
 
 ## Data Source
 - **Dataset**: Synthetic breast cancer registry-style dataset
@@ -74,6 +83,7 @@ This phase intentionally mirrors how cancer registry data is typically queried t
 - **Cancer site**: Breast (ICD-10 C50.*)
 - **Data type**: Synthetic (no PHI)
 - **Storage**: PostgreSQL (`thesis_registry.breast_registry`)
+- While this framework is generalizable to other cancer types, this thesis evaluates breast cancer exclusively to enable a rigorous, end-to-end implementation and analytic comparison within the constraints of a master's thesis project
 
 The dataset includes demographics, diagnosis, staging, biomarkers, treatment summaries, and inferred disease status.
 
@@ -94,6 +104,7 @@ The table represents a traditional registry abstraction model with summary-level
 - Breast cancer subtype is **not explicitly stored** and must be derived from biomarker combinations.
 - Disease status is inferred and static, reflecting known registry limitations.
 - The table is **non-longitudinal** and episode-based.
+- 
 
 ---
 
