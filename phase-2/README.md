@@ -1,34 +1,32 @@
-# Phase 2 — mCODE FHIR Patient Bundles 
+# Phase 2: Registry to mCODE FHIR
 
-This folder contains draft HL7 FHIR R4 JSON Bundles representing registry-style breast cancer data transformed into mCODE-aligned resources.
-
-## Structure
-- `fhir/` — one Bundle JSON per patient (e.g., `patient-0985.bundle.json`)
-
-## Notes / Assumptions (initial draft)
-- Source dataset includes demographics, diagnosis date, ICD-10-CM site code, stage group, tumor size, grade, ER/PR/HER2, treatment flags (surgery/chemo/hormone/radiation), and disease_status.
-- Exact treatment dates and medication agents are not available in the source extract; placeholder dates and free-text medication descriptions are used for Phase 2 and will be refined later.
-- Validation using the HL7 FHIR Validator against the mCODE IG will be performed after initial commits.
-
-## Next Steps
-- Validate `patient-0985.bundle.json` against the mCODE IG.
-- Iterate to resolve errors and document warnings.
-- Scale from 1 patient bundle → 10 → 1000.
-# Phase 2 — Registry → mCODE FHIR Generation & Validation
-
-## Overview
-This phase operationalizes registry-to-mCODE transformation at scale.
-
-Using a synthetic NAACCR-style breast cancer dataset (`breast_registry_synth_1000.csv`), patient-level FHIR Bundles were generated using a Python script and validated using the HL7 FHIR Validator CLI against the HL7 US mCODE Implementation Guide.
+Phase 2 operationalizes the transformation of the synthetic breast cancer
+registry into patient-level HL7 FHIR R4 Bundles aligned with the mCODE model.
 
 ## Inputs
-- Source dataset: `breast_registry_synth_1000.csv`
-- Data dictionary: `breast_registry_synth_1000_data_dictionary.md`
 
-## Bundle Generation
+- `breast_registry_synth_1000.csv`: 1,000 synthetic records with no PHI
+- `breast_registry_synth_1000_data_dictionary.md`: source field definitions
+- `docs/NAACCR_to_mCODE_crosswalk.md`: mapping specification
+- `scripts/naaccr_fhir_mapping.py`: generator and internal validator
 
-The generator reads the real CSV column names and writes one validated FHIR
-Bundle per patient. Generated output is intentionally ignored by Git.
+The generator uses the CSV's actual column names, including `patient_id`,
+`sex`, `date_diagnosed`, `icd10_code`, `stage_group`, `tumor_size_cm`,
+`er_status`, `pr_status`, `her2_status`, and `oncotype_dx_score`.
+
+## Generated Resources
+
+Each patient Bundle contains:
+
+- `Patient` with a synthetic NAACCR identifier and normalized gender
+- `Condition` with ICD-10-CM breast cancer coding and diagnosis date
+- `Observation` for stage group when present
+- `Observation` for tumor size, converted from centimeters to millimeters
+- `Observation` resources for ER, PR, HER2, and Oncotype DX when present
+
+## Generate Bundles
+
+Run these commands from the repository root. Start with 10 records:
 
 ```powershell
 python scripts/naaccr_fhir_mapping.py `
@@ -37,41 +35,35 @@ python scripts/naaccr_fhir_mapping.py `
   --limit 10
 ```
 
-Remove `--limit 10` to generate all 1,000 patient Bundles. Validate an existing
-Bundle with:
+Generate all 1,000 records by omitting `--limit 10`:
+
+```powershell
+python scripts/naaccr_fhir_mapping.py `
+  --input breast_registry_synth_1000.csv `
+  --output phase-2/fhir_generated
+```
+
+The output directory is generated build output and is excluded from Git.
+
+## Validate Bundles
+
+Every generated Bundle is checked by `validate_bundle` before it is written.
+To validate one existing Bundle directly:
 
 ```powershell
 python scripts/naaccr_fhir_mapping.py `
   --validate phase-2/fhir_generated/patient-0001.bundle.json
 ```
 
-### Script
-- `phase-2/scripts/generate_mcode_bundles.py`
+The complete synthetic cohort has been generated successfully, and the first
+and last generated Bundles pass the internal validation checks. The next
+quality step is external validation with the HL7 FHIR Validator and the US
+mCODE Implementation Guide.
 
-### Validate one Bundle
-```
-"C:\Users\julie\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin\java.exe" `
-  -jar tools/validator_cli.jar `
-  phase-2\fhir_generated\patient-0001.bundle.json `
-  -version 4.0.1 `
-  -ig hl7.fhir.us.mcode#4.0.0
-  ```
-  ### Validate a batch of 25
-  ```
+## Limitations
 
-New-Item -ItemType Directory -Force phase-2\validation\mcode_ig\logs2 | Out-Null
-
-foreach ($n in 1..25) {
-  $id = $n.ToString("0000")
-  $in = "phase-2\fhir_generated\patient-$id.bundle.json"
- ls
-  $log = "phase-2\validation\mcode_ig\logs2\patient-$id.mcode-ig.txt"
-
-  & "C:\Users\julie\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.2.10-hotspot\bin\java.exe" `
-    -jar tools/validator_cli.jar $in `
-    -version 4.0.1 `
-    -ig hl7.fhir.us.mcode#4.0.0 `
-    | Out-File -Encoding utf8 $log
-}
-```
-
+The source extract does not provide treatment agent names or treatment dates,
+so this generator does not create medication or procedure resources. Treatment
+flags remain available in the source CSV for later modeling. The generated
+stage and biomarker values currently preserve source text; terminology binding
+and profile-level mCODE validation are subsequent refinement steps.

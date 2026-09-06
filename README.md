@@ -17,7 +17,10 @@ NAACCR abstracted cancer registry data.
 - Comparative analysis: Traditional registry structure vs. mCODE FHIR
 
 ## Status
-Crosswalk development (NAACCR → mCODE)
+- Phase 1 registry-style analysis documented
+- NAACCR-to-mCODE crosswalk completed
+- Python FHIR Bundle generator implemented
+- 1,000 synthetic patient Bundles generated and internally validated
 
 # Phase 1 – Registry-Style Data Analysis (Breast Cancer)
 
@@ -257,6 +260,53 @@ Explicit subtype representation
 Treatment intent and sequencing
 
 Reusability across analytic contexts
+
+# Phase 2 – Registry to mCODE FHIR Generation
+
+Phase 2 transforms each synthetic registry record into a patient-level FHIR R4
+Bundle containing Patient, Condition, stage, tumor-size, and breast biomarker
+Observations. The mapping specification is documented in
+[`docs/NAACCR_to_mCODE_crosswalk.md`](docs/NAACCR_to_mCODE_crosswalk.md).
+
+The source CSV uses these fields directly: `patient_id`, `sex`,
+`date_diagnosed`, `icd10_code`, `stage_group`, `tumor_size_cm`, `er_status`,
+`pr_status`, `her2_status`, and `oncotype_dx_score`.
+
+## Generate Bundles
+
+From the repository root, generate a small sample first:
+
+```powershell
+python scripts/naaccr_fhir_mapping.py `
+  --input breast_registry_synth_1000.csv `
+  --output phase-2/fhir_generated `
+  --limit 10
+```
+
+Generate the complete synthetic cohort by removing `--limit 10`:
+
+```powershell
+python scripts/naaccr_fhir_mapping.py `
+  --input breast_registry_synth_1000.csv `
+  --output phase-2/fhir_generated
+```
+
+Generated Bundles are written to `phase-2/fhir_generated/` and are excluded
+from Git because they are reproducible build output.
+
+## Validate a Bundle
+
+The generator validates each Bundle before writing it. An existing Bundle can
+also be checked directly:
+
+```powershell
+python scripts/naaccr_fhir_mapping.py `
+  --validate phase-2/fhir_generated/patient-0001.bundle.json
+```
+
+The included example Bundle is available at
+[`docs/example_breast_cancer_fhir_bundle.json`](docs/example_breast_cancer_fhir_bundle.json).
+External HL7 FHIR/mCODE IG validation remains a separate final quality check.
 
 These limitations motivate the transformation of the same clinical facts into FHIR mCODE, which is explored in subsequent phases
 
