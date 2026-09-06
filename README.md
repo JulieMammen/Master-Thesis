@@ -17,10 +17,11 @@ NAACCR abstracted cancer registry data.
 - Comparative analysis: Traditional registry structure vs. mCODE FHIR
 
 ## Status
-- Phase 1 registry-style analysis documented
-- NAACCR-to-mCODE crosswalk completed
-- Python FHIR Bundle generator implemented
-- 1,000 synthetic patient Bundles generated and internally validated
+- Phase 1 registry-style analysis: documented
+- NAACCR → mCODE crosswalk: complete (includes CSV column mapping)
+- Python FHIR Bundle generator: implemented and aligned with the actual CSV columns
+- 1,000 synthetic patient Bundles: generated and internally validated
+- Scope: full support for patient, diagnosis, stage, tumor size, and breast biomarkers (ER, PR, HER2, Oncotype); other site-specific fields documented but not deeply modeled
 
 # Phase 1 – Registry-Style Data Analysis (Breast Cancer)
 
