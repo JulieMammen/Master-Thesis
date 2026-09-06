@@ -264,6 +264,41 @@ Reusability across analytic contexts
 
 # Phase 2 – Registry to mCODE FHIR Generation
 
+
+Phase 2 transforms each synthetic registry record into a patient-level FHIR R4 Bundle.  
+Each Bundle contains:
+
+- `Patient` (identifier, gender, race)
+- `Condition` (primary breast cancer, diagnosis date)
+- `Observation` for stage group
+- `Observation` for tumor size (converted from cm to mm)
+- `Observation` resources for the main breast biomarkers (ER, PR, HER2, Oncotype DX)
+
+The mapping rules are documented in [`docs/NAACCR_to_mCODE_crosswalk.md`](docs/NAACCR_to_mCODE_crosswalk.md).
+
+### Source data
+
+The generator reads the actual columns present in `breast_registry_synth_1000.csv`:
+
+`patient_id`, `sex`, `race`, `date_diagnosed`, `icd10_code`, `stage_group`, `tumor_size_cm`, `er_status`, `pr_status`, `her2_status`, `oncotype_dx_score`
+
+### Generate Bundles
+
+From the repository root:
+
+```powershell
+# Small sample first
+python scripts/naaccr_fhir_mapping.py `
+  --input breast_registry_synth_1000.csv `
+  --output phase-2/fhir_generated `
+  --limit 10
+
+# Full cohort (1,000 patients)
+python scripts/naaccr_fhir_mapping.py `
+  --input breast_registry_synth_1000.csv `
+  --output phase-2/fhir_generated
+
+
 Phase 2 transforms each synthetic registry record into a patient-level FHIR R4
 Bundle containing Patient, Condition, stage, tumor-size, and breast biomarker
 Observations. The mapping specification is documented in
@@ -271,8 +306,7 @@ Observations. The mapping specification is documented in
 
 The source CSV uses these fields directly: `patient_id`, `sex`,
 `date_diagnosed`, `icd10_code`, `stage_group`, `tumor_size_cm`, `er_status`,
-`pr_status`, `her2_status`, and `oncotype_dx_score`.
-
+`pr_status`, `her2_status`, and `oncotype_dx_score` 
 ## Generate Bundles
 
 From the repository root, generate a small sample first:
@@ -296,6 +330,7 @@ Generated Bundles are written to `phase-2/fhir_generated/` and are excluded
 from Git because they are reproducible build output.
 
 ## Validate a Bundle
+Every Bundle is checked by the script’s internal validator before it is written.
 
 The generator validates each Bundle before writing it. An existing Bundle can
 also be checked directly:
@@ -308,8 +343,16 @@ python scripts/naaccr_fhir_mapping.py `
 The included example Bundle is available at
 [`docs/example_breast_cancer_fhir_bundle.json`](docs/example_breast_cancer_fhir_bundle.json).
 External HL7 FHIR/mCODE IG validation remains a separate final quality check.
+## Validation notes
 
+Internal structural validation: passed for the generated cohort.
+External validation with the HL7 FHIR Validator + mCODE Implementation Guide has been performed on sample bundles (0 errors; warnings were limited to best-practice recommendations such as missing narrative text).
+Full terminology binding and complete mCODE profile conformance remain future refinement steps and are documented as limitations.
 These limitations motivate the transformation of the same clinical facts into FHIR mCODE, which is explored in subsequent phases
+## Scope 
+This phase fully implements the patient, diagnosis, stage, tumor-size, and breast-biomarker fields that exist in the current CSV.
+
+Fields that appear only in the broader 25-field NAACCR extract (e.g., Gleason, PSA, Breslow, FIGO) are documented in the crosswalk but are not generated.
 
 ## Phase 2
 ```
