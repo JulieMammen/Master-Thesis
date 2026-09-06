@@ -1,544 +1,374 @@
-"""NAACCR to FHIR implementation mapping for the breast cancer project.
+"""
+Generate FHIR R4 Bundles from the synthetic breast cancer registry CSV.
 
-This module provides a field-level mapping dictionary and helper functions that can
-be used to build FHIR resources from an NAACCR-style record.
+This script reads breast_registry_synth_1000.csv and writes one patient-level
+Bundle per row. It fully supports the fields that actually exist in the CSV
+(patient demographics, diagnosis, stage, tumor size, and the main breast
+biomarkers). Fields that only appear in the broader 25-field NAACCR extract
+are intentionally left out.
 """
 
 from __future__ import annotations
 
 import argparse
-import csv
 import json
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-VALID_PATIENT_GENDERS = {"male", "female", "other", "unknown"}
-VALID_OBSERVATION_STATUS = {"registered", "preliminary", "final", "amended", "corrected", "cancelled", "entered-in-error", "unknown"}
+import pandas as pd
 
 
-def _is_valid_date(value: Any) -> bool:
-    if value in (None, ""):
-        return False
-    value_str = str(value).strip()
-    if len(value_str) == 10 and value_str[4] == "-" and value_str[7] == "-":
-        try:
-            from datetime import datetime
-            datetime.strptime(value_str, "%Y-%m-%d")
-            return True
-        except ValueError:
-            return False
-    return False
+# ---------------------------------------------------------------------------
+# Small helpers
+# ---------------------------------------------------------------------------
+
+def safe_str(value: Any) -> str | None:
+    """Return a cleaned string or None if the value is missing."""
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return None
+    text = str(value).strip()
+    return text if text else None
 
 
-def _is_valid_datetime(value: Any) -> bool:
-    if value in (None, ""):
-        return False
-    value_str = str(value).strip()
-    if value_str.endswith("Z"):
-        value_str = value_str[:-1] + "+00:00"
-    try:
-        from datetime import datetime
-        datetime.fromisoformat(value_str)
-        return True
-    except ValueError:
-        return False
-
-
-def validate_bundle(bundle: dict[str, Any]) -> list[str]:
-    """Return a list of validation errors for a FHIR bundle.
-
-    This is intentionally strict enough for the thesis project: it checks the
-    bundle structure, the core patient/condition/observation elements, and the
-    essential mCODE/US Core semantics used by the NAACCR mapping.
-    """
-    errors: list[str] = []
-
-    if not isinstance(bundle, dict):
-        return ["Bundle must be a JSON object."]
-
-    if bundle.get("resourceType") != "Bundle":
-        errors.append("Bundle.resourceType must be 'Bundle'.")
-
-    if bundle.get("type") not in {"collection", "searchset", "batch", "transaction", "history", "document"}:
-        errors.append("Bundle.type must be a valid FHIR bundle type.")
-
-    entries = bundle.get("entry") or []
-    if not isinstance(entries, list) or not entries:
-        errors.append("Bundle.entry must be a non-empty list.")
-
-    for index, entry in enumerate(entries):
-        if not isinstance(entry, dict):
-            errors.append(f"Bundle.entry[{index}] must be an object.")
-            continue
-
-        resource = entry.get("resource")
-        if not isinstance(resource, dict):
-            errors.append(f"Bundle.entry[{index}].resource is missing.")
-            continue
-
-        rtype = resource.get("resourceType")
-        if rtype == "Patient":
-            if not resource.get("identifier"):
-                errors.append(f"Patient {resource.get('id', index)} is missing identifier.")
-            else:
-                ident = resource["identifier"][0]
-                if not ident.get("system"):
-                    errors.append(f"Patient {resource.get('id', index)} identifier.system is required.")
-                if not ident.get("value"):
-                    errors.append(f"Patient {resource.get('id', index)} identifier.value is required.")
-            gender = resource.get("gender")
-            if gender is not None and gender not in VALID_PATIENT_GENDERS:
-                errors.append(f"Patient {resource.get('id', index)} has invalid gender: {gender}")
-            birth_date = resource.get("birthDate")
-            if birth_date is not None and not _is_valid_date(birth_date):
-                errors.append(f"Patient {resource.get('id', index)} birthDate is not valid: {birth_date}")
-            if resource.get("deceasedBoolean") is True and resource.get("deceasedDateTime") is None:
-                errors.append(f"Patient {resource.get('id', index)} is marked deceased but has no deceasedDateTime.")
-
-        elif rtype == "Condition":
-            if not resource.get("subject") or not resource["subject"].get("reference"):
-                errors.append(f"Condition {resource.get('id', index)} is missing subject.reference.")
-            code = resource.get("code")
-            if not code:
-                errors.append(f"Condition {resource.get('id', index)} is missing code.")
-            else:
-                coding = code.get("coding") or []
-                text = code.get("text")
-                if not coding and not text:
-                    errors.append(f"Condition {resource.get('id', index)} code must include coding or text.")
-            onset = resource.get("onsetDateTime")
-            if onset is not None and not _is_valid_datetime(onset):
-                errors.append(f"Condition {resource.get('id', index)} onsetDateTime is invalid: {onset}")
-
-        elif rtype == "Observation":
-            status = resource.get("status")
-            if status not in VALID_OBSERVATION_STATUS:
-                errors.append(f"Observation {resource.get('id', index)} has invalid status: {status}")
-            if not resource.get("code"):
-                errors.append(f"Observation {resource.get('id', index)} is missing code.")
-            if not resource.get("subject") or not resource["subject"].get("reference"):
-                errors.append(f"Observation {resource.get('id', index)} is missing subject.reference.")
-
-            value_present = any(
-                key in resource for key in ("valueQuantity", "valueCodeableConcept", "valueString", "valueInteger", "valueBoolean", "valueDateTime", "valueRange")
-            )
-            if not value_present:
-                errors.append(f"Observation {resource.get('id', index)} must include one value field.")
-
-            if "valueQuantity" in resource:
-                qty = resource["valueQuantity"]
-                if qty.get("value") is None:
-                    errors.append(f"Observation {resource.get('id', index)} valueQuantity.value is required.")
-                if qty.get("unit") in (None, "") and qty.get("code") in (None, ""):
-                    errors.append(f"Observation {resource.get('id', index)} valueQuantity requires unit or code.")
-
-            if "valueCodeableConcept" in resource:
-                vcc = resource["valueCodeableConcept"]
-                if not (vcc.get("coding") or vcc.get("text")):
-                    errors.append(f"Observation {resource.get('id', index)} valueCodeableConcept is incomplete.")
-
-        else:
-            # This is intentionally strict for the thesis scope; we allow only the resources we intentionally emit.
-            errors.append(f"Unsupported resource type in bundle: {rtype}")
-
-    return errors
-
-
-def validate_bundle_file(bundle_path: str | Path) -> tuple[bool, list[str]]:
-    path = Path(bundle_path)
-    try:
-        bundle = json.loads(path.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        return False, [f"Bundle file not found: {path}"]
-    except json.JSONDecodeError as exc:
-        return False, [f"Invalid JSON in {path}: {exc.msg}"]
-
-    errors = validate_bundle(bundle)
-    return len(errors) == 0, errors
-
-
-# Existing helper code continues below.
-
-FIELD_MAPPING = {
-    "patientIdNumber": {
-        "resource": "Patient",
-        "element": "Patient.identifier.value",
-        "profile": "US Core Patient or mCODE Cancer Patient",
-        "type": "string",
-        "transform": "identity",
-        "notes": "Use a project-specific identifier system such as urn:naaccr:patient-id.",
-    },
-    "sexAssignedAtBirth": {
-        "resource": "Patient",
-        "element": "Patient.gender",
-        "profile": "US Core Patient / mCODE Cancer Patient",
-        "type": "code",
-        "transform": "map_gender",
-        "notes": "1 = male, 2 = female; preserve unknown values in extensions when needed.",
-    },
-    "race1": {
-        "resource": "Patient",
-        "element": "Patient.extension:race",
-        "profile": "US Core Patient",
-        "type": "Coding",
-        "transform": "map_race",
-        "notes": "Map to CDC/US Core race value set with original NAACCR code retained as supplemental coding.",
-    },
-    "dateOfBirth": {
-        "resource": "Patient",
-        "element": "Patient.birthDate",
-        "profile": "US Core Patient / mCODE Cancer Patient",
-        "type": "date",
-        "transform": "to_fhir_date",
-        "notes": "Convert YYYYMMDD to FHIR date.",
-    },
-    "vitalStatus": {
-        "resource": "Patient",
-        "element": "Patient.deceasedBoolean",
-        "profile": "US Core Patient / mCODE Cancer Disease Status",
-        "type": "boolean",
-        "transform": "to_deceased_boolean",
-        "notes": "Use deceasedBoolean for a simple status and Observation when longitudinal tracking is needed.",
-    },
-    "dateOfLastContact": {
-        "resource": "Patient",
-        "element": "Patient.deceasedDateTime or Observation.effectiveDateTime",
-        "profile": "Same as vital status",
-        "type": "dateTime",
-        "transform": "to_fhir_datetime",
-        "notes": "Pair with vital status for interpretation.",
-    },
-    "tumorRecordNumber": {
-        "resource": "Condition",
-        "element": "Condition.identifier",
-        "profile": "mCODE Primary Cancer Condition",
-        "type": "Identifier",
-        "transform": "identity",
-        "notes": "Use to distinguish multiple primary tumors for the same patient.",
-    },
-    "primarySite": {
-        "resource": "Condition",
-        "element": "Condition.code",
-        "profile": "mCODE Primary Cancer Condition",
-        "type": "CodeableConcept",
-        "transform": "map_icdo_topography",
-        "notes": "Use ICD-O-3 topography coding such as C50.* for breast.",
-    },
-    "histologicTypeIcdO3": {
-        "resource": "Condition",
-        "element": "Condition.extension or morphology coding",
-        "profile": "mCODE Primary Cancer Condition",
-        "type": "Coding",
-        "transform": "identity",
-        "notes": "Store as morphology coding with original source code retained.",
-    },
-    "behaviorCodeIcdO3": {
-        "resource": "Condition",
-        "element": "Condition.extension or Condition.clinicalStatus",
-        "profile": "mCODE Primary Cancer Condition",
-        "type": "Coding",
-        "transform": "map_behavior_code",
-        "notes": "Preserve distinctions such as in situ vs malignant.",
-    },
-    "ageAtDiagnosis": {
-        "resource": "Condition",
-        "element": "derived value",
-        "profile": "mCODE Primary Cancer Condition",
-        "type": "integer",
-        "transform": "calculate_age_at_diagnosis",
-        "notes": "Prefer computation from Patient.birthDate and dateOfDiagnosis.",
-    },
-    "dateOfDiagnosis": {
-        "resource": "Condition",
-        "element": "Condition.onsetDateTime",
-        "profile": "mCODE Primary Cancer Condition",
-        "type": "dateTime",
-        "transform": "to_fhir_datetime",
-        "notes": "Convert YYYYMMDD to FHIR dateTime.",
-    },
-    "summaryStage2018": {
-        "resource": "Observation",
-        "element": "Observation.valueCodeableConcept",
-        "profile": "mCODE Cancer Stage or Observation",
-        "type": "CodeableConcept",
-        "transform": "map_summary_stage",
-        "notes": "Use SEER Summary Stage 2018 and keep original NAACCR code in supplemental coding.",
-    },
-    "tumorSizeSummary": {
-        "resource": "Observation",
-        "element": "Observation.valueQuantity",
-        "profile": "mCODE Tumor Size",
-        "type": "Quantity",
-        "transform": "to_mm_quantity",
-        "notes": "Represent value in mm with unit mm.",
-    },
-    "gleasonScoreClinical": {
-        "resource": "Observation",
-        "element": "Observation.valueInteger",
-        "profile": "Observation / future mCODE extension",
-        "type": "integer",
-        "transform": "identity",
-        "notes": "Clinical Gleason score remains an observation tied to the relevant tumor condition.",
-    },
-    "gleasonScorePathological": {
-        "resource": "Observation",
-        "element": "Observation.valueInteger",
-        "profile": "Observation",
-        "type": "integer",
-        "transform": "identity",
-        "notes": "Model similarly to clinical Gleason score.",
-    },
-    "psaLabValue": {
-        "resource": "Observation",
-        "element": "Observation.valueQuantity",
-        "profile": "Observation / tumor-marker style profile",
-        "type": "Quantity",
-        "transform": "to_quantity_with_unit",
-        "notes": "Preserve unit and value as reported by the lab.",
-    },
-    "estrogenReceptorSummary": {
-        "resource": "Observation",
-        "element": "Observation.valueCodeableConcept",
-        "profile": "mCODE Tumor Marker Test",
-        "type": "CodeableConcept",
-        "transform": "map_biomarker_result",
-        "notes": "High-priority breast biomarker. Use coded result with interpretation when available.",
-    },
-    "progesteroneRecepSummary": {
-        "resource": "Observation",
-        "element": "Observation.valueCodeableConcept",
-        "profile": "mCODE Tumor Marker Test",
-        "type": "CodeableConcept",
-        "transform": "map_biomarker_result",
-        "notes": "Same pattern as estrogen receptor summary.",
-    },
-    "her2OverallSummary": {
-        "resource": "Observation",
-        "element": "Observation.valueCodeableConcept",
-        "profile": "mCODE Tumor Marker Test",
-        "type": "CodeableConcept",
-        "transform": "map_biomarker_result",
-        "notes": "HER2 overall result is a standard oncology biomarker observation.",
-    },
-    "ki67": {
-        "resource": "Observation",
-        "element": "Observation.valueQuantity",
-        "profile": "mCODE Tumor Marker Test",
-        "type": "Quantity",
-        "transform": "to_percentage_quantity",
-        "notes": "Usually expressed as a percentage. Include unit % when available.",
-    },
-    "oncotypeDxRecurrenceScoreInvasiv": {
-        "resource": "Observation",
-        "element": "Observation.valueQuantity or GenomicVariant",
-        "profile": "mCODE Genomic Variant or Tumor Marker Test",
-        "type": "Quantity or GenomicVariant",
-        "transform": "to_numeric_score",
-        "notes": "Retain original Oncotype score and methodology alongside the FHIR value.",
-    },
-    "breslowTumorThickness": {
-        "resource": "Observation",
-        "element": "Observation.valueQuantity",
-        "profile": "Observation",
-        "type": "Quantity",
-        "transform": "to_mm_quantity",
-        "notes": "Model as numeric mm thickness with explicit clinical context.",
-    },
-    "figoStage": {
-        "resource": "Observation",
-        "element": "Observation.valueCodeableConcept",
-        "profile": "Observation / Cancer Stage",
-        "type": "CodeableConcept",
-        "transform": "map_figo_stage",
-        "notes": "Use a coded stage value and link to the relevant tumor condition.",
-    },
-    "mitoticRateMelanoma": {
-        "resource": "Observation",
-        "element": "Observation.valueQuantity",
-        "profile": "Observation",
-        "type": "Quantity",
-        "transform": "to_quantity_with_unit",
-        "notes": "Often reported per square mm; preserve unit and interpretation if available.",
-    },
-}
+def map_gender(sex: Any) -> str:
+    """Map the CSV sex values to FHIR gender codes."""
+    text = safe_str(sex)
+    if not text:
+        return "unknown"
+    text = text.lower()
+    if text in {"female", "f"}:
+        return "female"
+    if text in {"male", "m"}:
+        return "male"
+    return "unknown"
 
 
 def to_fhir_date(value: Any) -> str | None:
-    if value in (None, ""):
+    """
+    Accept either YYYY-MM-DD (already in the CSV) or YYYYMMDD.
+    Return a FHIR date string or None.
+    """
+    text = safe_str(value)
+    if not text:
         return None
-    value_str = str(value).strip()
-    if len(value_str) == 8 and value_str.isdigit():
-        return f"{value_str[0:4]}-{value_str[4:6]}-{value_str[6:8]}"
-    return value_str
+    if len(text) == 10 and text[4] == "-" and text[7] == "-":
+        return text
+    if len(text) == 8 and text.isdigit():
+        return f"{text[:4]}-{text[4:6]}-{text[6:8]}"
+    return None
 
 
-def to_fhir_datetime(value: Any) -> str | None:
-    formatted = to_fhir_date(value)
-    if formatted is None:
-        return None
-    return formatted + "T00:00:00"
-
-
-def to_deceased_boolean(value: Any) -> bool:
-    if value is None:
-        return False
-    return str(value).strip().upper() not in {"0", "", "ALIVE", "A"}
-
-
-def map_gender(value: Any) -> str:
-    mapping = {"1": "male", "2": "female", "male": "male", "female": "female", "other": "other", "unknown": "unknown"}
-    return mapping.get(str(value).strip().lower(), "unknown")
-
-
-def to_mm_quantity(value: Any, unit: str = "mm") -> dict[str, Any]:
-    return {
-        "value": float(value),
-        "unit": unit,
-        "system": "http://unitsofmeasure.org",
-        "code": unit,
-    }
-
-
-def to_percentage_quantity(value: Any) -> dict[str, Any]:
-    return {
-        "value": float(value),
-        "unit": "%",
-        "system": "http://unitsofmeasure.org",
-        "code": "%",
-    }
-
-
-def to_quantity_with_unit(value: Any, unit: str = "") -> dict[str, Any]:
-    returned_unit = unit or ""
-    return {
-        "value": float(value),
-        "unit": returned_unit,
-        "system": "http://unitsofmeasure.org" if returned_unit else None,
-        "code": returned_unit,
-    }
-
-
-def calculate_age_at_diagnosis(date_of_birth: Any, date_of_diagnosis: Any) -> int | None:
-    dob = to_fhir_date(date_of_birth)
-    dod = to_fhir_date(date_of_diagnosis)
-    if dob is None or dod is None:
-        return None
+def cm_to_mm(value: Any) -> float | None:
+    """Convert tumor size from cm to mm."""
     try:
-        birth_year = int(dob[0:4])
-        diag_year = int(dod[0:4])
-        return diag_year - birth_year
+        return float(value) * 10.0
     except (TypeError, ValueError):
         return None
 
 
-def build_patient_record(record: dict[str, Any]) -> dict[str, Any]:
-    patient_id = str(record.get("patient_id", "")).strip()
-    return {
+# ---------------------------------------------------------------------------
+# Resource builders
+# ---------------------------------------------------------------------------
+
+def build_patient(row: pd.Series) -> dict[str, Any]:
+    """Create the Patient resource."""
+    patient_id = safe_str(row.get("patient_id")) or "unknown"
+
+    patient: dict[str, Any] = {
         "resourceType": "Patient",
         "id": f"patient-{patient_id}",
         "identifier": [{
             "system": "urn:naaccr:patient-id",
             "value": patient_id,
         }],
-        "gender": map_gender(record.get("sex")),
+        "gender": map_gender(row.get("sex")),
     }
 
+    # Optional race as a simple extension (kept light for the thesis)
+    race = safe_str(row.get("race"))
+    if race:
+        patient["extension"] = [{
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [{
+                "url": "text",
+                "valueString": race,
+            }],
+        }]
 
-def build_condition_record(record: dict[str, Any]) -> dict[str, Any]:
-    patient_id = str(record.get("patient_id", "")).strip()
-    return {
+    return patient
+
+
+def build_condition(row: pd.Series, patient_id: str) -> dict[str, Any]:
+    """Create the primary cancer Condition."""
+    icd10 = safe_str(row.get("icd10_code")) or "C50.9"
+    onset = to_fhir_date(row.get("date_diagnosed"))
+
+    condition: dict[str, Any] = {
         "resourceType": "Condition",
         "id": f"condition-{patient_id}",
-        "subject": {"reference": f"Patient/patient-{patient_id}"},
-        "code": {
-            "coding": [{"system": "http://hl7.org/fhir/sid/icd-10-cm", "code": record.get("icd10_code")}],
-            "text": "Malignant neoplasm of breast",
+        "clinicalStatus": {
+            "coding": [{
+                "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code": "active",
+            }]
         },
-        "onsetDateTime": to_fhir_datetime(record.get("date_diagnosed")),
+        "code": {
+            "coding": [{
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": icd10,
+                "display": f"Malignant neoplasm of breast ({icd10})",
+            }],
+            "text": f"Breast cancer ({icd10})",
+        },
+        "subject": {"reference": f"Patient/{patient_id}"},
     }
 
+    if onset:
+        condition["onsetDateTime"] = onset
 
-def _observation(patient_id: str, observation_id: str, code: str, display: str, value: dict[str, Any]) -> dict[str, Any]:
+    return condition
+
+
+def build_stage_observation(row: pd.Series, patient_id: str) -> dict[str, Any] | None:
+    """Stage group as a simple Observation."""
+    stage = safe_str(row.get("stage_group"))
+    if not stage:
+        return None
+
     return {
         "resourceType": "Observation",
-        "id": observation_id,
+        "id": f"obs-stage-{patient_id}",
         "status": "final",
-        "code": {"coding": [{"system": "http://loinc.org", "code": code, "display": display}], "text": display},
-        "subject": {"reference": f"Patient/patient-{patient_id}"},
-        **value,
+        "code": {"text": "Stage Group"},
+        "subject": {"reference": f"Patient/{patient_id}"},
+        "valueCodeableConcept": {"text": stage},
     }
 
 
-def build_observation_records(record: dict[str, Any]) -> list[dict[str, Any]]:
-    patient_id = str(record.get("patient_id", "")).strip()
-    observations: list[dict[str, Any]] = []
-    if record.get("stage_group") not in (None, "", "Unknown"):
-        observations.append(_observation(patient_id, f"stage-{patient_id}", "21908-9", "Stage group", {"valueCodeableConcept": {"text": str(record["stage_group"])}}))
-    tumor_size = record.get("tumor_size_cm")
-    if tumor_size not in (None, ""):
-        observations.append(_observation(patient_id, f"tumor-size-{patient_id}", "21899-6", "Primary tumor size", {"valueQuantity": to_mm_quantity(float(tumor_size) * 10)}))
-    biomarker_codes = {"er_status": ("85337-4", "Estrogen receptor status"), "pr_status": ("85339-0", "Progesterone receptor status"), "her2_status": ("85319-2", "HER2 status")}
-    for field, (code, display) in biomarker_codes.items():
-        value = record.get(field)
-        if value not in (None, "", "Unknown"):
-            observations.append(_observation(patient_id, f"{field.replace('_', '-')}-{patient_id}", code, display, {"valueCodeableConcept": {"text": str(value)}}))
-    oncotype_score = record.get("oncotype_dx_score")
-    if oncotype_score not in (None, ""):
-        observations.append(_observation(patient_id, f"oncotype-{patient_id}", "44611-1", "Oncotype DX recurrence score", {"valueQuantity": {"value": float(oncotype_score), "unit": "score"}}))
-    return observations
+def build_tumor_size_observation(row: pd.Series, patient_id: str) -> dict[str, Any] | None:
+    """Tumor size converted from cm to mm."""
+    size_mm = cm_to_mm(row.get("tumor_size_cm"))
+    if size_mm is None:
+        return None
+
+    return {
+        "resourceType": "Observation",
+        "id": f"obs-size-{patient_id}",
+        "status": "final",
+        "code": {"text": "Tumor Size"},
+        "subject": {"reference": f"Patient/{patient_id}"},
+        "valueQuantity": {
+            "value": size_mm,
+            "unit": "mm",
+            "system": "http://unitsofmeasure.org",
+            "code": "mm",
+        },
+    }
 
 
-def build_bundle(record: dict[str, Any]) -> dict[str, Any]:
-    resources = [build_patient_record(record), build_condition_record(record), *build_observation_records(record)]
-    return {"resourceType": "Bundle", "type": "collection", "entry": [{"fullUrl": f"urn:uuid:{resource['id']}", "resource": resource} for resource in resources]}
+def build_biomarker_observation(
+    row: pd.Series,
+    patient_id: str,
+    csv_column: str,
+    display_name: str,
+) -> dict[str, Any] | None:
+    """Generic helper for ER / PR / HER2 style results."""
+    value = safe_str(row.get(csv_column))
+    if not value:
+        return None
+
+    return {
+        "resourceType": "Observation",
+        "id": f"obs-{csv_column}-{patient_id}",
+        "status": "final",
+        "code": {"text": display_name},
+        "subject": {"reference": f"Patient/{patient_id}"},
+        "valueCodeableConcept": {"text": value},
+    }
 
 
-def generate_bundles(input_path: str | Path, output_dir: str | Path, limit: int | None = None) -> tuple[int, list[str]]:
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
-    generated = 0
+def build_oncotype_observation(row: pd.Series, patient_id: str) -> dict[str, Any] | None:
+    """Oncotype DX score when present."""
+    score = row.get("oncotype_dx_score")
+    if score is None or (isinstance(score, float) and pd.isna(score)):
+        return None
+
+    try:
+        numeric = float(score)
+    except (TypeError, ValueError):
+        return None
+
+    return {
+        "resourceType": "Observation",
+        "id": f"obs-oncotype-{patient_id}",
+        "status": "final",
+        "code": {"text": "Oncotype DX Recurrence Score"},
+        "subject": {"reference": f"Patient/{patient_id}"},
+        "valueQuantity": {
+            "value": numeric,
+            "unit": "score",
+        },
+    }
+
+
+# ---------------------------------------------------------------------------
+# Bundle assembly
+# ---------------------------------------------------------------------------
+
+def create_bundle(row: pd.Series) -> dict[str, Any]:
+    """Build a complete Bundle for one patient row."""
+    patient_id = safe_str(row.get("patient_id")) or "unknown"
+
+    resources: list[dict[str, Any]] = []
+
+    # Patient
+    resources.append(build_patient(row))
+
+    # Condition
+    resources.append(build_condition(row, patient_id))
+
+    # Stage
+    stage_obs = build_stage_observation(row, patient_id)
+    if stage_obs:
+        resources.append(stage_obs)
+
+    # Tumor size
+    size_obs = build_tumor_size_observation(row, patient_id)
+    if size_obs:
+        resources.append(size_obs)
+
+    # Breast biomarkers
+    for col, display in [
+        ("er_status", "Estrogen Receptor Status"),
+        ("pr_status", "Progesterone Receptor Status"),
+        ("her2_status", "HER2 Status"),
+    ]:
+        obs = build_biomarker_observation(row, patient_id, col, display)
+        if obs:
+            resources.append(obs)
+
+    # Oncotype
+    onco = build_oncotype_observation(row, patient_id)
+    if onco:
+        resources.append(onco)
+
+    return {
+        "resourceType": "Bundle",
+        "id": f"bundle-{patient_id}",
+        "type": "collection",
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "entry": [{"resource": r} for r in resources],
+    }
+
+
+# ---------------------------------------------------------------------------
+# Simple internal validation
+# ---------------------------------------------------------------------------
+
+def validate_bundle(bundle: dict[str, Any]) -> list[str]:
+    """Lightweight checks so we catch obvious problems early."""
     errors: list[str] = []
-    with Path(input_path).open(newline="", encoding="utf-8-sig") as source:
-        for record in csv.DictReader(source):
-            if limit is not None and generated >= limit:
-                break
-            patient_id = str(record.get("patient_id", "")).strip()
-            if not patient_id:
-                errors.append("Skipped record without patient_id.")
-                continue
-            bundle = build_bundle(record)
-            bundle_errors = validate_bundle(bundle)
-            if bundle_errors:
-                errors.extend(f"{patient_id}: {error}" for error in bundle_errors)
-                continue
-            (output_path / f"patient-{patient_id}.bundle.json").write_text(json.dumps(bundle, indent=2) + "\n", encoding="utf-8")
-            generated += 1
-    return generated, errors
+
+    if bundle.get("resourceType") != "Bundle":
+        errors.append("resourceType must be Bundle")
+    if not bundle.get("entry"):
+        errors.append("Bundle has no entries")
+
+    for i, entry in enumerate(bundle.get("entry", [])):
+        resource = entry.get("resource") or {}
+        rtype = resource.get("resourceType")
+
+        if rtype == "Patient":
+            if not resource.get("identifier"):
+                errors.append(f"Patient entry {i} missing identifier")
+        elif rtype == "Condition":
+            if not resource.get("code"):
+                errors.append(f"Condition entry {i} missing code")
+            if not resource.get("subject"):
+                errors.append(f"Condition entry {i} missing subject")
+        elif rtype == "Observation":
+            if not resource.get("code"):
+                errors.append(f"Observation entry {i} missing code")
+            if not resource.get("subject"):
+                errors.append(f"Observation entry {i} missing subject")
+
+    return errors
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description="Generate validated FHIR Bundles from the synthetic registry CSV.")
-    parser.add_argument("--input", help="Path to breast_registry_synth_1000.csv")
-    parser.add_argument("--output", default="phase-2/fhir_generated", help="Directory for generated Bundles")
-    parser.add_argument("--limit", type=int, help="Generate only the first N records")
-    parser.add_argument("--validate", dest="validate_path", help="Validate one existing Bundle JSON file")
+# ---------------------------------------------------------------------------
+# Main entry point
+# ---------------------------------------------------------------------------
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Generate FHIR Bundles from the breast registry CSV"
+    )
+    parser.add_argument(
+        "--input",
+        default="breast_registry_synth_1000.csv",
+        help="Path to the source CSV",
+    )
+    parser.add_argument(
+        "--output",
+        default="phase-2/fhir_generated",
+        help="Directory where bundles will be written",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Optional limit on number of patients to process",
+    )
+    parser.add_argument(
+        "--validate",
+        metavar="BUNDLE_JSON",
+        help="Validate an existing bundle file and exit",
+    )
     args = parser.parse_args()
-    if args.validate_path:
-        valid, errors = validate_bundle_file(args.validate_path)
-        if valid:
-            print(f"VALID: {args.validate_path}")
-            return 0
-        for error in errors:
-            print(f"ERROR: {error}")
-        return 1
-    if not args.input:
-        parser.error("--input is required when generating Bundles")
-    generated, errors = generate_bundles(args.input, args.output, args.limit)
-    print(f"Generated {generated} Bundle(s) in {args.output}")
-    for error in errors:
-        print(f"ERROR: {error}")
-    return 1 if errors else 0
+
+    # Validation-only mode
+    if args.validate:
+        path = Path(args.validate)
+        bundle = json.loads(path.read_text(encoding="utf-8"))
+        errors = validate_bundle(bundle)
+        if errors:
+            print("Validation failed:")
+            for e in errors:
+                print(f"  - {e}")
+        else:
+            print("Validation passed.")
+        return
+
+    # Normal generation mode
+    print(f"Reading {args.input} ...")
+    df = pd.read_csv(args.input)
+
+    if args.limit:
+        df = df.head(args.limit)
+
+    output_dir = Path(args.output)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"Generating bundles for {len(df)} patients ...")
+    success = 0
+
+    for _, row in df.iterrows():
+        bundle = create_bundle(row)
+        errors = validate_bundle(bundle)
+
+        patient_id = safe_str(row.get("patient_id")) or "unknown"
+        out_file = output_dir / f"patient-{patient_id}.bundle.json"
+
+        if errors:
+            print(f"  Skipping {patient_id}: {errors}")
+            continue
+
+        out_file.write_text(json.dumps(bundle, indent=2), encoding="utf-8")
+        success += 1
+
+    print(f"Finished. {success} bundles written to {output_dir}")
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()
