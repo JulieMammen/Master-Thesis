@@ -27,6 +27,24 @@ Using a synthetic NAACCR-style breast cancer dataset (`breast_registry_synth_100
 
 ## Bundle Generation
 
+The generator reads the real CSV column names and writes one validated FHIR
+Bundle per patient. Generated output is intentionally ignored by Git.
+
+```powershell
+python scripts/naaccr_fhir_mapping.py `
+  --input breast_registry_synth_1000.csv `
+  --output phase-2/fhir_generated `
+  --limit 10
+```
+
+Remove `--limit 10` to generate all 1,000 patient Bundles. Validate an existing
+Bundle with:
+
+```powershell
+python scripts/naaccr_fhir_mapping.py `
+  --validate phase-2/fhir_generated/patient-0001.bundle.json
+```
+
 ### Script
 - `phase-2/scripts/generate_mcode_bundles.py`
 

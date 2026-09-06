@@ -10,3 +10,4 @@ __pycache__/
 .idea/
 .vscode/
 *.log
+phase-2/fhir_generated/

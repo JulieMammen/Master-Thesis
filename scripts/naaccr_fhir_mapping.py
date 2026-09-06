@@ -7,6 +7,7 @@ be used to build FHIR resources from an NAACCR-style record.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from pathlib import Path
 from typing import Any
@@ -385,8 +386,8 @@ def to_deceased_boolean(value: Any) -> bool:
 
 
 def map_gender(value: Any) -> str:
-    mapping = {"1": "male", "2": "female"}
-    return mapping.get(str(value).strip(), "unknown")
+    mapping = {"1": "male", "2": "female", "male": "male", "female": "female", "other": "other", "unknown": "unknown"}
+    return mapping.get(str(value).strip().lower(), "unknown")
 
 
 def to_mm_quantity(value: Any, unit: str = "mm") -> dict[str, Any]:
@@ -431,23 +432,113 @@ def calculate_age_at_diagnosis(date_of_birth: Any, date_of_diagnosis: Any) -> in
 
 
 def build_patient_record(record: dict[str, Any]) -> dict[str, Any]:
+    patient_id = str(record.get("patient_id", "")).strip()
     return {
         "resourceType": "Patient",
+        "id": f"patient-{patient_id}",
         "identifier": [{
             "system": "urn:naaccr:patient-id",
-            "value": record.get("patientIdNumber")
+            "value": patient_id,
         }],
-        "gender": map_gender(record.get("sexAssignedAtBirth")),
-        "birthDate": to_fhir_date(record.get("dateOfBirth")),
-        "deceasedBoolean": to_deceased_boolean(record.get("vitalStatus")),
+        "gender": map_gender(record.get("sex")),
     }
 
 
 def build_condition_record(record: dict[str, Any]) -> dict[str, Any]:
+    patient_id = str(record.get("patient_id", "")).strip()
     return {
         "resourceType": "Condition",
+        "id": f"condition-{patient_id}",
+        "subject": {"reference": f"Patient/patient-{patient_id}"},
         "code": {
-            "text": record.get("primarySite")
+            "coding": [{"system": "http://hl7.org/fhir/sid/icd-10-cm", "code": record.get("icd10_code")}],
+            "text": "Malignant neoplasm of breast",
         },
-        "onsetDateTime": to_fhir_datetime(record.get("dateOfDiagnosis")),
+        "onsetDateTime": to_fhir_datetime(record.get("date_diagnosed")),
     }
+
+
+def _observation(patient_id: str, observation_id: str, code: str, display: str, value: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "resourceType": "Observation",
+        "id": observation_id,
+        "status": "final",
+        "code": {"coding": [{"system": "http://loinc.org", "code": code, "display": display}], "text": display},
+        "subject": {"reference": f"Patient/patient-{patient_id}"},
+        **value,
+    }
+
+
+def build_observation_records(record: dict[str, Any]) -> list[dict[str, Any]]:
+    patient_id = str(record.get("patient_id", "")).strip()
+    observations: list[dict[str, Any]] = []
+    if record.get("stage_group") not in (None, "", "Unknown"):
+        observations.append(_observation(patient_id, f"stage-{patient_id}", "21908-9", "Stage group", {"valueCodeableConcept": {"text": str(record["stage_group"])}}))
+    tumor_size = record.get("tumor_size_cm")
+    if tumor_size not in (None, ""):
+        observations.append(_observation(patient_id, f"tumor-size-{patient_id}", "21899-6", "Primary tumor size", {"valueQuantity": to_mm_quantity(float(tumor_size) * 10)}))
+    biomarker_codes = {"er_status": ("85337-4", "Estrogen receptor status"), "pr_status": ("85339-0", "Progesterone receptor status"), "her2_status": ("85319-2", "HER2 status")}
+    for field, (code, display) in biomarker_codes.items():
+        value = record.get(field)
+        if value not in (None, "", "Unknown"):
+            observations.append(_observation(patient_id, f"{field.replace('_', '-')}-{patient_id}", code, display, {"valueCodeableConcept": {"text": str(value)}}))
+    oncotype_score = record.get("oncotype_dx_score")
+    if oncotype_score not in (None, ""):
+        observations.append(_observation(patient_id, f"oncotype-{patient_id}", "44611-1", "Oncotype DX recurrence score", {"valueQuantity": {"value": float(oncotype_score), "unit": "score"}}))
+    return observations
+
+
+def build_bundle(record: dict[str, Any]) -> dict[str, Any]:
+    resources = [build_patient_record(record), build_condition_record(record), *build_observation_records(record)]
+    return {"resourceType": "Bundle", "type": "collection", "entry": [{"fullUrl": f"urn:uuid:{resource['id']}", "resource": resource} for resource in resources]}
+
+
+def generate_bundles(input_path: str | Path, output_dir: str | Path, limit: int | None = None) -> tuple[int, list[str]]:
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+    generated = 0
+    errors: list[str] = []
+    with Path(input_path).open(newline="", encoding="utf-8-sig") as source:
+        for record in csv.DictReader(source):
+            if limit is not None and generated >= limit:
+                break
+            patient_id = str(record.get("patient_id", "")).strip()
+            if not patient_id:
+                errors.append("Skipped record without patient_id.")
+                continue
+            bundle = build_bundle(record)
+            bundle_errors = validate_bundle(bundle)
+            if bundle_errors:
+                errors.extend(f"{patient_id}: {error}" for error in bundle_errors)
+                continue
+            (output_path / f"patient-{patient_id}.bundle.json").write_text(json.dumps(bundle, indent=2) + "\n", encoding="utf-8")
+            generated += 1
+    return generated, errors
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Generate validated FHIR Bundles from the synthetic registry CSV.")
+    parser.add_argument("--input", help="Path to breast_registry_synth_1000.csv")
+    parser.add_argument("--output", default="phase-2/fhir_generated", help="Directory for generated Bundles")
+    parser.add_argument("--limit", type=int, help="Generate only the first N records")
+    parser.add_argument("--validate", dest="validate_path", help="Validate one existing Bundle JSON file")
+    args = parser.parse_args()
+    if args.validate_path:
+        valid, errors = validate_bundle_file(args.validate_path)
+        if valid:
+            print(f"VALID: {args.validate_path}")
+            return 0
+        for error in errors:
+            print(f"ERROR: {error}")
+        return 1
+    if not args.input:
+        parser.error("--input is required when generating Bundles")
+    generated, errors = generate_bundles(args.input, args.output, args.limit)
+    print(f"Generated {generated} Bundle(s) in {args.output}")
+    for error in errors:
+        print(f"ERROR: {error}")
+    return 1 if errors else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
