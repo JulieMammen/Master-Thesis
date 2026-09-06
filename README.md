@@ -345,7 +345,8 @@ The included example Bundle is available at
 External HL7 FHIR/mCODE IG validation remains a separate final quality check.
 ## Validation notes
 
-Internal structural validation: passed for the generated cohort.
+Internal structural validation: passed for the generated cohort
+
 External validation with the HL7 FHIR Validator + mCODE Implementation Guide has been performed on sample bundles (0 errors; warnings were limited to best-practice recommendations such as missing narrative text).
 Full terminology binding and complete mCODE profile conformance remain future refinement steps and are documented as limitations.
 These limitations motivate the transformation of the same clinical facts into FHIR mCODE, which is explored in subsequent phases
