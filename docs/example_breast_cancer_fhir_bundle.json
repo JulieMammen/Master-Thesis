@@ -1,0 +1,323 @@
+{
+  "resourceType": "Bundle",
+  "id": "breast-cancer-example",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:patient-001",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-001",
+        "identifier": [
+          {
+            "system": "urn:naaccr:patient-id",
+            "value": "NAACCR-00012345"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1985-03-14",
+        "deceasedBoolean": false
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-001",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-001",
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/icd-o-3",
+              "code": "C50.919",
+              "display": "Breast, unspecified"
+            }
+          ],
+          "text": "Invasive breast carcinoma"
+        },
+        "onsetDateTime": "2026-01-12",
+        "recordedDate": "2026-01-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-stage-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-stage-001",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "21908-9",
+              "display": "Stage group.clinical"
+            }
+          ],
+          "text": "Summary stage 2018"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "focus": [
+          {
+            "reference": "Condition/condition-001"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/seer-summary-stage",
+              "code": "2",
+              "display": "Regional"
+            }
+          ],
+          "text": "Regional"
+        },
+        "effectiveDateTime": "2026-01-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-tumor-size-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-tumor-size-001",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "33728-7",
+              "display": "Tumor size"
+            }
+          ],
+          "text": "Tumor size summary"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "focus": [
+          {
+            "reference": "Condition/condition-001"
+          }
+        ],
+        "valueQuantity": {
+          "value": 22,
+          "unit": "mm",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm"
+        },
+        "effectiveDateTime": "2026-01-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-er-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-er-001",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "16112-5",
+              "display": "Estrogen receptor in tissue"
+            }
+          ],
+          "text": "Estrogen receptor summary"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "focus": [
+          {
+            "reference": "Condition/condition-001"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "10828004",
+              "display": "Positive"
+            }
+          ],
+          "text": "Positive"
+        },
+        "effectiveDateTime": "2026-01-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-pr-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-pr-001",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "16113-3",
+              "display": "Progesterone receptor in tissue"
+            }
+          ],
+          "text": "Progesterone receptor summary"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "focus": [
+          {
+            "reference": "Condition/condition-001"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "10828004",
+              "display": "Positive"
+            }
+          ],
+          "text": "Positive"
+        },
+        "effectiveDateTime": "2026-01-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-her2-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-her2-001",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "48676-1",
+              "display": "HER2 [Interpretation] in Tissue"
+            }
+          ],
+          "text": "HER2 overall summary"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "focus": [
+          {
+            "reference": "Condition/condition-001"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "10828004",
+              "display": "Positive"
+            }
+          ],
+          "text": "Positive"
+        },
+        "effectiveDateTime": "2026-01-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-ki67-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-ki67-001",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29598-9",
+              "display": "Ki-67 [Percentage] in Tissue"
+            }
+          ],
+          "text": "Ki-67 percentage"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "focus": [
+          {
+            "reference": "Condition/condition-001"
+          }
+        ],
+        "valueQuantity": {
+          "value": 28,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "effectiveDateTime": "2026-01-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-oncotype-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-oncotype-001",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "urn:loinc:unknown",
+              "display": "Oncotype DX recurrence score"
+            }
+          ],
+          "text": "Oncotype DX recurrence score"
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "focus": [
+          {
+            "reference": "Condition/condition-001"
+          }
+        ],
+        "valueQuantity": {
+          "value": 31,
+          "unit": "score",
+          "system": "http://unitsofmeasure.org",
+          "code": "1"
+        },
+        "effectiveDateTime": "2026-01-15"
+      }
+    }
+  ]
+}
