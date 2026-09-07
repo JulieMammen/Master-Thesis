@@ -4,7 +4,7 @@ University Of Nebraska Meidical Center- Master of Biomedical Informatics
 # Modernizing Cancer Registry Data with FHIR mCODE
 
 ## Project Overview
-This project evaluates the transformation of NAACCR-based cancer registry data
+This project evaluates the transformation of NAACCR-based cancer registry data into
 Breast Cancer into HL7 FHIR mCODE representations to support
 longitudinal analytics, semantic interoperability, and extensibility.
 
